@@ -1,0 +1,71 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: PDF.co
+providerId: pdf-co
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - PDF
+  - Quotas
+  - Credits
+  - Rate Limiting
+description: Reconciled rate limits and quota policies for the PDF.co Web API. PDF.co enforces a credit-based
+  monthly quota rather than a public per-second RPS ceiling; concurrency limits scale with plan tier and
+  large/long-running operations should use async mode with /v1/job/check polling.
+sources:
+  - https://pdf.co/pricing
+  - https://docs.pdf.co
+  - https://docs.pdf.co/glossary/webhook-and-callbacks
+responseCodes:
+  throttled: 429
+  quotaExceeded: 402
+algorithm: credit-quota
+primaryMeter: credits
+secondaryMeter: concurrent-requests
+quotas:
+  - plan: Free Trial
+    creditsPerMonth: 10000
+    duration: 1 month
+  - plan: Basic
+    creditsPerMonth: 16500
+  - plan: Personal
+    creditsPerMonth: 37000
+  - plan: Business 1
+    creditsPerMonth: 80500
+  - plan: Business 2
+    creditsPerMonth: 159850
+  - plan: Business 3
+    creditsPerMonth: 483000
+  - plan: Enterprise
+    creditsPerMonth: "500000+"
+asyncPattern:
+  description: "Long-running operations (large PDFs, OCR, complex parsing) should set async to true. The initial response returns a jobId; clients poll /v1/job/check or rely on the optional callback webhook URL to receive completion notifications."
+  pollEndpoint: /v1/job/check
+  callbackField: callback
+fileLimits:
+  - name: Sync file upload (multipart)
+    limit: 100 KB
+    endpoint: /v1/file/upload
+    note: Use /v1/file/upload/url or /v1/file/upload/get-presigned-url for larger files.
+  - name: Presigned upload
+    limit: Effectively unlimited for the storage tier; configure via /v1/file/upload/get-presigned-url.
+outputLinkExpiry:
+  - plan: Free Trial, Basic, Personal, Business 1
+    minutes: 60
+  - plan: Business 2, Business 3, Enterprise
+    minutes: 1440
+policies:
+  - name: Credit-based metering
+    description: Each endpoint consumes a documented credit cost depending on operation type, file size,
+      page count, and OCR/AI usage. Track usage via /v1/account/credit/balance.
+  - name: Monthly quota reset
+    description: Credits reset at the start of each billing cycle and do not roll over.
+  - name: Async-first for heavy ops
+    description: "Run AI Invoice Parser, OCR, classifier, large conversions, and multi-page operations with async=true to avoid request timeouts."
+  - name: Webhook callbacks
+    description: Provide a `callback` URL on async requests to receive job-completion notifications instead
+      of polling.
+  - name: HTTPS-only
+    description: All requests must use HTTPS; the x-api-key header must accompany every call.

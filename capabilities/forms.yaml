@@ -1,0 +1,28 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PDF.co Forms API
+  description: PDF.co Forms API. Read fillable form field metadata from PDFs.
+  tags:
+  - PDF.co
+  - Forms
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    PDFCO_API_KEY: PDFCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: forms
+    baseUri: https://api.pdf.co
+    resources:
+    - name: pdf-info-fields
+      path: /v1/pdf/info/fields
+      operations:
+      - {name: formFieldsInfo, method: POST, description: Retrieve fillable form fields and metadata, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.PDFCO_API_KEY}}'
+      placement: header

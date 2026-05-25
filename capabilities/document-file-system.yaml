@@ -1,0 +1,106 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PDF.co Document, File, and System API
+  description: PDF.co Document, File, and System API. File ops, compress/optimize/info, email, classifier, templates,
+    jobs, and account credit balance.
+  tags:
+  - PDF.co
+  - Files
+  - Compression
+  - Email
+  - Templates
+  - Jobs
+  - Account
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    PDFCO_API_KEY: PDFCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: dfs
+    baseUri: https://api.pdf.co
+    resources:
+    - name: account-balance
+      path: /v1/account/credit/balance
+      operations:
+      - {name: getBalance, method: GET, description: Get remaining credit balance, outputRawFormat: json}
+    - name: file-upload
+      path: /v1/file/upload
+      operations:
+      - {name: fileUpload, method: POST, description: Upload a file (under 100KB), outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: file-upload-base64
+      path: /v1/file/upload/base64
+      operations:
+      - {name: fileUploadBase64, method: POST, description: Upload a file from base64 data, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: file-upload-url
+      path: /v1/file/upload/url
+      operations:
+      - {name: fileUploadUrl, method: POST, description: Upload a file from a URL, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: file-upload-presigned
+      path: /v1/file/upload/get-presigned-url
+      operations:
+      - {name: getPresignedUrl, method: GET, description: Get a presigned upload URL for large files, outputRawFormat: json}
+    - name: file-delete
+      path: /v1/file/delete
+      operations:
+      - {name: fileDelete, method: POST, description: Delete a temporary file from PDF.co storage, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: file-hash
+      path: /v1/file/hash
+      operations:
+      - {name: fileHash, method: GET, description: Compute MD5 hash of a URL-hosted file, outputRawFormat: json}
+    - name: job-check
+      path: /v1/job/check
+      operations:
+      - {name: jobCheck, method: POST, description: Poll status of an asynchronous job, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-compress
+      path: /v2/pdf/compress
+      operations:
+      - {name: compress, method: POST, description: Compress a PDF (v2), outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-optimize
+      path: /v1/pdf/optimize
+      operations:
+      - {name: optimize, method: POST, description: Optimize a PDF, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-info
+      path: /v1/pdf/info
+      operations:
+      - {name: pdfInfo, method: POST, description: Read PDF info and metadata, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-classifier
+      path: /v1/pdf/classifier
+      operations:
+      - {name: classify, method: POST, description: Classify a document by type, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-security-add
+      path: /v1/pdf/security/add
+      operations:
+      - {name: addPassword, method: POST, description: Add password protection to a PDF, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-security-remove
+      path: /v1/pdf/security/remove
+      operations:
+      - {name: removePassword, method: POST, description: Remove password protection from a PDF, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: email-send
+      path: /v1/email/send
+      operations:
+      - {name: emailSend, method: POST, description: Send an email with optional attachments, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: email-decode
+      path: /v1/email/decode
+      operations:
+      - {name: emailDecode, method: POST, description: Decode an email file (.msg/.eml), outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: email-extract-attachments
+      path: /v1/email/extract-attachments
+      operations:
+      - {name: emailExtractAttachments, method: POST, description: Extract attachments from an email, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: templates-html
+      path: /v1/templates/html
+      operations:
+      - {name: listHtmlTemplates, method: GET, description: List stored HTML templates, outputRawFormat: json}
+    - name: templates-html-by-id
+      path: /v1/templates/html/{id}
+      operations:
+      - {name: getHtmlTemplate, method: GET, description: Get an HTML template by ID, outputRawFormat: json, inputParameters: [{name: id, in: path, type: string, required: true}]}
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.PDFCO_API_KEY}}'
+      placement: header

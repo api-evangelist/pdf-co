@@ -1,0 +1,177 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PDF.co Extraction API
+  description: PDF.co Extraction API. AI Invoice Parser, Document Parser, parser templates, and PDF attachment
+    extraction. Self-contained Naftiko capability over the PDF.co Extraction business surface.
+  tags:
+  - PDF.co
+  - Extraction
+  - Invoice Parsing
+  - Document Parsing
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    PDFCO_API_KEY: PDFCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: extraction
+    baseUri: https://api.pdf.co
+    description: PDF.co Extraction business capability. Self-contained, no shared references.
+    resources:
+    - name: ai-invoice-parser
+      path: /v1/ai-invoice-parser
+      operations:
+      - name: parseInvoice
+        method: POST
+        description: AI-powered invoice and receipt parser (zero-template).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+    - name: document-parser
+      path: /v1/pdf/documentparser
+      operations:
+      - name: parseDocument
+        method: POST
+        description: Template-driven document parser.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+    - name: parser-templates
+      path: /v1/pdf/documentparser/templates
+      operations:
+      - name: listTemplates
+        method: GET
+        description: List available document parser templates.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: parser-template-by-id
+      path: /v1/pdf/documentparser/templates/{id}
+      operations:
+      - name: getTemplate
+        method: GET
+        description: Get a parser template by ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: attachments-extract
+      path: /v1/pdf/attachments/extract
+      operations:
+      - name: extractAttachments
+        method: POST
+        description: Extract embedded attachments from PDFs.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.PDFCO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: extraction-rest
+    port: 8080
+    description: REST adapter for PDF.co Extraction.
+    resources:
+    - path: /v1/ai-invoice-parser
+      name: ai-invoice-parser
+      operations:
+      - method: POST
+        name: parseInvoice
+        call: extraction.parseInvoice
+        with:
+          body: rest.body
+    - path: /v1/pdf/documentparser
+      name: document-parser
+      operations:
+      - method: POST
+        name: parseDocument
+        call: extraction.parseDocument
+        with:
+          body: rest.body
+    - path: /v1/pdf/documentparser/templates
+      name: parser-templates
+      operations:
+      - method: GET
+        name: listTemplates
+        call: extraction.listTemplates
+    - path: /v1/pdf/documentparser/templates/{id}
+      name: parser-template-by-id
+      operations:
+      - method: GET
+        name: getTemplate
+        call: extraction.getTemplate
+        with:
+          id: rest.path.id
+    - path: /v1/pdf/attachments/extract
+      name: attachments-extract
+      operations:
+      - method: POST
+        name: extractAttachments
+        call: extraction.extractAttachments
+        with:
+          body: rest.body
+  - type: mcp
+    namespace: extraction-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PDF.co Extraction.
+    tools:
+    - name: pdfco-parse-invoice
+      description: AI invoice parser.
+      hints: {readOnly: false, destructive: false, idempotent: false}
+      call: extraction.parseInvoice
+      with: {body: tools.body}
+    - name: pdfco-parse-document
+      description: Template-driven document parser.
+      hints: {readOnly: false, destructive: false, idempotent: false}
+      call: extraction.parseDocument
+      with: {body: tools.body}
+    - name: pdfco-list-parser-templates
+      description: List parser templates.
+      hints: {readOnly: true, destructive: false, idempotent: true}
+      call: extraction.listTemplates
+    - name: pdfco-get-parser-template
+      description: Get a parser template by ID.
+      hints: {readOnly: true, destructive: false, idempotent: true}
+      call: extraction.getTemplate
+      with: {id: tools.id}
+    - name: pdfco-extract-attachments
+      description: Extract attachments from a PDF.
+      hints: {readOnly: false, destructive: false, idempotent: false}
+      call: extraction.extractAttachments
+      with: {body: tools.body}

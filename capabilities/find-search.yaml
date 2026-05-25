@@ -1,0 +1,41 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PDF.co Find and Search API
+  description: PDF.co Find and Search API. Locate text and tables; toggle text-searchability.
+  tags:
+  - PDF.co
+  - Search
+  - OCR
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    PDFCO_API_KEY: PDFCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: find-search
+    baseUri: https://api.pdf.co
+    resources:
+    - name: pdf-find
+      path: /v1/pdf/find
+      operations:
+      - {name: findText, method: POST, description: Locate text and return coordinates, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-find-table
+      path: /v1/pdf/find/table
+      operations:
+      - {name: findTable, method: POST, description: AI-powered table detection, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-makesearchable
+      path: /v1/pdf/makesearchable
+      operations:
+      - {name: makeSearchable, method: POST, description: OCR a scanned PDF to make it text-searchable, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-makeunsearchable
+      path: /v1/pdf/makeunsearchable
+      operations:
+      - {name: makeUnsearchable, method: POST, description: Strip text layer to produce image-only PDF, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.PDFCO_API_KEY}}'
+      placement: header

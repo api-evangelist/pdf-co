@@ -1,0 +1,109 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "pdfco": "https://api.pdf.co/v1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Document": {
+      "@id": "schema:DigitalDocument",
+      "@context": {
+        "url": {"@id": "schema:url", "@type": "xsd:anyURI"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "password": {"@id": "pdfco:password", "@type": "xsd:string"},
+        "pages": {"@id": "pdfco:pages", "@type": "xsd:string"}
+      }
+    },
+
+    "Invoice": {
+      "@id": "schema:Invoice",
+      "@context": {
+        "invoiceNumber": {"@id": "pdfco:Invoice/invoiceNumber", "@type": "xsd:string"},
+        "invoiceDate": {"@id": "pdfco:Invoice/invoiceDate", "@type": "xsd:date"},
+        "dueDate": {"@id": "pdfco:Invoice/dueDate", "@type": "xsd:date"},
+        "vendor": {"@id": "pdfco:Invoice/vendor", "@type": "schema:Organization"},
+        "customer": {"@id": "pdfco:Invoice/customer", "@type": "schema:Organization"},
+        "totalAmount": {"@id": "schema:totalPrice", "@type": "xsd:decimal"},
+        "currency": {"@id": "schema:priceCurrency", "@type": "xsd:string"},
+        "lineItems": {"@id": "pdfco:Invoice/lineItems", "@container": "@list"},
+        "taxAmount": {"@id": "pdfco:Invoice/taxAmount", "@type": "xsd:decimal"},
+        "subTotal": {"@id": "pdfco:Invoice/subTotal", "@type": "xsd:decimal"}
+      }
+    },
+
+    "DocumentParserTemplate": {
+      "@id": "pdfco:DocumentParserTemplate",
+      "@context": {
+        "id": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "templateString": {"@id": "pdfco:DocumentParserTemplate/templateString", "@type": "xsd:string"},
+        "created": {"@id": "dcterms:created", "@type": "xsd:dateTime"},
+        "modified": {"@id": "dcterms:modified", "@type": "xsd:dateTime"}
+      }
+    },
+
+    "ConversionRequest": {
+      "@id": "pdfco:ConversionRequest",
+      "@context": {
+        "url": {"@id": "schema:url", "@type": "xsd:anyURI"},
+        "async": {"@id": "pdfco:async", "@type": "xsd:boolean"},
+        "callback": {"@id": "pdfco:callback", "@type": "xsd:anyURI"},
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "pages": {"@id": "pdfco:pages", "@type": "xsd:string"},
+        "expiration": {"@id": "pdfco:expiration", "@type": "xsd:integer"}
+      }
+    },
+
+    "JobStatus": {
+      "@id": "pdfco:JobStatus",
+      "@context": {
+        "jobId": {"@id": "schema:identifier", "@type": "xsd:string"},
+        "status": {"@id": "pdfco:JobStatus/status", "@type": "xsd:string"},
+        "url": {"@id": "schema:url", "@type": "xsd:anyURI"},
+        "credits": {"@id": "pdfco:JobStatus/credits", "@type": "xsd:integer"},
+        "duration": {"@id": "pdfco:JobStatus/duration", "@type": "xsd:integer"},
+        "remainingCredits": {"@id": "pdfco:JobStatus/remainingCredits", "@type": "xsd:integer"}
+      }
+    },
+
+    "Barcode": {
+      "@id": "pdfco:Barcode",
+      "@context": {
+        "type": {"@id": "pdfco:Barcode/type", "@type": "xsd:string"},
+        "value": {"@id": "schema:value", "@type": "xsd:string"},
+        "page": {"@id": "pdfco:Barcode/page", "@type": "xsd:integer"},
+        "rect": {"@id": "pdfco:Barcode/rect"}
+      }
+    },
+
+    "FormField": {
+      "@id": "pdfco:FormField",
+      "@context": {
+        "name": {"@id": "schema:name", "@type": "xsd:string"},
+        "type": {"@id": "pdfco:FormField/type", "@type": "xsd:string"},
+        "page": {"@id": "pdfco:FormField/page", "@type": "xsd:integer"},
+        "value": {"@id": "schema:value", "@type": "xsd:string"},
+        "rect": {"@id": "pdfco:FormField/rect"}
+      }
+    },
+
+    "Account": {
+      "@id": "pdfco:Account",
+      "@context": {
+        "remainingCredits": {"@id": "pdfco:Account/remainingCredits", "@type": "xsd:integer"},
+        "subscriptionPlan": {"@id": "pdfco:Account/subscriptionPlan", "@type": "xsd:string"}
+      }
+    },
+
+    "ErrorResponse": {
+      "@id": "pdfco:ErrorResponse",
+      "@context": {
+        "error": {"@id": "pdfco:ErrorResponse/error", "@type": "xsd:boolean"},
+        "status": {"@id": "pdfco:ErrorResponse/status", "@type": "xsd:integer"},
+        "message": {"@id": "schema:description", "@type": "xsd:string"}
+      }
+    }
+  }
+}

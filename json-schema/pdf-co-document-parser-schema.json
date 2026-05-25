@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/pdf-co/main/json-schema/pdf-co-document-parser-schema.json",
+  "title": "PDF.co Document Parser Request",
+  "description": "Request payload for the PDF.co Document Parser endpoint (/v1/pdf/documentparser). Extracts structured data from PDF or image documents using a stored template (templateId) or inline template (template).",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the source PDF or image file. Use this OR a previously uploaded file token."
+    },
+    "templateId": {
+      "type": "string",
+      "description": "ID of a stored document parser template. Fetch templates via /v1/pdf/documentparser/templates."
+    },
+    "template": {
+      "type": "string",
+      "description": "Inline template definition (YAML) describing fields to extract."
+    },
+    "outputFormat": {
+      "type": "string",
+      "enum": ["JSON", "XML", "YAML", "CSV"],
+      "description": "Output format for the extracted data."
+    },
+    "async": {
+      "type": "boolean",
+      "default": false,
+      "description": "Run as an asynchronous job. When true, poll status via /v1/job/check."
+    },
+    "callback": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional webhook URL to receive job completion notifications."
+    },
+    "name": {
+      "type": "string",
+      "description": "Optional output file name."
+    },
+    "password": {
+      "type": "string",
+      "description": "Password for an encrypted source PDF."
+    },
+    "httpusername": {"type": "string"},
+    "httppassword": {"type": "string"},
+    "profiles": {
+      "type": "string",
+      "description": "Optional advanced parser profiles (JSON-encoded)."
+    },
+    "expiration": {
+      "type": "integer",
+      "description": "Output file link expiration in minutes."
+    }
+  },
+  "anyOf": [
+    {"required": ["url"]},
+    {"required": ["file"]}
+  ],
+  "oneOf": [
+    {"required": ["templateId"]},
+    {"required": ["template"]}
+  ],
+  "additionalProperties": true
+}

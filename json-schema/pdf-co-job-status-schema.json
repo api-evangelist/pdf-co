@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/pdf-co/main/json-schema/pdf-co-job-status-schema.json",
+  "title": "PDF.co Job Status",
+  "description": "Status response from /v1/job/check for an asynchronous PDF.co job.",
+  "type": "object",
+  "properties": {
+    "jobId": {"type": "string", "description": "Job identifier returned by the original async request."},
+    "status": {
+      "type": "string",
+      "enum": ["working", "success", "failed", "aborted", "unknown"],
+      "description": "Current job state."
+    },
+    "url": {"type": "string", "format": "uri", "description": "Output file URL when status is success."},
+    "error": {"type": "boolean"},
+    "message": {"type": "string"},
+    "credits": {"type": "integer", "description": "Credits consumed by the job."},
+    "duration": {"type": "integer", "description": "Job duration in milliseconds."},
+    "remainingCredits": {"type": "integer"}
+  },
+  "required": ["jobId", "status"],
+  "additionalProperties": true
+}

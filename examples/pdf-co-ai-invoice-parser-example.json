@@ -1,0 +1,48 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.pdf.co/v1/ai-invoice-parser",
+    "headers": {
+      "x-api-key": "YOUR_PDFCO_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "url": "https://bytescout-com.s3.amazonaws.com/files/demo-files/cloud-api/pdf-to-text/sample-invoice.pdf",
+      "async": false,
+      "name": "parsed-invoice"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "body": {
+        "invoiceNumber": "INV-2026-0042",
+        "invoiceDate": "2026-04-30",
+        "dueDate": "2026-05-30",
+        "vendor": {
+          "name": "Acme Supplies, Inc.",
+          "address": "123 Main St, Springfield, IL 62701"
+        },
+        "customer": {
+          "name": "PDF.co Example Customer",
+          "address": "456 Market St, San Francisco, CA 94103"
+        },
+        "lineItems": [
+          {"description": "API Hosting (May 2026)", "quantity": 1, "unitPrice": 199.00, "total": 199.00},
+          {"description": "OCR Add-on", "quantity": 1, "unitPrice": 49.00, "total": 49.00}
+        ],
+        "subTotal": 248.00,
+        "tax": 21.70,
+        "totalAmount": 269.70,
+        "currency": "USD"
+      },
+      "pageCount": 1,
+      "credits": 35,
+      "remainingCredits": 16465,
+      "duration": 4123,
+      "error": false,
+      "status": 200,
+      "name": "parsed-invoice.json"
+    }
+  }
+}

@@ -1,0 +1,258 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: PDF.co
+providerId: pdf-co
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - PDF
+  - Document Automation
+  - Credits
+  - Subscription
+description: 'Reconciled monthly subscription plans for the PDF.co Web API. Credits are consumed per API
+  operation; unused credits do not roll over. Source: pdf.co/pricing.'
+sources:
+  - https://pdf.co/pricing
+  - https://docs.pdf.co
+plans:
+  - id: pdf-co-free-trial
+    name: Free Trial
+    type: free
+    description: 1-month trial with 10,000 credits and full API access; no credit card required.
+    entries:
+      - label: Trial credits
+        name: trial_credits
+        type: included
+        metric: credits
+        limit: 10000
+        timeFrame: trial
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Full API access
+      - name: Unlimited output during trial
+      - name: No credit card required
+      - name: 60-minute output file link expiry
+  - id: pdf-co-basic
+    name: Basic
+    type: subscription
+    description: Entry-level paid plan with 16,500 credits per month.
+    entries:
+      - label: Monthly subscription
+        name: monthly
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '8.99'
+        userMultiplied: false
+      - label: Annual subscription (per month)
+        name: annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '107.89'
+        userMultiplied: false
+      - label: Included credits
+        name: credits
+        type: included
+        metric: credits
+        limit: 16500
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Full API access
+      - name: Unlimited output
+      - name: Secured data
+      - name: 60-minute output file link expiry
+  - id: pdf-co-personal
+    name: Personal
+    type: subscription
+    description: 37,000 credits per month for individual heavy users.
+    entries:
+      - label: Monthly subscription
+        name: monthly
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '22.49'
+        userMultiplied: false
+      - label: Annual subscription (per month)
+        name: annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '269.89'
+        userMultiplied: false
+      - label: Included credits
+        name: credits
+        type: included
+        metric: credits
+        limit: 37000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Full API access
+      - name: Unlimited output
+      - name: 60-minute output file link expiry
+  - id: pdf-co-business-1
+    name: Business 1
+    type: subscription
+    description: 'Most popular plan: 80,500 credits/month for production workloads.'
+    entries:
+      - label: Monthly subscription
+        name: monthly
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '44.99'
+        userMultiplied: false
+      - label: Annual subscription (per month)
+        name: annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '539.89'
+        userMultiplied: false
+      - label: Included credits
+        name: credits
+        type: included
+        metric: credits
+        limit: 80500
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Full API access
+      - name: Unlimited output
+      - name: Advanced security
+      - name: 60-minute output file link expiry
+  - id: pdf-co-business-2
+    name: Business 2
+    type: subscription
+    description: 159,850 credits/month; extended 24-hour output file expiry.
+    entries:
+      - label: Monthly subscription
+        name: monthly
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '89.99'
+        userMultiplied: false
+      - label: Annual subscription (per month)
+        name: annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '1079.89'
+        userMultiplied: false
+      - label: Included credits
+        name: credits
+        type: included
+        metric: credits
+        limit: 159850
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Full API access
+      - name: Unlimited output
+      - name: Advanced security
+      - name: 1440-minute (24h) output file link expiry
+  - id: pdf-co-business-3
+    name: Business 3
+    type: subscription
+    description: 483,000 credits/month for high-volume production.
+    entries:
+      - label: Monthly subscription
+        name: monthly
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '270.00'
+        userMultiplied: false
+      - label: Annual subscription (per month)
+        name: annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '3239.98'
+        userMultiplied: false
+      - label: Included credits
+        name: credits
+        type: included
+        metric: credits
+        limit: 483000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Full API access
+      - name: Unlimited output
+      - name: Advanced security
+      - name: 1440-minute (24h) output file link expiry
+  - id: pdf-co-enterprise
+    name: Enterprise
+    type: custom
+    description: Custom plan for 500,000+ monthly credits with customized features and priority support.
+    entries:
+      - label: Custom pricing
+        name: custom
+        type: contact-sales
+        metric: subscription
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: 500,000+ monthly credits
+      - name: Priority support
+      - name: Custom SLA
+      - name: Customized features

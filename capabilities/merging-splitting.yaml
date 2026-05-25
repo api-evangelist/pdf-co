@@ -1,0 +1,41 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PDF.co Merging and Splitting API
+  description: PDF.co Merging and Splitting API. Merge, merge2 (mixed inputs), split, and split2 (text-pattern).
+  tags:
+  - PDF.co
+  - Merging
+  - Splitting
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    PDFCO_API_KEY: PDFCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: merging-splitting
+    baseUri: https://api.pdf.co
+    resources:
+    - name: pdf-merge
+      path: /v1/pdf/merge
+      operations:
+      - {name: merge, method: POST, description: Merge multiple PDFs into one, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-merge2
+      path: /v1/pdf/merge2
+      operations:
+      - {name: merge2, method: POST, description: Merge PDF from PDF, DOC, XLS, and image inputs, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-split
+      path: /v1/pdf/split
+      operations:
+      - {name: split, method: POST, description: Split PDF by page ranges/indexes, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    - name: pdf-split2
+      path: /v1/pdf/split2
+      operations:
+      - {name: split2, method: POST, description: Split PDF by text pattern, outputRawFormat: json, inputParameters: [{name: body, in: body, type: object, required: true}]}
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.PDFCO_API_KEY}}'
+      placement: header

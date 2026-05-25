@@ -1,0 +1,45 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.pdf.co/v1/pdf/convert/to/json2",
+    "headers": {
+      "x-api-key": "YOUR_PDFCO_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "url": "https://bytescout-com.s3.amazonaws.com/files/demo-files/cloud-api/pdf-to-json/sample.pdf",
+      "inline": true,
+      "async": false
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "body": {
+        "document": {
+          "pages": [
+            {
+              "pageNumber": 1,
+              "text": "Sample document text...",
+              "tables": [
+                {
+                  "rows": [
+                    ["Header A", "Header B", "Header C"],
+                    ["Cell 1A", "Cell 1B", "Cell 1C"]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pageCount": 1,
+      "credits": 7,
+      "remainingCredits": 16458,
+      "duration": 982,
+      "error": false,
+      "status": 200,
+      "name": "sample.json"
+    }
+  }
+}

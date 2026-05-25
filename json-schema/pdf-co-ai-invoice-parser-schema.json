@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/pdf-co/main/json-schema/pdf-co-ai-invoice-parser-schema.json",
+  "title": "PDF.co AI Invoice Parser Request",
+  "description": "Request payload for the AI Invoice Parser endpoint (/v1/ai-invoice-parser). Zero-template parsing of invoices, receipts, statements, paystubs, and other tabular documents.",
+  "type": "object",
+  "properties": {
+    "url": {"type": "string", "format": "uri", "description": "Source file URL (PDF, JPG, PNG, TIFF, or multi-page TIFF)."},
+    "async": {"type": "boolean", "default": false},
+    "callback": {"type": "string", "format": "uri"},
+    "name": {"type": "string", "description": "Optional output name."},
+    "password": {"type": "string"},
+    "expiration": {"type": "integer"},
+    "lang": {"type": "string", "description": "OCR language code (eng by default)."}
+  },
+  "required": ["url"],
+  "additionalProperties": true
+}
