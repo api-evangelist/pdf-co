@@ -1,124 +1,241 @@
 # PDF.co (pdf-co)
 
-PDF.co is a PDF and document automation API from Artifex Software, Inc. It exposes a broad surface for AI-driven invoice parsing, template-driven document parsing, bidirectional PDF/Excel/CSV/JSON/XML/HTML/image conversion, OCR, form filling, merging and splitting, barcode generation and recognition, e-signature workflows, PDF compression and optimization, and PDF security. All endpoints share a single base URL (`https://api.pdf.co`), authenticate via the `x-api-key` header, and support both synchronous and asynchronous execution with optional webhook callbacks and `/v1/job/check` polling.
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/pdf-co/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/pdf-co/refs/heads/main/apis.yml)
 
-**URL:** [Visit APIs.json](https://raw.githubusercontent.com/api-evangelist/pdf-co/refs/heads/main/apis.yml)
+## Scope
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+- **Access:** 3rd-Party
 
 ## Tags
 
- - PDF, Document Automation, AI, OCR, Invoice Parsing, Document Parsing, Conversion, Forms, Barcodes, E-Signature
+- PDF
+- Document Automation
+- AI
+- OCR
+- Invoice Parsing
+- Document Parsing
+- Conversion
+- Forms
+- Barcodes
+- E-Signature
 
 ## Timestamps
 
 - **Created:** 2026-05-25
 - **Modified:** 2026-05-25
 
-## Authentication
-
-All requests require the `x-api-key` HTTP header. Get a key by signing up at [app.pdf.co/signup](https://app.pdf.co/signup) — the trial includes 10,000 credits for 1 month with no card required.
-
-## Async pattern
-
-Long-running operations (OCR, AI invoice parsing, large file conversion, classification) accept `async: true`. The initial response returns a `jobId`; clients either poll `POST /v1/job/check` or supply a `callback` URL for webhook notification.
-
 ## APIs
 
 ### PDF.co Extraction API
-AI-powered data extraction from PDFs, scans, and images. Includes the zero-template AI Invoice Parser, the template-driven Document Parser (with reusable stored templates), Document Classifier, and PDF attachment extraction.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+AI-powered data extraction from PDF, scanned, and image-based documents. Includes the AI Invoice Parser (zero-template invoice/receipt parsing), Document Parser (template-driven extraction with reusable templates by ID), Document Classifier, and PDF attachment extraction. Async and sync modes; webhook callbacks; supports URL, base64, or uploaded-file inputs.
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [JSON Schema — AI Invoice Parser Request](json-schema/pdf-co-ai-invoice-parser-schema.json)
-- [JSON Schema — Document Parser Request](json-schema/pdf-co-document-parser-schema.json)
-- [JSON-LD](json-ld/pdf-co-context.jsonld)
-- [Naftiko Capability — Extraction](capabilities/extraction.yaml)
-- [Example — AI Invoice Parser](examples/pdf-co-ai-invoice-parser-example.json)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+
+#### Tags
+
+- AI
+- Document Parsing
+- Invoice Parsing
+- OCR
+- Extraction
+
+#### Properties
+
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/pdf-co-document-parser-schema.json) — [JSON Schema](https://json-schema.org/specification)
 
 ### PDF.co Conversion API
-Bidirectional conversion: PDF to CSV/JSON/JSON-AI/text/XML/XLS/XLSX/HTML/JPG/PNG/TIFF/WebP; PDF from HTML, URL, DOC/DOCX, CSV/XLS/XLSX, images, and email (.msg, .eml); plus Excel-to-anything.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+Bidirectional document conversion: PDF to CSV, JSON, JSON-AI, text, XML, XLS, XLSX, HTML, JPG, PNG, TIFF, WebP; PDF from HTML, URL, DOC/DOCX, CSV/XLS/XLSX, images, and email (.msg, .eml); plus Excel-to-anything conversion. Layout-preserving table extraction and AI-driven JSON output supported.
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [Naftiko Capability — Conversion](capabilities/conversion.yaml)
-- [Example — PDF to JSON](examples/pdf-co-pdf-to-json-example.json)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+
+#### Tags
+
+- Conversion
+- PDF
+- Excel
+- CSV
+- JSON
+- HTML
+- Images
+- OCR
+
+#### Properties
+
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### PDF.co Editing API
-Programmatic editing: add text/images/forms/links, search-and-replace, replace text with images, delete text.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+Programmatic PDF editing: add text/images/forms/links, replace text, replace text with images, delete text, delete or rotate pages, AI auto-rotate, search-and-replace, and form filling. Accepts coordinate-based annotations and supports template-driven PDF generation via HTML templates.
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [Naftiko Capability — Editing](capabilities/editing.yaml)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+
+#### Tags
+
+- Editing
+- PDF
+- Forms
+- Text
+- Images
+
+#### Properties
+
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### PDF.co Merging and Splitting API
-Merge multiple PDFs (or mixed PDF/DOC/XLS/image inputs via `/merge2`); split by page ranges, indexes, or text pattern.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+Merge multiple PDFs (and DOC, XLS, image inputs via /merge2) into a single document, or split PDFs by page ranges, indexes, or text-pattern search. Useful for document assembly, statement bursting, and invoice pipelines.
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [Naftiko Capability — Merging and Splitting](capabilities/merging-splitting.yaml)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+
+#### Tags
+
+- Merging
+- Splitting
+- PDF
+- Document Assembly
+
+#### Properties
+
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### PDF.co Find and Search API
-Locate text and tables with coordinates; OCR-driven `/makesearchable`; remove text layer via `/makeunsearchable`.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+Locate text in PDFs and return coordinates (`/pdf/find`), AI-powered table location (`/pdf/find/table`), and make scanned PDFs text-searchable via OCR (`/pdf/makesearchable`) or remove text layers to produce image-only PDFs (`/pdf/makeunsearchable`).
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [Naftiko Capability — Find and Search](capabilities/find-search.yaml)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+
+#### Tags
+
+- Search
+- PDF
+- OCR
+- Text
+
+#### Properties
+
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### PDF.co Forms API
-Read fillable form field metadata (AcroForm, XFA). Pair with the Editing API to fill forms programmatically.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+Retrieve fillable form field details (`/pdf/info/fields`) for AcroForm and XFA PDFs. Pair with the Editing API's `/pdf/edit/add` endpoint to fill forms programmatically.
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [Naftiko Capability — Forms](capabilities/forms.yaml)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+
+#### Tags
+
+- Forms
+- PDF
+- AcroForm
+
+#### Properties
+
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### PDF.co Pages API
-Delete or rotate pages; AI-driven auto-rotation for scanned documents.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+Delete pages by range, rotate pages by degrees, or use AI auto-rotation to detect and fix page orientation in scanned documents.
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [Naftiko Capability — Pages](capabilities/pages.yaml)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+
+#### Tags
+
+- Pages
+- PDF
+- Rotation
+
+#### Properties
+
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### PDF.co Barcodes API
-Generate barcodes (QR, Code128, DataMatrix, PDF417, EAN, UPC, and more) and read barcodes from PDF/image URLs.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+Generate high-quality barcode images (QR, Code128, DataMatrix, PDF417, EAN, UPC, and others) or read barcodes from PDF and image inputs by URL.
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [Naftiko Capability — Barcodes](capabilities/barcodes.yaml)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+
+#### Tags
+
+- Barcodes
+- QR Code
+- Recognition
+
+#### Properties
+
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### PDF.co Document, File, and System API
-Platform primitives: file upload (form, base64, URL, presigned), download, delete, MD5 hash; PDF compress (v2) and optimize; PDF info; classifier; email decode/send/extract-attachments; HTML templates store; `/v1/job/check` for async polling; `/v1/account/credit/balance`.
 
-**Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+File operations and platform primitives: upload (form, base64, by URL, presigned URL), download, delete, MD5 hash; PDF compress (v2) and optimize; PDF info reader; email decode/send/extract-attachments; HTML template storage; document classifier; and the `/job/check` endpoint for polling async operations. Also exposes `/account/credit/balance` for credit reporting.
 
-- [OpenAPI](openapi/pdf-co-openapi.yml)
-- [Naftiko Capability — Document, File, and System](capabilities/document-file-system.yaml)
+- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
 
-## Plans, rate limits, and FinOps
+#### Tags
 
-- [Plans and pricing](plans/pdf-co-plans-pricing.yml) — Free trial (10,000 credits/mo for 1 month), Basic ($8.99 / 16,500 cr), Personal ($22.49 / 37,000 cr), Business 1 ($44.99 / 80,500 cr), Business 2 ($89.99 / 159,850 cr), Business 3 ($270 / 483,000 cr), Enterprise (custom).
-- [Rate limits and quotas](rate-limits/pdf-co-rate-limits.yml) — Credit-based monthly quota; concurrency scales with plan; async-first for heavy ops.
-- [FinOps profile](finops/pdf-co-finops.yml) — FOCUS-aligned meters: credits consumed, credits remaining, API calls, pages processed, async job count.
+- Files
+- Compression
+- Optimization
+- Email
+- Templates
+- Jobs
+- Account
 
-## SDKs and tooling
+#### Properties
 
-- [API code samples (multi-language)](https://github.com/pdfdotco/pdf-co-api-samples) — JavaScript, C#, VB.NET, Java, PHP, Python, Go, Bash
-- [PDF.co MCP server](https://github.com/pdfdotco/pdfco-mcp) — Model Context Protocol server (Python, MIT)
-- [PDF.co n8n node](https://github.com/pdfdotco/n8n-nodes-pdfco) — TypeScript, MIT
-- [3,000+ integrations](https://pdf.co/integrations) — Zapier, Make, n8n, and more
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-## Common links
+## Common Properties
 
-- [Home](https://pdf.co) / [Docs](https://docs.pdf.co) / [API Reference](https://docs.pdf.co/api-reference) / [OpenAPI JSON](https://docs.pdf.co/openapi.json)
-- [Sign up](https://app.pdf.co/signup) / [Dashboard](https://app.pdf.co/account/dashboard)
-- [Pricing](https://pdf.co/pricing) / [Support](https://support.pdf.co/en) / [Blog](https://pdf.co/resources/blog) / [Tutorials](https://pdf.co/tutorials)
-- [GitHub org](https://github.com/pdfdotco) / [Security (SOC 2)](https://docs.pdf.co/knowledgebase/security)
-- [Webhooks & Callbacks glossary](https://docs.pdf.co/glossary/webhook-and-callbacks)
+- [Portal](https://pdf.co)
+- [Documentation](https://docs.pdf.co)
+- [Documentation](https://docs.pdf.co/api-reference)
+- [OpenAPI](https://docs.pdf.co/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Sign Up](https://app.pdf.co/signup)
+- [Login](https://app.pdf.co/account/dashboard)
+- [Pricing](https://pdf.co/pricing)
+- [Support](https://support.pdf.co/en)
+- [Documentation](https://pdf.co/integrations)
+- [Git Hub](https://github.com/pdfdotco)
+- [Source Code](https://github.com/pdfdotco/pdf-co-api-samples)
+- [M C P](https://github.com/pdfdotco/pdfco-mcp)
+- [Plugin](https://github.com/pdfdotco/n8n-nodes-pdfco)
+- [Blog](https://pdf.co/resources/blog)
+- [Documentation](https://pdf.co/tutorials)
+- [Security](https://docs.pdf.co/knowledgebase/security)
+- [Terms of Service](https://pdf.co/terms)
+- [Privacy](https://pdf.co/privacy)
+- [Authentication](https://docs.pdf.co/api-reference/authentication)
+- [Webhooks](https://docs.pdf.co/glossary/webhook-and-callbacks)
+- [About](https://pdf.co/about)
+- [Plans](plans/pdf-co-plans-pricing.yml)
+- [Rate Limits](rate-limits/pdf-co-rate-limits.yml)
+- [Fin Ops](finops/pdf-co-finops.yml)

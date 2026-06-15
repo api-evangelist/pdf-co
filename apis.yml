@@ -1,260 +1,250 @@
 aid: pdf-co
 url: https://raw.githubusercontent.com/api-evangelist/pdf-co/refs/heads/main/apis.yml
 apis:
-- aid: pdf-co:pdf-co-extraction-api
-  name: PDF.co Extraction API
-  tags:
-  - AI
-  - Document Parsing
-  - Invoice Parsing
-  - OCR
-  - Extraction
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/extraction.yaml
-    type: NaftikoCapability
-  - url: json-schema/pdf-co-document-parser-schema.json
-    type: JSONSchema
-  description: AI-powered data extraction from PDF, scanned, and image-based documents. Includes the AI Invoice Parser
-    (zero-template invoice/receipt parsing), Document Parser (template-driven extraction with reusable templates
-    by ID), Document Classifier, and PDF attachment extraction. Async and sync modes; webhook callbacks; supports
-    URL, base64, or uploaded-file inputs.
-- aid: pdf-co:pdf-co-conversion-api
-  name: PDF.co Conversion API
-  tags:
-  - Conversion
-  - PDF
-  - Excel
-  - CSV
-  - JSON
-  - HTML
-  - Images
-  - OCR
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/conversion.yaml
-    type: NaftikoCapability
-  description: 'Bidirectional document conversion: PDF to CSV, JSON, JSON-AI, text, XML, XLS, XLSX, HTML, JPG, PNG,
-    TIFF, WebP; PDF from HTML, URL, DOC/DOCX, CSV/XLS/XLSX, images, and email (.msg, .eml); plus Excel-to-anything
-    conversion. Layout-preserving table extraction and AI-driven JSON output supported.'
-- aid: pdf-co:pdf-co-editing-api
-  name: PDF.co Editing API
-  tags:
-  - Editing
-  - PDF
-  - Forms
-  - Text
-  - Images
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/editing.yaml
-    type: NaftikoCapability
-  description: 'Programmatic PDF editing: add text/images/forms/links, replace text, replace text with images,
-    delete text, delete or rotate pages, AI auto-rotate, search-and-replace, and form filling. Accepts coordinate-based
-    annotations and supports template-driven PDF generation via HTML templates.'
-- aid: pdf-co:pdf-co-merging-splitting-api
-  name: PDF.co Merging and Splitting API
-  tags:
-  - Merging
-  - Splitting
-  - PDF
-  - Document Assembly
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/merging-splitting.yaml
-    type: NaftikoCapability
-  description: Merge multiple PDFs (and DOC, XLS, image inputs via /merge2) into a single document, or split PDFs
-    by page ranges, indexes, or text-pattern search. Useful for document assembly, statement bursting, and invoice
-    pipelines.
-- aid: pdf-co:pdf-co-find-search-api
-  name: PDF.co Find and Search API
-  tags:
-  - Search
-  - PDF
-  - OCR
-  - Text
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/find-search.yaml
-    type: NaftikoCapability
-  description: Locate text in PDFs and return coordinates (`/pdf/find`), AI-powered table location (`/pdf/find/table`),
-    and make scanned PDFs text-searchable via OCR (`/pdf/makesearchable`) or remove text layers to produce image-only
-    PDFs (`/pdf/makeunsearchable`).
-- aid: pdf-co:pdf-co-forms-api
-  name: PDF.co Forms API
-  tags:
-  - Forms
-  - PDF
-  - AcroForm
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/forms.yaml
-    type: NaftikoCapability
-  description: Retrieve fillable form field details (`/pdf/info/fields`) for AcroForm and XFA PDFs. Pair with the
-    Editing API's `/pdf/edit/add` endpoint to fill forms programmatically.
-- aid: pdf-co:pdf-co-pages-api
-  name: PDF.co Pages API
-  tags:
-  - Pages
-  - PDF
-  - Rotation
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/pages.yaml
-    type: NaftikoCapability
-  description: Delete pages by range, rotate pages by degrees, or use AI auto-rotation to detect and fix page orientation
-    in scanned documents.
-- aid: pdf-co:pdf-co-barcodes-api
-  name: PDF.co Barcodes API
-  tags:
-  - Barcodes
-  - QR Code
-  - Recognition
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/barcodes.yaml
-    type: NaftikoCapability
-  description: Generate high-quality barcode images (QR, Code128, DataMatrix, PDF417, EAN, UPC, and others) or read
-    barcodes from PDF and image inputs by URL.
-- aid: pdf-co:pdf-co-document-file-system-api
-  name: PDF.co Document, File, and System API
-  tags:
-  - Files
-  - Compression
-  - Optimization
-  - Email
-  - Templates
-  - Jobs
-  - Account
-  humanURL: https://docs.pdf.co/api-reference
-  properties:
-  - url: https://docs.pdf.co/api-reference
-    type: Documentation
-  - url: openapi/pdf-co-openapi.yml
-    type: OpenAPI
-  - url: capabilities/document-file-system.yaml
-    type: NaftikoCapability
-  description: 'File operations and platform primitives: upload (form, base64, by URL, presigned URL), download,
-    delete, MD5 hash; PDF compress (v2) and optimize; PDF info reader; email decode/send/extract-attachments;
-    HTML template storage; document classifier; and the `/job/check` endpoint for polling async operations. Also
-    exposes `/account/credit/balance` for credit reporting.'
+  - aid: pdf-co:pdf-co-extraction-api
+    name: PDF.co Extraction API
+    tags:
+      - AI
+      - Document Parsing
+      - Invoice Parsing
+      - OCR
+      - Extraction
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+      - url: json-schema/pdf-co-document-parser-schema.json
+        type: JSONSchema
+    description: >-
+      AI-powered data extraction from PDF, scanned, and image-based documents. Includes the AI Invoice Parser
+      (zero-template invoice/receipt parsing), Document Parser (template-driven extraction with reusable templates by
+      ID), Document Classifier, and PDF attachment extraction. Async and sync modes; webhook callbacks; supports URL,
+      base64, or uploaded-file inputs.
+  - aid: pdf-co:pdf-co-conversion-api
+    name: PDF.co Conversion API
+    tags:
+      - Conversion
+      - PDF
+      - Excel
+      - CSV
+      - JSON
+      - HTML
+      - Images
+      - OCR
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+    description: >-
+      Bidirectional document conversion: PDF to CSV, JSON, JSON-AI, text, XML, XLS, XLSX, HTML, JPG, PNG, TIFF, WebP;
+      PDF from HTML, URL, DOC/DOCX, CSV/XLS/XLSX, images, and email (.msg, .eml); plus Excel-to-anything conversion.
+      Layout-preserving table extraction and AI-driven JSON output supported.
+  - aid: pdf-co:pdf-co-editing-api
+    name: PDF.co Editing API
+    tags:
+      - Editing
+      - PDF
+      - Forms
+      - Text
+      - Images
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+    description: >-
+      Programmatic PDF editing: add text/images/forms/links, replace text, replace text with images, delete text, delete
+      or rotate pages, AI auto-rotate, search-and-replace, and form filling. Accepts coordinate-based annotations and
+      supports template-driven PDF generation via HTML templates.
+  - aid: pdf-co:pdf-co-merging-splitting-api
+    name: PDF.co Merging and Splitting API
+    tags:
+      - Merging
+      - Splitting
+      - PDF
+      - Document Assembly
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+    description: >-
+      Merge multiple PDFs (and DOC, XLS, image inputs via /merge2) into a single document, or split PDFs by page ranges,
+      indexes, or text-pattern search. Useful for document assembly, statement bursting, and invoice pipelines.
+  - aid: pdf-co:pdf-co-find-search-api
+    name: PDF.co Find and Search API
+    tags:
+      - Search
+      - PDF
+      - OCR
+      - Text
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+    description: >-
+      Locate text in PDFs and return coordinates (`/pdf/find`), AI-powered table location (`/pdf/find/table`), and make
+      scanned PDFs text-searchable via OCR (`/pdf/makesearchable`) or remove text layers to produce image-only PDFs
+      (`/pdf/makeunsearchable`).
+  - aid: pdf-co:pdf-co-forms-api
+    name: PDF.co Forms API
+    tags:
+      - Forms
+      - PDF
+      - AcroForm
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+    description: >-
+      Retrieve fillable form field details (`/pdf/info/fields`) for AcroForm and XFA PDFs. Pair with the Editing API's
+      `/pdf/edit/add` endpoint to fill forms programmatically.
+  - aid: pdf-co:pdf-co-pages-api
+    name: PDF.co Pages API
+    tags:
+      - Pages
+      - PDF
+      - Rotation
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+    description: >-
+      Delete pages by range, rotate pages by degrees, or use AI auto-rotation to detect and fix page orientation in
+      scanned documents.
+  - aid: pdf-co:pdf-co-barcodes-api
+    name: PDF.co Barcodes API
+    tags:
+      - Barcodes
+      - QR Code
+      - Recognition
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+    description: >-
+      Generate high-quality barcode images (QR, Code128, DataMatrix, PDF417, EAN, UPC, and others) or read barcodes from
+      PDF and image inputs by URL.
+  - aid: pdf-co:pdf-co-document-file-system-api
+    name: PDF.co Document, File, and System API
+    tags:
+      - Files
+      - Compression
+      - Optimization
+      - Email
+      - Templates
+      - Jobs
+      - Account
+    humanURL: https://docs.pdf.co/api-reference
+    properties:
+      - url: https://docs.pdf.co/api-reference
+        type: Documentation
+      - url: openapi/pdf-co-openapi.yml
+        type: OpenAPI
+    description: >-
+      File operations and platform primitives: upload (form, base64, by URL, presigned URL), download, delete, MD5 hash;
+      PDF compress (v2) and optimize; PDF info reader; email decode/send/extract-attachments; HTML template storage;
+      document classifier; and the `/job/check` endpoint for polling async operations. Also exposes
+      `/account/credit/balance` for credit reporting.
 name: PDF.co
 tags:
-- PDF
-- Document Automation
-- AI
-- OCR
-- Invoice Parsing
-- Document Parsing
-- Conversion
-- Forms
-- Barcodes
-- E-Signature
+  - PDF
+  - Document Automation
+  - AI
+  - OCR
+  - Invoice Parsing
+  - Document Parsing
+  - Conversion
+  - Forms
+  - Barcodes
+  - E-Signature
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- url: https://pdf.co
-  name: PDF.co Home
-  type: Portal
-- url: https://docs.pdf.co
-  name: PDF.co Docs
-  type: Documentation
-- url: https://docs.pdf.co/api-reference
-  name: PDF.co API Reference
-  type: Documentation
-- url: https://docs.pdf.co/openapi.json
-  name: PDF.co OpenAPI Spec
-  type: OpenAPI
-- url: https://app.pdf.co/signup
-  name: Sign Up
-  type: SignUp
-- url: https://app.pdf.co/account/dashboard
-  name: PDF.co Dashboard
-  type: Login
-- url: https://pdf.co/pricing
-  name: Pricing
-  type: Pricing
-- url: https://support.pdf.co/en
-  name: Support
-  type: Support
-- url: https://pdf.co/integrations
-  name: Integrations
-  type: Documentation
-- url: https://github.com/pdfdotco
-  name: PDF.co GitHub
-  type: GitHub
-- url: https://github.com/pdfdotco/pdf-co-api-samples
-  name: API Code Samples
-  type: SourceCode
-- url: https://github.com/pdfdotco/pdfco-mcp
-  name: PDF.co MCP Server
-  type: MCP
-- url: https://github.com/pdfdotco/n8n-nodes-pdfco
-  name: PDF.co n8n Node
-  type: Plugin
-- url: https://pdf.co/resources/blog
-  name: Blog
-  type: Blog
-- url: https://pdf.co/tutorials
-  name: Tutorials
-  type: Documentation
-- url: https://docs.pdf.co/knowledgebase/security
-  name: Security
-  type: Security
-- url: https://pdf.co/terms
-  name: Terms
-  type: TermsOfService
-- url: https://pdf.co/privacy
-  name: Privacy
-  type: Privacy
-- url: https://docs.pdf.co/api-reference/authentication
-  name: Authentication
-  type: Authentication
-- url: https://docs.pdf.co/glossary/webhook-and-callbacks
-  name: Webhooks and Callbacks
-  type: Webhooks
-- url: https://pdf.co/about
-  name: About PDF.co
-  type: About
-- url: plans/pdf-co-plans-pricing.yml
-  type: Plans
-- url: rate-limits/pdf-co-rate-limits.yml
-  type: RateLimits
-- url: finops/pdf-co-finops.yml
-  type: FinOps
+  - url: https://pdf.co
+    name: PDF.co Home
+    type: Portal
+  - url: https://docs.pdf.co
+    name: PDF.co Docs
+    type: Documentation
+  - url: https://docs.pdf.co/api-reference
+    name: PDF.co API Reference
+    type: Documentation
+  - url: https://docs.pdf.co/openapi.json
+    name: PDF.co OpenAPI Spec
+    type: OpenAPI
+  - url: https://app.pdf.co/signup
+    name: Sign Up
+    type: SignUp
+  - url: https://app.pdf.co/account/dashboard
+    name: PDF.co Dashboard
+    type: Login
+  - url: https://pdf.co/pricing
+    name: Pricing
+    type: Pricing
+  - url: https://support.pdf.co/en
+    name: Support
+    type: Support
+  - url: https://pdf.co/integrations
+    name: Integrations
+    type: Documentation
+  - url: https://github.com/pdfdotco
+    name: PDF.co GitHub
+    type: GitHub
+  - url: https://github.com/pdfdotco/pdf-co-api-samples
+    name: API Code Samples
+    type: SourceCode
+  - url: https://github.com/pdfdotco/pdfco-mcp
+    name: PDF.co MCP Server
+    type: MCP
+  - url: https://github.com/pdfdotco/n8n-nodes-pdfco
+    name: PDF.co n8n Node
+    type: Plugin
+  - url: https://pdf.co/resources/blog
+    name: Blog
+    type: Blog
+  - url: https://pdf.co/tutorials
+    name: Tutorials
+    type: Documentation
+  - url: https://docs.pdf.co/knowledgebase/security
+    name: Security
+    type: Security
+  - url: https://pdf.co/terms
+    name: Terms
+    type: TermsOfService
+  - url: https://pdf.co/privacy
+    name: Privacy
+    type: Privacy
+  - url: https://docs.pdf.co/api-reference/authentication
+    name: Authentication
+    type: Authentication
+  - url: https://docs.pdf.co/glossary/webhook-and-callbacks
+    name: Webhooks and Callbacks
+    type: Webhooks
+  - url: https://pdf.co/about
+    name: About PDF.co
+    type: About
+  - url: plans/pdf-co-plans-pricing.yml
+    type: Plans
+  - url: rate-limits/pdf-co-rate-limits.yml
+    type: RateLimits
+  - url: finops/pdf-co-finops.yml
+    type: FinOps
 created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.16'
