@@ -190,7 +190,7 @@ common:
     type: OpenAPI
   - url: https://app.pdf.co/signup
     name: Sign Up
-    type: SignUp
+    type: Signup
   - url: https://app.pdf.co/account/dashboard
     name: PDF.co Dashboard
     type: Login
