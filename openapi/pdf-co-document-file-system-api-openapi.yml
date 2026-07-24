@@ -1,0 +1,1916 @@
+openapi: 3.0.1
+info:
+  title: PDF.co Barcodes Document, File & System API
+  description: 'PDF.co Web API — programmatic PDF and document automation: AI invoice parsing, document parsing, PDF conversion (to/from PDF, Excel, CSV, JSON, XML, HTML, images), OCR, merging, splitting, compression, barcodes, e-signature workflows, and more. Authenticated via the x-api-key header.'
+  version: '1.0'
+  contact:
+    name: PDF.co Support
+    url: https://support.pdf.co/en
+    email: support@pdf.co
+  license:
+    name: Proprietary
+    url: https://pdf.co/terms
+  termsOfService: https://pdf.co/terms
+servers:
+- url: https://api.pdf.co
+security:
+- ApiKeyAuth: []
+tags:
+- name: Document, File & System
+paths:
+  /v2/pdf/compress:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/pdf-compress
+      operationId: post_v2_pdf_compress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-compress/sample.pdf
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                name:
+                  $ref: '#/components/schemas/name'
+                config:
+                  type: object
+                  additionalProperties: true
+                  description: For more information, see the [PDF Compress Configuration options](/api-reference/pdf-compress#config).
+                  default:
+                    images:
+                      color:
+                        skip: false
+                        downsample:
+                          skip: false
+                          downsample_ppi: 150
+                          threshold_ppi: 225
+                        compression:
+                          skip: false
+                          compression_format: jpeg
+                          compression_params:
+                            quality: 60
+                      grayscale:
+                        skip: false
+                        downsample:
+                          skip: false
+                          downsample_ppi: 150
+                          threshold_ppi: 225
+                        compression:
+                          skip: false
+                          compression_format: jpeg
+                          compression_params:
+                            quality: 60
+                      monochrome:
+                        skip: false
+                        downsample:
+                          skip: false
+                          downsample_ppi: 300
+                          threshold_ppi: 450
+                        compression:
+                          skip: false
+                          compression_format: ccitt_g4
+                          compression_params: {}
+                    save:
+                      garbage: 4
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      summary: PDF Compress
+      description: Compress PDF files to reduce their size.
+  /v1/pdf/optimize:
+    post:
+      tags:
+      - Document, File & System
+      deprecated: true
+      x-mint:
+        href: /api-tester/pdf-optimize
+      summary: PDF Optimize
+      operationId: post_v1_pdf_optimize
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: output.pdf
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  allOf:
+                  - $ref: '#/components/schemas/profiles'
+                  default: '{ ''ImageOptimizationFormat'': ''JPEG'', ''JPEGQuality'': 25, ''ResampleImages'': true, ''ResamplingResolution'': 120, ''GrayscaleImages'': false }'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Optimize a PDF file to reduce its size.
+  /v1/pdf/info:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/pdf-info-reader
+      summary: PDF Info Reader
+      operationId: post_v1_pdf_info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/encryption/sample_encrypted_aes128.pdf
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                file:
+                  $ref: '#/components/schemas/file'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  allOf:
+                  - $ref: '#/components/schemas/profiles'
+                  default: '{ ''DataDecryptionAlgorithm'': ''AES128'', ''DataDecryptionKey'': ''HelloThisKey1234'', ''DataDecryptionIV'': ''TreloThisKey1234'' }'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Get detailed information about a PDF document, it’s properties and security permissions.
+  /v1/job/check:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/job-check
+      summary: Background & Job Check
+      operationId: post_v1_job_check
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - jobid
+              type: object
+              properties:
+                jobid:
+                  type: string
+                  description: Id of processing that was started asynchronously
+                  default: '12345'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                force:
+                  type: boolean
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Checks the [status](/api-reference/job-check/available-status-values) of a background job that was previously created with PDF.co API. Use this API to check the status of your asynchronous API calls.
+  /v1/account/credit/balance:
+    get:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/account-balance-info
+      summary: Get Account Balance Info
+      operationId: get_v1_account_credit_balance
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      description: ''
+  /v1/pdf/classifier:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/document-classifier
+      operationId: post_v1_pdf_classifier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/document-parser/sample-invoice.pdf
+                rulescsv:
+                  type: string
+                rulescsvurl:
+                  type: string
+                casesensitive:
+                  $ref: '#/components/schemas/casesensitive'
+                password:
+                  $ref: '#/components/schemas/password'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      summary: Document Classifier
+      description: Automatically find class of input PDF, JPG, PNG document by analyzing its content using the built-in AI or custom defined classification rules.
+  /v1/email/send:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/email/send
+      operationId: post_v1_email_send
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - from
+              - smtppassword
+              - smtpserver
+              - smtpusername
+              - subject
+              - to
+              - url
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-info/sample.pdf
+                from:
+                  type: string
+                  default: John Doe <john@example.com>
+                to:
+                  type: string
+                  default: Partner <partner@example.com>
+                replyto:
+                  type: string
+                cc:
+                  type: string
+                bcc:
+                  type: string
+                subject:
+                  type: string
+                  default: Check attached sample pdf
+                bodytext:
+                  type: string
+                  default: Please check the attached pdf
+                bodyhtml:
+                  type: string
+                  default: Please check the attached pdf
+                smtpserver:
+                  type: string
+                  default: smtp.gmail.com
+                smtpport:
+                  type: string
+                  default: '587'
+                smtpusername:
+                  type: string
+                  default: my@gmail.com
+                smtppassword:
+                  type: string
+                  default: app specific password created as https://support.google.com/accounts/answer/185833
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      summary: Send Email with File
+      description: Send an email. An email can be with or without attachment.
+  /v1/email/decode:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/email/decode
+      summary: Extract Data from Email File
+      operationId: post_v1_email_decode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/email-extractor/sample.eml
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Decode an email message to extract its components.
+  /v1/email/extract-attachments:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/email/extract-attachments
+      summary: Extract Email Attachment
+      operationId: post_v1_email_extract-attachments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/email-extractor/sample.eml
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Extract attachments from an email
+  /v1/file/upload:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/file-upload/upload
+      summary: Upload Small File
+      operationId: post_v1_file_upload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - file
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                name:
+                  $ref: '#/components/schemas/name'
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: 'Uploads a small (up to 100KB) local file as a temporary file in PDF.co storage. Note: temporary files are automatically permanently removed after 1 hour.'
+  /v1/file/delete:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/file-upload/delete
+      summary: Delete Temporary File
+      operationId: post_v1_file_delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - url
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdf-temp-files.s3.amazonaws.com/b5c1e67d98ab438292ff1fea0c7cdc9d/sample.pdf
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Deletes temporary file (that was uploaded by you or generated by API).
+  /v1/file/hash:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/file-upload/hash
+      summary: Get MD5 Hash of File by URL
+      operationId: post_v1_file_hash
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Calculate and return MD5 hash of file by url. Commonly used to control if the source document has been changed or not because every little change will cause hash string to differ as well.
+  /v1/file/upload/url:
+    get:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/file-upload/upload-url-get
+      summary: Upload File from URL
+      operationId: get_v1_file_upload_url
+      parameters:
+      - name: url
+        in: query
+        description: URL of the file to upload.
+        required: true
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: The name the file will be stored with.
+        schema:
+          type: string
+      - name: httpusername
+        in: query
+        schema:
+          type: string
+      - name: httppassword
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      description: Downloads file from a source url and uploads it as a temporary file. Temporary files are automatically permanently removed after 1 hour.
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/file-upload/upload-url-post
+      summary: Upload File from URL
+      description: Downloads file from a source url and uploads it as a temporary file. Temporary files are automatically permanently removed after 1 hour.
+      operationId: post_v1_file_upload_url
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - url
+              type: object
+              properties:
+                name:
+                  $ref: '#/components/schemas/name'
+                url:
+                  $ref: '#/components/schemas/url'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+  /v1/file/upload/base64:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/file-upload/upload-base64
+      summary: Upload File Using Base64
+      operationId: post_v1_file_upload_base64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - file
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                name:
+                  $ref: '#/components/schemas/name'
+                permanent:
+                  type: boolean
+                  description: Store file permanently in the internal storage
+                  readOnly: true
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Creates a temporary file using base64 source data. You may use this temporary file URL with other API methods. Temporary files are automatically permanently removed after 1 hour.
+  /v1/file/upload/get-presigned-url:
+    get:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/file-upload/generate-presigned-url
+      summary: Generate Pre-signed URL
+      description: This method generates links to upload your local file to. Use this presignedUrl from the response to upload your file. Once you upload your file to this presignedUrl using PUT, you can use the url link to access the uploaded file.
+      operationId: get_v1_file_upload_get_presigned_url
+      parameters:
+      - name: name
+        in: query
+        description: File name for the generated output, the input must be in string format.
+        schema:
+          type: string
+      - name: contenttype
+        in: query
+        description: The content type of the uploaded file
+        schema:
+          type: string
+          format: mime type
+      - name: timeout
+        in: query
+        description: Timeout for output links in seconds.
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+  /v1/pdf/security/add:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/pdf-password/add
+      operationId: post_v1_pdf_security_add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-merge/sample1.pdf
+                ownerpassword:
+                  type: string
+                  description: Owner password
+                  default: '12345'
+                userpassword:
+                  type: string
+                  description: User password
+                  default: '54321'
+                encryptionalgorithm:
+                  type: string
+                  default: AES_128bit
+                allowaccessibilitysupport:
+                  type: boolean
+                allowassemblydocument:
+                  type: boolean
+                allowprintdocument:
+                  type: boolean
+                  default: false
+                allowfillforms:
+                  type: boolean
+                  default: false
+                allowmodifydocument:
+                  type: boolean
+                  default: false
+                allowcontentextraction:
+                  type: boolean
+                  default: false
+                allowmodifyannotations:
+                  type: boolean
+                  default: false
+                printquality:
+                  type: string
+                  default: LowResolution
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: output-protected.pdf
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      summary: Add Password to PDF
+      description: Add password and security limitations to PDF
+  /v1/pdf/security/remove:
+    post:
+      tags:
+      - Document, File & System
+      x-mint:
+        href: /api-tester/pdf-password/remove
+      operationId: post_v1_pdf_security_remove
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-security/ProtectedPDFFile.pdf
+                password:
+                  allOf:
+                  - $ref: '#/components/schemas/password'
+                  default: admin@123
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: unprotected
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      summary: Remove Password from PDF
+      description: Remove existing limits and password from PDF file.
+components:
+  responses:
+    Forbidden:
+      description: Access forbidden for input URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 403
+              message:
+                type: string
+                example: Access forbidden for input URL.
+    InvalidUrlOrHtml:
+      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 448
+              message:
+                type: string
+                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+    InvalidTemplate:
+      description: Invalid template.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 447
+              message:
+                type: string
+                example: Invalid template.
+    InvalidPageRange:
+      description: Invalid page range specified.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 450
+              message:
+                type: string
+                example: Invalid page range specified.
+    DamagedDocument:
+      description: Input document is damaged or of incorrect type.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 442
+              message:
+                type: string
+                example: Input document is damaged or of incorrect type.
+    Timeout:
+      description: The server timed out waiting for the request.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 408
+              message:
+                type: string
+                example: The server timed out waiting for the request.
+    InvalidIndexRange:
+      description: Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 449
+              message:
+                type: string
+                example: Invalid index range. Page index is out of range.
+    TooManyRequests:
+      description: Too many requests in a given time period.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 429
+              message:
+                type: string
+                example: Too many requests in a given time period.
+    ProfilesParsingError:
+      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 444
+              message:
+                type: string
+                example: Profiles parsing error. Please ensure that the configuration is supported.
+    MissingFiles:
+      description: Some files required for conversion are missing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 446
+              message:
+                type: string
+                example: Some files required for conversion are missing.
+    NotFound:
+      description: The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 404
+              message:
+                type: string
+                example: The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
+    PermissionsError:
+      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 443
+              message:
+                type: string
+                example: Permissions. The operation is prohibited by document security settings.
+    Success:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+                description: Status of the API response.
+              message:
+                type: string
+                example: Success
+                description: Descriptive message for the response status.
+              url:
+                type: string
+                format: uri
+                example: https://pdf-temp-files.s3.us-west-2.amazonaws.com/output.pdf
+                description: URL to the output file.
+              jobId:
+                type: string
+                example: 6YSZD3U872ZYYFEDMQCQSGEEO8YSF5WA
+                description: Unique identifier for the job.
+              credits:
+                type: integer
+                example: 2
+                description: Credits used for this operation.
+              remainingCredits:
+                type: integer
+                example: 1480582
+                description: Credits remaining after this operation.
+              duration:
+                type: integer
+                example: 33
+                description: Time taken to complete the request, in milliseconds.
+    BadRequest:
+      description: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 400
+              message:
+                type: string
+                example: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+    InvalidParameters:
+      description: Invalid parameters.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 454
+              message:
+                type: string
+                example: Invalid parameters.
+    InternalServerError:
+      description: Something went wrong. Please try again or contact support.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 500
+              message:
+                type: string
+                example: Something went wrong. Please try again or contact support.
+    InvalidUrl:
+      description: Invalid URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 452
+              message:
+                type: string
+                example: Invalid URL.
+    TimeoutError:
+      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 445
+              message:
+                type: string
+                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
+    InvalidPassword:
+      description: Invalid Password. Password protected document.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 441
+              message:
+                type: string
+                example: Invalid Password. Password protected document.
+    NotEnoughCredits:
+      description: Not enough credits.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 402
+              message:
+                type: string
+                example: Not enough credits.
+  schemas:
+    url:
+      type: string
+      format: uri
+      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
+    name:
+      type: string
+      description: File name for generated output.
+    timeout:
+      type: number
+      description: Timeout for output links in seconds
+      readOnly: true
+    inline:
+      default: false
+      type: boolean
+      description: Set to true to return results inside the response. Otherwise, the endpoint will return a URL to the output file generated.
+    async:
+      type: boolean
+      default: false
+      description: Set `async` to `true` for long processes to run in the background, API will then return a `jobId` which you can use with the [Background Job Check endpoint](/api-reference/job-check). Also see [Webhooks & Callbacks](/api-reference/webhooks)
+    httppassword:
+      type: string
+      description: HTTP auth password if required to access source URL.
+    casesensitive:
+      type: boolean
+      default: true
+      description: Set to `false` to don't use case-sensitive search.
+    password:
+      type: string
+      description: Password for the PDF file.
+    file:
+      type: string
+      format: path to a local file
+      description: The path to the local file to be uploaded.
+      readOnly: true
+    profiles:
+      type: string
+      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
+    httpusername:
+      type: string
+      description: HTTP auth user name if required to access source URL.
+    expiration:
+      type: number
+      default: 60
+      description: Sets the expiration time for the output link, in minutes. After this period, generated output file(s) are automatically deleted from [PDF.co Temporary Files Storage](/api-reference/file-upload/overview). The maximum allowed duration depends on your subscription plan. For permanent storage of input files (e.g., reusable images, PDF templates, documents), use `PDF.co Built‑In Files Storage`.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+x-original-swagger-version: '2.0'

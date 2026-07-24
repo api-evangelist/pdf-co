@@ -1,0 +1,1119 @@
+openapi: 3.0.1
+info:
+  title: PDF.co Barcodes Editing API
+  description: 'PDF.co Web API — programmatic PDF and document automation: AI invoice parsing, document parsing, PDF conversion (to/from PDF, Excel, CSV, JSON, XML, HTML, images), OCR, merging, splitting, compression, barcodes, e-signature workflows, and more. Authenticated via the x-api-key header.'
+  version: '1.0'
+  contact:
+    name: PDF.co Support
+    url: https://support.pdf.co/en
+    email: support@pdf.co
+  license:
+    name: Proprietary
+    url: https://pdf.co/terms
+  termsOfService: https://pdf.co/terms
+servers:
+- url: https://api.pdf.co
+security:
+- ApiKeyAuth: []
+tags:
+- name: Editing
+paths:
+  /v1/pdf/edit/add:
+    post:
+      tags:
+      - Editing
+      x-mint:
+        href: /api-tester/pdf-add
+      summary: PDF Add
+      operationId: post_v1_pdf_edit_add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-edit/sample.pdf
+                annotations:
+                  type: array
+                  description: Annotation (textual) signatures to add.
+                  items:
+                    type: object
+                    properties:
+                      text:
+                        type: string
+                        description: Text to be added to the PDF file as an annotation.
+                      type:
+                        type: string
+                        enum:
+                        - text
+                        - textField
+                        - TextFieldMultiline
+                        - checkbox
+                        default: text
+                        description: Type of annotation to be added.
+                      id:
+                        type: string
+                        description: Unique identifier for the annotation.
+                      x:
+                        $ref: '#/components/schemas/x'
+                      y:
+                        $ref: '#/components/schemas/y'
+                      width:
+                        $ref: '#/components/schemas/width'
+                      height:
+                        $ref: '#/components/schemas/height'
+                      alignment:
+                        type: string
+                        default: left
+                        enum:
+                        - left
+                        - center
+                        - right
+                        description: 'Controls alignment of the annotation. The available alignments are: `left`, `center`, `right`.'
+                      pages:
+                        $ref: '#/components/schemas/pages0'
+                      color:
+                        type: string
+                        default: '#000000'
+                        description: 'Controls color of the annotation. Color in RRGGBB or AARRGGBB format where AA is the transparency component. For example, 50% transparent green is #8000FF00.'
+                      link:
+                        type: string
+                        format: uri
+                        description: Controls link to the annotation.
+                      size:
+                        type: integer
+                        default: 12
+                        description: Controls size of the annotation.
+                      transparent:
+                        type: boolean
+                        default: true
+                        description: Controls transparency of the annotation. Set to false to force disable any transparency and draw a white background under the text.
+                      fontName:
+                        type: string
+                        default: Arial
+                        description: Controls Font name of the annotation. See [Available fonts](/api-reference/pdf-add/#available-fonts) for the list of available fonts.
+                      fontBold:
+                        type: boolean
+                        description: Controls boldness of the annotation. Set to true to make the text bold.
+                      fontStrikeout:
+                        type: boolean
+                        description: Controls Strikethrough of the annotation. Set to true to add a strikethrough line through the text.
+                      fontUnderline:
+                        type: boolean
+                        description: Controls Underline of the annotation. Set to true to add a line under the text.
+                    required:
+                    - x
+                    - y
+                  default:
+                  - text: sample prefilled text
+                    x: 10
+                    y: 30
+                    size: 12
+                    pages: 0-
+                    type: TextField
+                    id: textfield1
+                  - x: 100
+                    y: 150
+                    size: 12
+                    pages: 0-
+                    type: Checkbox
+                    id: checkbox2
+                  - x: 100
+                    y: 170
+                    size: 12
+                    pages: 0-
+                    link: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-edit/logo.png
+                    type: CheckboxChecked
+                    id: checkbox3
+                images:
+                  type: array
+                  description: Image signatures to add.
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        description: "Input can be one of the following:\n - an HTTP URL to an image or PDF\n - a file token from a prior upload\n - a data URI with a base64-encoded image or PDF."
+                      x:
+                        $ref: '#/components/schemas/x'
+                      y:
+                        $ref: '#/components/schemas/y'
+                      width:
+                        $ref: '#/components/schemas/width'
+                      height:
+                        $ref: '#/components/schemas/height'
+                      pages:
+                        $ref: '#/components/schemas/pages0'
+                      link:
+                        type: string
+                        format: uri
+                        description: Link to the image.
+                      keepAspectRatio:
+                        type: boolean
+                        default: true
+                        description: Control whether the image should maintain its aspect ratio. Set to false to use the specified width and height, which will stretch the image to fit the page width.
+                    required:
+                    - x
+                    - y
+                  default:
+                  - url: pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-edit/logo.png
+                    x: 200
+                    y: 250
+                    pages: '0'
+                    link: www.pdf.co
+                fields:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      fieldName:
+                        type: string
+                        description: Name of the form field. To find form fields. You can use [PDF Edit Add Helper](https://app.pdf.co/pdf-edit-add-helper).
+                      text:
+                        type: string
+                        description: Value to set for this field. If you have a checkbox, set X, true, 1, or another text which is different from false to enable the checkbox. For radio buttons and combo boxes, you need to set the index of the item to select. To find form fields please use [PDF Edit Add Helper](https://app.pdf.co/pdf-edit-add-helper).
+                      pages:
+                        $ref: '#/components/schemas/pages0'
+                      size:
+                        type: integer
+                        description: Override the font size of the text inside the given input field. See [Available fonts](/api-reference/pdf-add/#available-fonts).
+                      fontName:
+                        type: string
+                        description: Name of the font to use to fill out the input field.
+                      fontBold:
+                        type: boolean
+                        description: Override font bold style of the text input field.
+                      fontItalic:
+                        type: boolean
+                        description: Override font italic style of the text input field.
+                      fontStrikeout:
+                        type: boolean
+                        description: Override font strikeout style of the text input field.
+                      fontUnderline:
+                        type: boolean
+                        description: Override font underline style of the text input field.
+                    required:
+                    - fieldName
+                    - text
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: newDocument
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                templatedata:
+                  $ref: '#/components/schemas/templatedata'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                x:
+                  type: number
+                  readOnly: true
+                y:
+                  type: number
+                  readOnly: true
+                width:
+                  type: number
+                  readOnly: true
+                height:
+                  type: number
+                  readOnly: true
+                pages:
+                  type: string
+                  readOnly: true
+                password:
+                  type: string
+                  readOnly: true
+                type:
+                  type: string
+                  readOnly: true
+                urlimage:
+                  type: string
+                  description: URL of the signature image file.
+                  readOnly: true
+                text:
+                  type: string
+                  readOnly: true
+                size:
+                  type: string
+                  description: Font size.
+                  readOnly: true
+                color:
+                  type: string
+                  readOnly: true
+                transparent:
+                  type: boolean
+                  readOnly: true
+                fontname:
+                  type: string
+                  readOnly: true
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                annotationsString:
+                  type: string
+                  format: '{x};{y};{pages};{text};{fontsize};{fontname};{fontcolor};{link};{transparent};{width};{height};{alignment}'
+                  description: This parameter represents one or more text objects to add to a PDF. Each object is made of parameter separated by the `;` symbol.
+                imagesString:
+                  type: string
+                  format: '{x};{y};{pages};{urltoimageOrPdf};{linkToOpen};{width};{height}'
+                  description: Adds one or more images or other PDF objects on top of the source PDF. Each object is made of parameter separated by the `;` symbol.
+                fieldsString:
+                  type: string
+                  format: '{page};{fieldName};{value}'
+                  description: Set values for fillable PDF field objects. Each object is made of parameter separated by the `;` symbol.
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+              - annotationsString
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Add text, images, forms, other PDFs, fill forms, links to external sites and external PDF files. You can update or modify PDF and scanned PDF files.
+  /v1/pdf/edit/replace-text:
+    post:
+      tags:
+      - Editing
+      x-mint:
+        href: /api-tester/pdf-search-text-and-replace/text
+      operationId: post_v1_pdf_edit_replace-text
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-search-and-replace/sample-agreement-template-signature-page-1.pdf
+                searchstring:
+                  allOf:
+                  - $ref: '#/components/schemas/searchstring'
+                  default: '[CLIENT-NAME]'
+                replacestring:
+                  type: string
+                  default: John Doe
+                searchstrings:
+                  $ref: '#/components/schemas/searchstrings'
+                replacestrings:
+                  type: array
+                  items:
+                    type: string
+                regex:
+                  $ref: '#/components/schemas/regex'
+                casesensitive:
+                  allOf:
+                  - $ref: '#/components/schemas/casesensitive'
+                  default: true
+                replacementlimit:
+                  allOf:
+                  - $ref: '#/components/schemas/replacementlimit'
+                  default: 1
+                makeunsearchable:
+                  $ref: '#/components/schemas/makeunsearchable'
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: finalFile
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      summary: Search and Replace with Text
+      description: Replaces text in a PDF file with a new text.
+  /v1/pdf/edit/replace-text-with-image:
+    post:
+      tags:
+      - Editing
+      x-mint:
+        href: /api-tester/pdf-search-text-and-replace/image
+      operationId: post_v1_pdf_edit_replace-text-with-image
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-search-and-replace/sample-agreement-template-signature-page-2.pdf
+                searchstring:
+                  allOf:
+                  - $ref: '#/components/schemas/searchstring'
+                  default: '[CLIENT-SIGNATURE]'
+                replaceimage:
+                  type: string
+                  default: data:image/png;base64,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
+                regex:
+                  $ref: '#/components/schemas/regex'
+                casesensitive:
+                  allOf:
+                  - $ref: '#/components/schemas/casesensitive'
+                  default: true
+                replacementlimit:
+                  $ref: '#/components/schemas/replacementlimit'
+                makeunsearchable:
+                  $ref: '#/components/schemas/makeunsearchable'
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                  default: '0'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      summary: Search and Replace with Image
+      description: Modify a PDF file by searching for specific text and replacing it with an image.
+  /v1/pdf/edit/delete-text:
+    post:
+      tags:
+      - Editing
+      x-mint:
+        href: /api-tester/pdf-search-text-and-delete
+      operationId: post_v1_pdf_edit_delete-text
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-search-and-replace/sample-agreement-template-signature-page-1.pdf
+                searchstring:
+                  $ref: '#/components/schemas/searchstring'
+                searchstrings:
+                  allOf:
+                  - $ref: '#/components/schemas/searchstrings'
+                  default:
+                  - '[CLIENT-NAME]'
+                  - '[CLIENT-COMPANY]'
+                  - '[CLIENT-SIGNATURE]'
+                  - 1 FEB 2023
+                regex:
+                  $ref: '#/components/schemas/regex'
+                casesensitive:
+                  $ref: '#/components/schemas/casesensitive'
+                replacementlimit:
+                  allOf:
+                  - $ref: '#/components/schemas/replacementlimit'
+                  default: 2
+                makeunsearchable:
+                  $ref: '#/components/schemas/makeunsearchable'
+                pages:
+                  type: string
+                  description: 'Page indices/ranges (0-based). Items are comma-separated. Each item is one of: N (e.g., 0), N-M (e.g., 3-7), N- (open-ended, e.g., 10-), Whitespace is allowed. If not specified, the default configuration processes all pages.'
+                  example: 1,2,3-7
+                  default: all pages
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  allOf:
+                  - $ref: '#/components/schemas/profiles'
+                  default: '{''UsePatch'': true, ''PatchColor'': ''#000000''}'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      summary: PDF Search and Delete Text
+      description: Delete text from the PDF document with search strings.
+components:
+  responses:
+    Forbidden:
+      description: Access forbidden for input URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 403
+              message:
+                type: string
+                example: Access forbidden for input URL.
+    InvalidUrlOrHtml:
+      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 448
+              message:
+                type: string
+                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+    InvalidTemplate:
+      description: Invalid template.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 447
+              message:
+                type: string
+                example: Invalid template.
+    InvalidPageRange:
+      description: Invalid page range specified.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 450
+              message:
+                type: string
+                example: Invalid page range specified.
+    DamagedDocument:
+      description: Input document is damaged or of incorrect type.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 442
+              message:
+                type: string
+                example: Input document is damaged or of incorrect type.
+    Timeout:
+      description: The server timed out waiting for the request.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 408
+              message:
+                type: string
+                example: The server timed out waiting for the request.
+    InvalidIndexRange:
+      description: Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 449
+              message:
+                type: string
+                example: Invalid index range. Page index is out of range.
+    TooManyRequests:
+      description: Too many requests in a given time period.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 429
+              message:
+                type: string
+                example: Too many requests in a given time period.
+    ProfilesParsingError:
+      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 444
+              message:
+                type: string
+                example: Profiles parsing error. Please ensure that the configuration is supported.
+    MissingFiles:
+      description: Some files required for conversion are missing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 446
+              message:
+                type: string
+                example: Some files required for conversion are missing.
+    NotFound:
+      description: The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 404
+              message:
+                type: string
+                example: The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
+    PermissionsError:
+      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 443
+              message:
+                type: string
+                example: Permissions. The operation is prohibited by document security settings.
+    Success:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+                description: Status of the API response.
+              message:
+                type: string
+                example: Success
+                description: Descriptive message for the response status.
+              url:
+                type: string
+                format: uri
+                example: https://pdf-temp-files.s3.us-west-2.amazonaws.com/output.pdf
+                description: URL to the output file.
+              jobId:
+                type: string
+                example: 6YSZD3U872ZYYFEDMQCQSGEEO8YSF5WA
+                description: Unique identifier for the job.
+              credits:
+                type: integer
+                example: 2
+                description: Credits used for this operation.
+              remainingCredits:
+                type: integer
+                example: 1480582
+                description: Credits remaining after this operation.
+              duration:
+                type: integer
+                example: 33
+                description: Time taken to complete the request, in milliseconds.
+    BadRequest:
+      description: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 400
+              message:
+                type: string
+                example: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+    InvalidParameters:
+      description: Invalid parameters.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 454
+              message:
+                type: string
+                example: Invalid parameters.
+    InternalServerError:
+      description: Something went wrong. Please try again or contact support.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 500
+              message:
+                type: string
+                example: Something went wrong. Please try again or contact support.
+    InvalidUrl:
+      description: Invalid URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 452
+              message:
+                type: string
+                example: Invalid URL.
+    TimeoutError:
+      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 445
+              message:
+                type: string
+                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
+    InvalidPassword:
+      description: Invalid Password. Password protected document.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 441
+              message:
+                type: string
+                example: Invalid Password. Password protected document.
+    NotEnoughCredits:
+      description: Not enough credits.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 402
+              message:
+                type: string
+                example: Not enough credits.
+  schemas:
+    url:
+      type: string
+      format: uri
+      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
+    name:
+      type: string
+      description: File name for generated output.
+    timeout:
+      type: number
+      description: Timeout for output links in seconds
+      readOnly: true
+    inline:
+      default: false
+      type: boolean
+      description: Set to true to return results inside the response. Otherwise, the endpoint will return a URL to the output file generated.
+    templatedata:
+      type: string
+      description: please set to string converted from JSON with data for Mustache template or leave empty if no template is used
+      readOnly: true
+    async:
+      type: boolean
+      default: false
+      description: Set `async` to `true` for long processes to run in the background, API will then return a `jobId` which you can use with the [Background Job Check endpoint](/api-reference/job-check). Also see [Webhooks & Callbacks](/api-reference/webhooks)
+    httppassword:
+      type: string
+      description: HTTP auth password if required to access source URL.
+    password:
+      type: string
+      description: Password for the PDF file.
+    searchstring:
+      type: string
+      description: The string to search.
+    y:
+      type: number
+      minimum: 0
+      description: Y coordinate (zero point is in the top left corner). You can use [PDF Edit Add Helper](https://app.pdf.co/pdf-edit-add-helper) to measure coordinates. The unit is `pt`.
+    height:
+      type: number
+      minimum: 0
+      description: Height of the text box. You can use [PDF Edit Add Helper](https://app.pdf.co/pdf-edit-add-helper) to measure pdf coordinates. The unit is `pt`.
+    file:
+      type: string
+      format: path to a local file
+      description: The path to the local file to be uploaded.
+      readOnly: true
+    casesensitive:
+      type: boolean
+      default: true
+      description: Set to `false` to don't use case-sensitive search.
+    profiles:
+      type: string
+      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
+    replacementlimit:
+      type: number
+      default: 0
+      description: Limit the number of searches & replacements for every item. The value 0 means every found occurrence will be replaced.
+    x:
+      type: number
+      minimum: 0
+      description: X coordinate (zero point is in the top left corner). You can use [PDF Edit Add Helper](https://app.pdf.co/pdf-edit-add-helper) to measure coordinates. The unit is `pt`.
+    searchstrings:
+      type: array
+      items:
+        type: string
+      description: The array of strings to search.
+    pages0:
+      type: string
+      description: 'Page indices/ranges (0-based). Items are comma-separated. Each item is one of: N (e.g., 0), N-M (e.g., 3-7), N- (open-ended, e.g., 10-), or !N (reverse index; !0 is last page, !1 is second-to-last). Whitespace is allowed. If not specified, the default configuration processes all pages.'
+      pattern: ^\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*(?:,\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*)*$
+      example: 0,2,5-10, !0, !5-!2
+    makeunsearchable:
+      type: boolean
+    width:
+      type: number
+      minimum: 0
+      description: Width of the text box. You can use [PDF Edit Add Helper](https://app.pdf.co/pdf-edit-add-helper) to measure pdf coordinates. The unit is `pt`.
+    httpusername:
+      type: string
+      description: HTTP auth user name if required to access source URL.
+    regex:
+      type: boolean
+      default: false
+      description: Set to `true` to use regular expression for search string(s).
+    expiration:
+      type: number
+      default: 60
+      description: Sets the expiration time for the output link, in minutes. After this period, generated output file(s) are automatically deleted from [PDF.co Temporary Files Storage](/api-reference/file-upload/overview). The maximum allowed duration depends on your subscription plan. For permanent storage of input files (e.g., reusable images, PDF templates, documents), use `PDF.co Built‑In Files Storage`.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+x-original-swagger-version: '2.0'

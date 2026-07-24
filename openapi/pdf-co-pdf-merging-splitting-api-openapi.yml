@@ -1,0 +1,828 @@
+openapi: 3.0.1
+info:
+  title: PDF.co Barcodes PDF Merging & Splitting API
+  description: 'PDF.co Web API — programmatic PDF and document automation: AI invoice parsing, document parsing, PDF conversion (to/from PDF, Excel, CSV, JSON, XML, HTML, images), OCR, merging, splitting, compression, barcodes, e-signature workflows, and more. Authenticated via the x-api-key header.'
+  version: '1.0'
+  contact:
+    name: PDF.co Support
+    url: https://support.pdf.co/en
+    email: support@pdf.co
+  license:
+    name: Proprietary
+    url: https://pdf.co/terms
+  termsOfService: https://pdf.co/terms
+servers:
+- url: https://api.pdf.co
+security:
+- ApiKeyAuth: []
+tags:
+- name: PDF Merging & Splitting
+paths:
+  /v1/pdf/merge:
+    post:
+      tags:
+      - PDF Merging & Splitting
+      x-mint:
+        href: /api-tester/merge/pdf
+      summary: Merge PDF
+      operationId: post_v1_pdf_merge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits). If you use multiple URLs, please separate them with a comma (`,`)
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/encryption/sample_encrypted_aes128.pdf, https://pdfco-test-files.s3.us-west-2.amazonaws.com/encryption/sample_encrypted_aes128.pdf
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: result.pdf
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  allOf:
+                  - $ref: '#/components/schemas/profiles'
+                  default: '{ ''DataDecryptionAlgorithm'': ''AES128'', ''DataDecryptionKey'': ''HelloThisKey1234'', ''DataDecryptionIV'': ''TreloThisKey1234'', ''DataEncryptionAlgorithm'': ''AES128'', ''DataEncryptionKey'': ''HelloThisKey1234'', ''DataEncryptionIV'': ''TreloThisKey1234'' }'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Merge multiple PDF files into a single PDF document.
+  /v1/pdf/merge2:
+    post:
+      tags:
+      - PDF Merging & Splitting
+      x-mint:
+        href: /api-tester/merge/various-files
+      summary: Merge Various Document Type
+      operationId: post_v1_pdf_merge2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits). If you use multiple URLs, please separate them with a comma (`,`)
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-merge/sample1.pdf,https://pdfco-test-files.s3.us-west-2.amazonaws.com/other/Input.xls, https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-merge/images-and-documents.zip
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Merge PDF from two or more PDF, DOC, XLS, images, even ZIP with documents and images into a new PDF. This Merge 2 endpoint is similar to [Merge PDF](/api-reference/merge/pdf) but it also supports `zip`, `doc`, `docx`, `xls`, `xlsx`, `rtf`, `txt`, `png`, `jpg` files as source. This Merge2 endpoint also consumes more credits than [Merge PDF](/api-reference/merge/pdf) because of the internal conversions.
+  /v1/pdf/split:
+    post:
+      tags:
+      - PDF Merging & Splitting
+      x-mint:
+        href: /api-tester/pdf-split/by-pages
+      summary: Split PDF
+      operationId: post_v1_pdf_split
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-split/sample.pdf
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                pages:
+                  $ref: '#/components/schemas/pages1'
+                  default: 1-2,3-
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: result.pdf
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                file:
+                  $ref: '#/components/schemas/file'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Split a PDF into multiple PDF files using page indexes or page ranges.
+  /v1/pdf/split2:
+    post:
+      tags:
+      - PDF Merging & Splitting
+      x-mint:
+        href: /api-tester/pdf-split/by-text-search-or-barcode
+      summary: Split PDF by Text Search
+      operationId: post_v1_pdf_split2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - searchstring
+              - url
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-split/split_by_barcode.pdf
+                searchstring:
+                  allOf:
+                  - $ref: '#/components/schemas/searchstring'
+                  default: '[[barcode:qrcode,datamatrix /bytescout\.com/]]'
+                regexsearch:
+                  allOf:
+                  - $ref: '#/components/schemas/regexsearch'
+                  default: false
+                excludekeypages:
+                  type: boolean
+                  default: true
+                casesensitive:
+                  allOf:
+                  - $ref: '#/components/schemas/casesensitive'
+                  default: false
+                lang:
+                  $ref: '#/components/schemas/lang'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: output-split-by-barcode
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                file:
+                  $ref: '#/components/schemas/file'
+                password:
+                  $ref: '#/components/schemas/password'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Split a PDF into multiple PDF files using page indexes or page ranges.
+components:
+  responses:
+    Forbidden:
+      description: Access forbidden for input URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 403
+              message:
+                type: string
+                example: Access forbidden for input URL.
+    InvalidUrlOrHtml:
+      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 448
+              message:
+                type: string
+                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+    InvalidTemplate:
+      description: Invalid template.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 447
+              message:
+                type: string
+                example: Invalid template.
+    InvalidPageRange:
+      description: Invalid page range specified.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 450
+              message:
+                type: string
+                example: Invalid page range specified.
+    DamagedDocument:
+      description: Input document is damaged or of incorrect type.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 442
+              message:
+                type: string
+                example: Input document is damaged or of incorrect type.
+    Timeout:
+      description: The server timed out waiting for the request.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 408
+              message:
+                type: string
+                example: The server timed out waiting for the request.
+    InvalidIndexRange:
+      description: Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 449
+              message:
+                type: string
+                example: Invalid index range. Page index is out of range.
+    TooManyRequests:
+      description: Too many requests in a given time period.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 429
+              message:
+                type: string
+                example: Too many requests in a given time period.
+    ProfilesParsingError:
+      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 444
+              message:
+                type: string
+                example: Profiles parsing error. Please ensure that the configuration is supported.
+    MissingFiles:
+      description: Some files required for conversion are missing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 446
+              message:
+                type: string
+                example: Some files required for conversion are missing.
+    NotFound:
+      description: The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 404
+              message:
+                type: string
+                example: The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
+    PermissionsError:
+      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 443
+              message:
+                type: string
+                example: Permissions. The operation is prohibited by document security settings.
+    Success:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+                description: Status of the API response.
+              message:
+                type: string
+                example: Success
+                description: Descriptive message for the response status.
+              url:
+                type: string
+                format: uri
+                example: https://pdf-temp-files.s3.us-west-2.amazonaws.com/output.pdf
+                description: URL to the output file.
+              jobId:
+                type: string
+                example: 6YSZD3U872ZYYFEDMQCQSGEEO8YSF5WA
+                description: Unique identifier for the job.
+              credits:
+                type: integer
+                example: 2
+                description: Credits used for this operation.
+              remainingCredits:
+                type: integer
+                example: 1480582
+                description: Credits remaining after this operation.
+              duration:
+                type: integer
+                example: 33
+                description: Time taken to complete the request, in milliseconds.
+    BadRequest:
+      description: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 400
+              message:
+                type: string
+                example: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+    InvalidParameters:
+      description: Invalid parameters.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 454
+              message:
+                type: string
+                example: Invalid parameters.
+    InternalServerError:
+      description: Something went wrong. Please try again or contact support.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 500
+              message:
+                type: string
+                example: Something went wrong. Please try again or contact support.
+    InvalidUrl:
+      description: Invalid URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 452
+              message:
+                type: string
+                example: Invalid URL.
+    TimeoutError:
+      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 445
+              message:
+                type: string
+                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
+    InvalidPassword:
+      description: Invalid Password. Password protected document.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 441
+              message:
+                type: string
+                example: Invalid Password. Password protected document.
+    NotEnoughCredits:
+      description: Not enough credits.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 402
+              message:
+                type: string
+                example: Not enough credits.
+  schemas:
+    url:
+      type: string
+      format: uri
+      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
+    name:
+      type: string
+      description: File name for generated output.
+    timeout:
+      type: number
+      description: Timeout for output links in seconds
+      readOnly: true
+    inline:
+      default: false
+      type: boolean
+      description: Set to true to return results inside the response. Otherwise, the endpoint will return a URL to the output file generated.
+    async:
+      type: boolean
+      default: false
+      description: Set `async` to `true` for long processes to run in the background, API will then return a `jobId` which you can use with the [Background Job Check endpoint](/api-reference/job-check). Also see [Webhooks & Callbacks](/api-reference/webhooks)
+    pages1:
+      type: string
+      description: Page indices/ranges (1-based). Same syntax as PagesBase0 but first page is 1; !1 is last page.
+      pattern: ^\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*(?:,\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*)*$
+      example: 1,2,3-7, !1, !6-!2
+    httppassword:
+      type: string
+      description: HTTP auth password if required to access source URL.
+    lang:
+      type: string
+      description: 'Set the language for OCR (text from image) to use for scanned PDF, PNG, and JPG documents input when extracting text. see [Language Support](/api-reference/language-support). You can also use 2 languages simultaneously like this: `eng+deu` (any combination).'
+      pattern: ^[a-z]{3}(\+[a-z]{3})*$
+      default: eng
+      example: eng+deu
+    casesensitive:
+      type: boolean
+      default: true
+      description: Set to `false` to don't use case-sensitive search.
+    searchstring:
+      type: string
+      description: The string to search.
+    file:
+      type: string
+      format: path to a local file
+      description: The path to the local file to be uploaded.
+      readOnly: true
+    password:
+      type: string
+      description: Password for the PDF file.
+    profiles:
+      type: string
+      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
+    regexsearch:
+      type: boolean
+      default: false
+      description: Set to true to enable regular expression search for the `searchString(s)` parameter.
+    httpusername:
+      type: string
+      description: HTTP auth user name if required to access source URL.
+    expiration:
+      type: number
+      default: 60
+      description: Sets the expiration time for the output link, in minutes. After this period, generated output file(s) are automatically deleted from [PDF.co Temporary Files Storage](/api-reference/file-upload/overview). The maximum allowed duration depends on your subscription plan. For permanent storage of input files (e.g., reusable images, PDF templates, documents), use `PDF.co Built‑In Files Storage`.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+x-original-swagger-version: '2.0'

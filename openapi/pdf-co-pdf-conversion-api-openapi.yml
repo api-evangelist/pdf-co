@@ -1,0 +1,2518 @@
+openapi: 3.0.1
+info:
+  title: PDF.co Barcodes PDF Conversion API
+  description: 'PDF.co Web API — programmatic PDF and document automation: AI invoice parsing, document parsing, PDF conversion (to/from PDF, Excel, CSV, JSON, XML, HTML, images), OCR, merging, splitting, compression, barcodes, e-signature workflows, and more. Authenticated via the x-api-key header.'
+  version: '1.0'
+  contact:
+    name: PDF.co Support
+    url: https://support.pdf.co/en
+    email: support@pdf.co
+  license:
+    name: Proprietary
+    url: https://pdf.co/terms
+  termsOfService: https://pdf.co/terms
+servers:
+- url: https://api.pdf.co
+security:
+- ApiKeyAuth: []
+tags:
+- name: PDF Conversion
+paths:
+  /v1/pdf/convert/to/csv:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-csv
+      summary: PDF to CSV
+      operationId: post_v1_pdf_convert_to_csv
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-csv/sample.pdf
+                lang:
+                  allOf:
+                  - $ref: '#/components/schemas/lang'
+                  default: eng
+                rect:
+                  $ref: '#/components/schemas/rect'
+                unwrap:
+                  $ref: '#/components/schemas/unwrap'
+                linegrouping:
+                  $ref: '#/components/schemas/linegrouping'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                file:
+                  $ref: '#/components/schemas/file'
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                  default: 0-
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: result.csv
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF and scanned images into CSV representation with layout, columns, rows, and tables.
+  /v1/pdf/convert/to/json2:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-json/basic
+      summary: PDF to JSON
+      operationId: post_v1_pdf_convert_to_json2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-json/sample.pdf
+                lang:
+                  $ref: '#/components/schemas/lang'
+                rect:
+                  $ref: '#/components/schemas/rect'
+                unwrap:
+                  $ref: '#/components/schemas/unwrap'
+                linegrouping:
+                  $ref: '#/components/schemas/linegrouping'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                file:
+                  $ref: '#/components/schemas/file'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF and scanned images into JSON representation with text, fonts, images, vectors, and formatting preserved.
+  /v1/pdf/convert/to/json-meta:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-json/with-ai
+      summary: PDF to JSON with AI
+      operationId: post_v1_pdf_convert_to_json-meta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-json/sample.pdf
+                lang:
+                  $ref: '#/components/schemas/lang'
+                rect:
+                  $ref: '#/components/schemas/rect'
+                unwrap:
+                  $ref: '#/components/schemas/unwrap'
+                linegrouping:
+                  $ref: '#/components/schemas/linegrouping'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                file:
+                  $ref: '#/components/schemas/file'
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF and scanned images into JSON using AI.
+  /v1/pdf/convert/to/text:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-text/basic
+      summary: PDF to Text
+      operationId: post_v1_pdf_convert_to_text
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-text/sample.pdf
+                lang:
+                  $ref: '#/components/schemas/lang'
+                rect:
+                  $ref: '#/components/schemas/rect'
+                unwrap:
+                  $ref: '#/components/schemas/unwrap'
+                linegrouping:
+                  $ref: '#/components/schemas/linegrouping'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                file:
+                  $ref: '#/components/schemas/file'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF and scanned images to text with layout preserved. This method uses OCR and reporoduces layout.
+  /v1/pdf/convert/to/text-simple:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-text/simple
+      summary: PDF to Text (Simple)
+      operationId: post_v1_pdf_convert_to_text-simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-text/sample.pdf
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                file:
+                  $ref: '#/components/schemas/file'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                lineending:
+                  type: string
+                  readOnly: true
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: This endpoint works faster and requires fewer credits as it is not using AI-powered layout analysis, OCR support, and also has no support for profiles for fine-tuning. For advanced conversion with layout analysis, OCR (for scanned pages), PDF repair, and other features please use the [PDF to Text](/api-reference/pdf-to-text) endpoint instead.
+  /v1/pdf/convert/to/xls:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-excel/xls
+      summary: PDF to XLS
+      operationId: post_v1_pdf_convert_to_xls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-excel/sample.pdf
+                lang:
+                  $ref: '#/components/schemas/lang'
+                rect:
+                  $ref: '#/components/schemas/rect'
+                unwrap:
+                  $ref: '#/components/schemas/unwrap'
+                linegrouping:
+                  $ref: '#/components/schemas/linegrouping'
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF to Excel(.xls) with layout and fonts preserved.
+  /v1/pdf/convert/to/xlsx:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-excel/xlsx
+      summary: PDF to XLSX
+      operationId: post_v1_pdf_convert_to_xlsx
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-excel/sample.pdf
+                lang:
+                  $ref: '#/components/schemas/lang'
+                rect:
+                  $ref: '#/components/schemas/rect'
+                unwrap:
+                  $ref: '#/components/schemas/unwrap'
+                linegrouping:
+                  $ref: '#/components/schemas/linegrouping'
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF to Excel(.xlsx) with layout and fonts preserved.
+  /v1/pdf/convert/to/xml:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-xml
+      summary: PDF to XML
+      operationId: post_v1_pdf_convert_to_xml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-xml/sample.pdf
+                lang:
+                  $ref: '#/components/schemas/lang'
+                rect:
+                  $ref: '#/components/schemas/rect'
+                unwrap:
+                  $ref: '#/components/schemas/unwrap'
+                linegrouping:
+                  $ref: '#/components/schemas/linegrouping'
+                inline:
+                  $ref: '#/components/schemas/inline'
+                file:
+                  $ref: '#/components/schemas/file'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF to XML with information about text value, tables, fonts, images, objects positions.
+  /v1/pdf/convert/to/html:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-html
+      summary: PDF to HTML
+      operationId: post_v1_pdf_convert_to_html
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf
+                lang:
+                  $ref: '#/components/schemas/lang'
+                rect:
+                  $ref: '#/components/schemas/rect'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: false
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+                simple:
+                  type: boolean
+                  description: Set `true` to convert to a plain HTML format. Default is the rich HTML & CSS format keeping the document design.
+                  readOnly: true
+                columns:
+                  type: boolean
+                  description: Set `true` if the PDF document is arranged in columns like a newspaper. Default is `false`.
+                  readOnly: true
+                file:
+                  $ref: '#/components/schemas/file'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF and scanned images into HTML representation with text, fonts, images, vectors, formatting preserved.
+  /v1/pdf/convert/to/jpg:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-image/jpg
+      summary: PDF to JPG
+      operationId: post_v1_pdf_convert_to_jpg
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/encryption/sample_encrypted_aes128.pdf
+                rect:
+                  $ref: '#/components/schemas/rect'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                file:
+                  $ref: '#/components/schemas/file'
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                  default: '0'
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: result.jpg
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  allOf:
+                  - $ref: '#/components/schemas/profiles'
+                  default: '{ ''DataDecryptionAlgorithm'': ''AES128'', ''DataDecryptionKey'': ''HelloThisKey1234'', ''DataDecryptionIV'': ''TreloThisKey1234'' }'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF to JPEG image with high quality rendering.
+  /v1/pdf/convert/to/png:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-image/png
+      summary: PDF to PNG
+      operationId: post_v1_pdf_convert_to_png
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-image/sample.pdf
+                rect:
+                  $ref: '#/components/schemas/rect'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                  default: 0-
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF to PNG image with high quality rendering.
+  /v1/pdf/convert/to/webp:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-image/webp
+      summary: PDF to WEBP
+      operationId: post_v1_pdf_convert_to_webp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-image/sample.pdf
+                rect:
+                  $ref: '#/components/schemas/rect'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                  default: 0-
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF to WebP image with high quality rendering.
+  /v1/pdf/convert/to/tiff:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-to-image/tiff
+      summary: PDF to TIFF
+      operationId: post_v1_pdf_convert_to_tiff
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-image/sample.pdf
+                rect:
+                  $ref: '#/components/schemas/rect'
+                unwrap:
+                  $ref: '#/components/schemas/unwrap'
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                  default: 0-
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                password:
+                  $ref: '#/components/schemas/password'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert PDF to TIFF image with high quality rendering.
+  /v1/pdf/convert/from/doc:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-from-document/doc
+      summary: PDF from DOC
+      operationId: post_v1_pdf_convert_from_doc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: '#/components/schemas/file'
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/encryption/sample_encrypted_aes128.docx
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: result.pdf
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  allOf:
+                  - $ref: '#/components/schemas/profiles'
+                  default: '{ ''DataDecryptionAlgorithm'': ''AES128'', ''DataDecryptionKey'': ''HelloThisKey1234'', ''DataDecryptionIV'': ''TreloThisKey1234'' }'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert DOC, DOCX, RTF, TXT, XPS files into PDF.
+  /v1/pdf/convert/from/csv:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-from-document/csv
+      summary: PDF from CSV
+      operationId: post_v1_pdf_convert_from_csv
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/csv-to-pdf/sample.csv
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: result.pdf
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                file:
+                  $ref: '#/components/schemas/file'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert CSV, XLS, XLSX files into PDF.
+  /v1/pdf/convert/from/image:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-from-image
+      summary: PDF from Image
+      operationId: post_v1_pdf_convert_from_image
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/image-to-pdf/image1.png,https://pdfco-test-files.s3.us-west-2.amazonaws.com/image-to-pdf/image2.jpg
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                file:
+                  $ref: '#/components/schemas/file'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert JPG, PNG, TIFF image formats into PDF.
+  /v1/pdf/convert/from/url:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-from-url
+      summary: PDF from URL
+      operationId: post_v1_pdf_convert_from_url
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - url
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://wikipedia.org/wiki/Wikipedia:Contact_us
+                margins:
+                  allOf:
+                  - $ref: '#/components/schemas/margins'
+                  default: 5mm
+                papersize:
+                  allOf:
+                  - $ref: '#/components/schemas/papersize'
+                  default: Letter
+                orientation:
+                  allOf:
+                  - $ref: '#/components/schemas/orientation'
+                  default: Portrait
+                printbackground:
+                  allOf:
+                  - $ref: '#/components/schemas/printbackground'
+                  default: true
+                mediatype:
+                  allOf:
+                  - $ref: '#/components/schemas/mediatype'
+                  default: print
+                donotwaitfullload:
+                  $ref: '#/components/schemas/donotwaitfullload'
+                header:
+                  $ref: '#/components/schemas/header'
+                footer:
+                  $ref: '#/components/schemas/footer'
+                legacyrendition:
+                  $ref: '#/components/schemas/legacyrendition'
+                name:
+                  $ref: '#/components/schemas/name'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  allOf:
+                  - $ref: '#/components/schemas/profiles'
+                  default: '{ "CustomScript": ";; // put some custom js script here "}'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+                rendertimeout:
+                  $ref: '#/components/schemas/rendertimeout'
+                templatedata:
+                  $ref: '#/components/schemas/templatedata'
+                customscript:
+                  $ref: '#/components/schemas/customscript'
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert URL into PDF. This method will process any JavaScript which the webpage triggers when it loads. For example if the the webpage triggers a JavaScript popup window then that will be included in the conversion process. There is no option to disable JavaScript on the supplied HTML page.
+  /v1/pdf/convert/from/html:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-from-html/convert
+      summary: PDF from HTML
+      operationId: post_v1_pdf_convert_from_html
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: HTML code.
+                templateid:
+                  allOf:
+                  - $ref: '#/components/schemas/templateid'
+                  default: 1
+                templatedata:
+                  allOf:
+                  - $ref: '#/components/schemas/templatedata'
+                  default: '{"paid":true,"invoice_id":"0021","invoice_date":"August 29, 2041","invoice_dateDue":"September 29, 2041","issuer_name":"Sarah Connor","issuer_company":"T-800 Research Lab","issuer_address":"435 South La Fayette Park Place, Los Angeles, CA 90057","issuer_website":"www.example.com","issuer_email":"info@example.com","client_name":"Cyberdyne Systems","client_company":"Cyberdyne Systems","client_address":"18144 El Camino Real, Sunnyvale, California","client_email":"sales@example.com","items":[{"name":"T-800 Prototype Research","price":1000.0},{"name":"T-800 Cloud Sync Setup","price":300.0}],"discount":0.1,"tax":0.0725,"note":"Thank you for your support of advanced robotics."}'
+                margins:
+                  allOf:
+                  - $ref: '#/components/schemas/margins'
+                  default: 40px 20px 20px 20px
+                papersize:
+                  allOf:
+                  - $ref: '#/components/schemas/papersize'
+                  default: Letter
+                orientation:
+                  allOf:
+                  - $ref: '#/components/schemas/orientation'
+                  default: Portrait
+                printbackground:
+                  allOf:
+                  - $ref: '#/components/schemas/printbackground'
+                  default: true
+                mediatype:
+                  allOf:
+                  - $ref: '#/components/schemas/mediatype'
+                  default: print
+                donotwaitfullload:
+                  $ref: '#/components/schemas/donotwaitfullload'
+                header:
+                  $ref: '#/components/schemas/header'
+                footer:
+                  $ref: '#/components/schemas/footer'
+                legacyrendition:
+                  $ref: '#/components/schemas/legacyrendition'
+                rendertimeout:
+                  $ref: '#/components/schemas/rendertimeout'
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: multipagedInvoiceWithQRCode.pdf
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                customscript:
+                  $ref: '#/components/schemas/customscript'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+              additionalProperties: false
+              required:
+              - html
+              - templateid
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert HTML into PDF. This method will process any JavaScript which the webpage triggers when it loads. For example if the the webpage triggers a JavaScript popup window then that will be included in the conversion process. There is no option to disable JavaScript on the supplied HTML page.
+  /v1/templates/html:
+    get:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-from-html/templates
+      summary: Return All Templates
+      operationId: get_v1_templates_html
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      description: Return all HTML templates for the current user.
+  /v1/templates/html/{id}:
+    get:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-from-html/template-id
+      summary: Return HTML Template by ID
+      description: Returns HTML template by template’s id.
+      operationId: get_v1_templates_html_id
+      parameters:
+      - name: id
+        in: path
+        description: HTML template id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v1/pdf/convert/from/email:
+    post:
+      tags:
+      - PDF Conversion
+      x-mint:
+        href: /api-tester/pdf-from-email
+      summary: PDF from Email
+      operationId: post_v1_pdf_convert_from_email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/email-to-pdf/sample.eml
+                margins:
+                  $ref: '#/components/schemas/margins'
+                papersize:
+                  $ref: '#/components/schemas/papersize'
+                orientation:
+                  $ref: '#/components/schemas/orientation'
+                embedattachments:
+                  type: boolean
+                  default: true
+                convertattachments:
+                  type: boolean
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: email-with-attachments
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                header:
+                  $ref: '#/components/schemas/header'
+                footer:
+                  $ref: '#/components/schemas/footer'
+                file:
+                  $ref: '#/components/schemas/file'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                profiles:
+                  allOf:
+                  - $ref: '#/components/schemas/profiles'
+                  default: '{"orientation": "landscape", "paperSize": "letter" }'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+      description: Convert email files (.msg or .eml) code into PDF. Extract attachments (if any) from input email and embeds into PDF as PDF attachments.
+components:
+  responses:
+    Forbidden:
+      description: Access forbidden for input URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 403
+              message:
+                type: string
+                example: Access forbidden for input URL.
+    InvalidUrlOrHtml:
+      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 448
+              message:
+                type: string
+                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+    InvalidTemplate:
+      description: Invalid template.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 447
+              message:
+                type: string
+                example: Invalid template.
+    InvalidPageRange:
+      description: Invalid page range specified.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 450
+              message:
+                type: string
+                example: Invalid page range specified.
+    DamagedDocument:
+      description: Input document is damaged or of incorrect type.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 442
+              message:
+                type: string
+                example: Input document is damaged or of incorrect type.
+    Timeout:
+      description: The server timed out waiting for the request.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 408
+              message:
+                type: string
+                example: The server timed out waiting for the request.
+    InvalidIndexRange:
+      description: Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 449
+              message:
+                type: string
+                example: Invalid index range. Page index is out of range.
+    TooManyRequests:
+      description: Too many requests in a given time period.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 429
+              message:
+                type: string
+                example: Too many requests in a given time period.
+    ProfilesParsingError:
+      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 444
+              message:
+                type: string
+                example: Profiles parsing error. Please ensure that the configuration is supported.
+    MissingFiles:
+      description: Some files required for conversion are missing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 446
+              message:
+                type: string
+                example: Some files required for conversion are missing.
+    NotFound:
+      description: The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 404
+              message:
+                type: string
+                example: The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
+    PermissionsError:
+      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 443
+              message:
+                type: string
+                example: Permissions. The operation is prohibited by document security settings.
+    Success:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+                description: Status of the API response.
+              message:
+                type: string
+                example: Success
+                description: Descriptive message for the response status.
+              url:
+                type: string
+                format: uri
+                example: https://pdf-temp-files.s3.us-west-2.amazonaws.com/output.pdf
+                description: URL to the output file.
+              jobId:
+                type: string
+                example: 6YSZD3U872ZYYFEDMQCQSGEEO8YSF5WA
+                description: Unique identifier for the job.
+              credits:
+                type: integer
+                example: 2
+                description: Credits used for this operation.
+              remainingCredits:
+                type: integer
+                example: 1480582
+                description: Credits remaining after this operation.
+              duration:
+                type: integer
+                example: 33
+                description: Time taken to complete the request, in milliseconds.
+    BadRequest:
+      description: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 400
+              message:
+                type: string
+                example: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+    InvalidParameters:
+      description: Invalid parameters.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 454
+              message:
+                type: string
+                example: Invalid parameters.
+    InternalServerError:
+      description: Something went wrong. Please try again or contact support.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 500
+              message:
+                type: string
+                example: Something went wrong. Please try again or contact support.
+    InvalidUrl:
+      description: Invalid URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 452
+              message:
+                type: string
+                example: Invalid URL.
+    TimeoutError:
+      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 445
+              message:
+                type: string
+                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
+    InvalidPassword:
+      description: Invalid Password. Password protected document.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 441
+              message:
+                type: string
+                example: Invalid Password. Password protected document.
+    NotEnoughCredits:
+      description: Not enough credits.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 402
+              message:
+                type: string
+                example: Not enough credits.
+  schemas:
+    customscript:
+      type: string
+      description: custom script to execute on page load
+      readOnly: true
+    rendertimeout:
+      type: number
+      description: timeout for rendering in milliseconds (optional)
+      readOnly: true
+    url:
+      type: string
+      format: uri
+      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
+    name:
+      type: string
+      description: File name for generated output.
+    timeout:
+      type: number
+      description: Timeout for output links in seconds
+      readOnly: true
+    mediatype:
+      type: string
+      default: print
+      enum:
+      - print
+      - screen
+      - none
+      description: 'Controls how content is rendered when converting to PDF. Options: `print` (uses print styles), `screen` (uses screen styles), `none` (no media type applied).'
+    margins:
+      type: string
+      format: '{topMargin} {rightMargin} {bottomMargin} {leftMargin}'
+      description: Set custom margins, overriding CSS default margins. Specify the margins in the format `{top} {right} {bottom} {left}`. You can use`px`,`mm`,`cm`or`in`units. Also, you can set margins for all sides at once using a single value.
+      example: 10px 10px 10px 10px
+    inline:
+      default: false
+      type: boolean
+      description: Set to true to return results inside the response. Otherwise, the endpoint will return a URL to the output file generated.
+    footer:
+      type: string
+      format: html
+      description: Set this to can add user definable HTML for the footer to be applied on every page bottom. The format is html.
+    templatedata:
+      type: string
+      description: please set to string converted from JSON with data for Mustache template or leave empty if no template is used
+      readOnly: true
+    header:
+      type: string
+      format: html
+      description: Set this to can add user definable HTML for the header to be applied on every page header. The format is html.
+    rect:
+      type: string
+      format: '{x} {y} {width} {height}'
+      description: Defines coordinates for extraction. Use[PDF Edit Add Helper](https://app.pdf.co/pdf-edit-add-helper) to get or measure PDF coordinates. The format is `{x} {y} {width} {height}`.
+      example: 10 20 300 400
+    async:
+      type: boolean
+      default: false
+      description: Set `async` to `true` for long processes to run in the background, API will then return a `jobId` which you can use with the [Background Job Check endpoint](/api-reference/job-check). Also see [Webhooks & Callbacks](/api-reference/webhooks)
+    donotwaitfullload:
+      type: boolean
+      default: false
+      description: Controls how thoroughly the converter waits for a page to load before converting HTML to PDF --- false waits for full page load, while true speeds up conversion by waiting only for minimal loading.
+    unwrap:
+      type: boolean
+      default: false
+      description: Unwrap lines into a single line within table cells in provided PDF documents. This is only applicable when `lineGrouping` is set to `1`.
+    httppassword:
+      type: string
+      description: HTTP auth password if required to access source URL.
+    lang:
+      type: string
+      description: 'Set the language for OCR (text from image) to use for scanned PDF, PNG, and JPG documents input when extracting text. see [Language Support](/api-reference/language-support). You can also use 2 languages simultaneously like this: `eng+deu` (any combination).'
+      pattern: ^[a-z]{3}(\+[a-z]{3})*$
+      default: eng
+      example: eng+deu
+    password:
+      type: string
+      description: Password for the PDF file.
+    papersize:
+      description: 'Specifies the paper size. Accepts standard sizes like ''Letter'', ''Legal'', ''Tabloid'', ''Ledger'', ''A0''–''A6''. You can also set a custom size by providing width and height separated by a space, with optional units: `px` (pixels), `mm` (millimeters), `cm` (centimeters), or `in` (inches). Examples: ''200 300'', ''200px 300px'', ''200mm 300mm'', ''20cm 30cm'', ''6in 8in''.'
+      oneOf:
+      - type: string
+        enum:
+        - Letter
+        - Legal
+        - Tabloid
+        - Ledger
+        - A0
+        - A1
+        - A2
+        - A3
+        - A4
+        - A5
+        - A6
+      - type: string
+        pattern: ^\s*\d+(?:\.\d+)?(?:px|mm|cm|in)?\s+\d+(?:\.\d+)?(?:px|mm|cm|in)?\s*$
+      default: A4
+      example: A4
+    file:
+      type: string
+      format: path to a local file
+      description: The path to the local file to be uploaded.
+      readOnly: true
+    printbackground:
+      type: boolean
+      default: true
+      description: Set to `false` to disable background colors and images are included when generating PDFs from HTML/URL
+    profiles:
+      type: string
+      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
+    linegrouping:
+      type: string
+      pattern: ^[123]$
+      enum:
+      - '1'
+      - '2'
+      - '3'
+      description: 'Controls how lines of text are grouped when extracting data from a PDF. Line grouping within table cells. The available modes are: `1`, `2`, `3`. For more information, see [Line Grouping](#line-grouping-options).'
+    pages0:
+      type: string
+      description: 'Page indices/ranges (0-based). Items are comma-separated. Each item is one of: N (e.g., 0), N-M (e.g., 3-7), N- (open-ended, e.g., 10-), or !N (reverse index; !0 is last page, !1 is second-to-last). Whitespace is allowed. If not specified, the default configuration processes all pages.'
+      pattern: ^\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*(?:,\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*)*$
+      example: 0,2,5-10, !0, !5-!2
+    legacyrendition:
+      type: boolean
+      description: use legacy rendition (optional)
+    httpusername:
+      type: string
+      description: HTTP auth user name if required to access source URL.
+    templateid:
+      type: number
+      description: Set ID of HTML template to be used. View and manage your templates at HTML to PDF Templates.
+    orientation:
+      type: string
+      enum:
+      - Portrait
+      - Landscape
+      default: Portrait
+      description: 'Sets the document orientation. Options: `Portrait` for vertical layout, and `Landscape` for horizontal layout.'
+    expiration:
+      type: number
+      default: 60
+      description: Sets the expiration time for the output link, in minutes. After this period, generated output file(s) are automatically deleted from [PDF.co Temporary Files Storage](/api-reference/file-upload/overview). The maximum allowed duration depends on your subscription plan. For permanent storage of input files (e.g., reusable images, PDF templates, documents), use `PDF.co Built‑In Files Storage`.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+x-original-swagger-version: '2.0'

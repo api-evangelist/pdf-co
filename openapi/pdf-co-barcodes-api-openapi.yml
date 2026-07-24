@@ -1,0 +1,654 @@
+openapi: 3.0.1
+info:
+  title: PDF.co Barcodes API
+  description: 'PDF.co Web API — programmatic PDF and document automation: AI invoice parsing, document parsing, PDF conversion (to/from PDF, Excel, CSV, JSON, XML, HTML, images), OCR, merging, splitting, compression, barcodes, e-signature workflows, and more. Authenticated via the x-api-key header.'
+  version: '1.0'
+  contact:
+    name: PDF.co Support
+    url: https://support.pdf.co/en
+    email: support@pdf.co
+  license:
+    name: Proprietary
+    url: https://pdf.co/terms
+  termsOfService: https://pdf.co/terms
+servers:
+- url: https://api.pdf.co
+security:
+- ApiKeyAuth: []
+tags:
+- name: Barcodes
+paths:
+  /v1/barcode/generate:
+    post:
+      tags:
+      - Barcodes
+      x-mint:
+        href: /api-tester/barcode/generate
+      summary: Barcodes Generator
+      description: Generate high quality barcode images. Supports QR Code, Datamatrix, Code 39, Code 128, PDF417 and many other barcode types.
+      operationId: post_v1_barcode_generate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: Barcode value.
+                  default: abcdef123456
+                type:
+                  allOf:
+                  - $ref: '#/components/schemas/type'
+                  default: QRCode
+                decorationimage:
+                  type: string
+                name:
+                  allOf:
+                  - $ref: '#/components/schemas/name'
+                  default: barcode.png
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                expiration:
+                  $ref: '#/components/schemas/expiration'
+                inline:
+                  allOf:
+                  - $ref: '#/components/schemas/inline'
+                  default: true
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+              additionalProperties: false
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+  /v1/barcode/read/from/url:
+    post:
+      tags:
+      - Barcodes
+      x-mint:
+        href: /api-tester/barcode/read
+      summary: Barcodes Reader
+      description: Read barcodes from images and PDF. Can read all popular barcode types from QR Code and Code 128, EAN to Datamatrix, PDF417, GS1 and many other barcodes.
+      operationId: post_v1_barcode_read_from_url
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  allOf:
+                  - $ref: '#/components/schemas/url'
+                  default: https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf
+                types:
+                  type: string
+                  description: 'Comma-separated list of barcode types to decode. Valid types: `AustralianPostCode`, `Aztec`, `CircularI2of5`, `Codabar`, `CodablockF`, `Code128`, `Code16K`, `Code39`, `Code39Extended`, `Code39Mod43`, `Code39Mod43Extended`, `Code93`, `DataMatrix`, `EAN13`, `EAN2`, `EAN5`, `EAN8`, `GS1`, `GS1DataBarExpanded`, `GS1DataBarExpandedStacked`, `GS1DataBarLimited`, `GS1DataBarOmnidirectional`, `GS1DataBarStacked`, `GTIN12`, `GTIN13`, `GTIN14`, `GTIN8`, `IntelligentMail`, `Interleaved2of5`, `ITF14`, `MaxiCode`, `MICR`, `MicroPDF`, `MSI`, `PatchCode`, `PDF417`, `Pharmacode`, `PostNet`, `PZN`, `QRCode`, `RoyalMail`, `RoyalMailKIX`, `Trioptic`, `UPCA`, `UPCE`, `UPU`.'
+                  default: Checkbox,UnderlinedField
+                pages:
+                  $ref: '#/components/schemas/pages0'
+                async:
+                  allOf:
+                  - $ref: '#/components/schemas/async'
+                  default: false
+                file:
+                  $ref: '#/components/schemas/file'
+                timeout:
+                  $ref: '#/components/schemas/timeout'
+                profiles:
+                  $ref: '#/components/schemas/profiles'
+                httpusername:
+                  $ref: '#/components/schemas/httpusername'
+                httppassword:
+                  $ref: '#/components/schemas/httppassword'
+              additionalProperties: false
+              required:
+              - url
+              - types
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/NotEnoughCredits'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '408':
+          $ref: '#/components/responses/Timeout'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '441':
+          $ref: '#/components/responses/InvalidPassword'
+        '442':
+          $ref: '#/components/responses/DamagedDocument'
+        '443':
+          $ref: '#/components/responses/PermissionsError'
+        '444':
+          $ref: '#/components/responses/ProfilesParsingError'
+        '445':
+          $ref: '#/components/responses/TimeoutError'
+        '446':
+          $ref: '#/components/responses/MissingFiles'
+        '447':
+          $ref: '#/components/responses/InvalidTemplate'
+        '448':
+          $ref: '#/components/responses/InvalidUrlOrHtml'
+        '449':
+          $ref: '#/components/responses/InvalidIndexRange'
+        '450':
+          $ref: '#/components/responses/InvalidPageRange'
+        '452':
+          $ref: '#/components/responses/InvalidUrl'
+        '454':
+          $ref: '#/components/responses/InvalidParameters'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codegen-request-body-name: body
+components:
+  responses:
+    Forbidden:
+      description: Access forbidden for input URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 403
+              message:
+                type: string
+                example: Access forbidden for input URL.
+    InvalidUrlOrHtml:
+      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 448
+              message:
+                type: string
+                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+    InvalidTemplate:
+      description: Invalid template.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 447
+              message:
+                type: string
+                example: Invalid template.
+    InvalidPageRange:
+      description: Invalid page range specified.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 450
+              message:
+                type: string
+                example: Invalid page range specified.
+    DamagedDocument:
+      description: Input document is damaged or of incorrect type.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 442
+              message:
+                type: string
+                example: Input document is damaged or of incorrect type.
+    Timeout:
+      description: The server timed out waiting for the request.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 408
+              message:
+                type: string
+                example: The server timed out waiting for the request.
+    InvalidIndexRange:
+      description: Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 449
+              message:
+                type: string
+                example: Invalid index range. Page index is out of range.
+    TooManyRequests:
+      description: Too many requests in a given time period.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 429
+              message:
+                type: string
+                example: Too many requests in a given time period.
+    ProfilesParsingError:
+      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 444
+              message:
+                type: string
+                example: Profiles parsing error. Please ensure that the configuration is supported.
+    MissingFiles:
+      description: Some files required for conversion are missing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 446
+              message:
+                type: string
+                example: Some files required for conversion are missing.
+    NotFound:
+      description: The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 404
+              message:
+                type: string
+                example: The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
+    PermissionsError:
+      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 443
+              message:
+                type: string
+                example: Permissions. The operation is prohibited by document security settings.
+    Success:
+      description: Success.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+                description: Status of the API response.
+              message:
+                type: string
+                example: Success
+                description: Descriptive message for the response status.
+              url:
+                type: string
+                format: uri
+                example: https://pdf-temp-files.s3.us-west-2.amazonaws.com/output.pdf
+                description: URL to the output file.
+              jobId:
+                type: string
+                example: 6YSZD3U872ZYYFEDMQCQSGEEO8YSF5WA
+                description: Unique identifier for the job.
+              credits:
+                type: integer
+                example: 2
+                description: Credits used for this operation.
+              remainingCredits:
+                type: integer
+                example: 1480582
+                description: Credits remaining after this operation.
+              duration:
+                type: integer
+                example: 33
+                description: Time taken to complete the request, in milliseconds.
+    BadRequest:
+      description: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 400
+              message:
+                type: string
+                example: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+    InvalidParameters:
+      description: Invalid parameters.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 454
+              message:
+                type: string
+                example: Invalid parameters.
+    InternalServerError:
+      description: Something went wrong. Please try again or contact support.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 500
+              message:
+                type: string
+                example: Something went wrong. Please try again or contact support.
+    InvalidUrl:
+      description: Invalid URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 452
+              message:
+                type: string
+                example: Invalid URL.
+    TimeoutError:
+      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 445
+              message:
+                type: string
+                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
+    InvalidPassword:
+      description: Invalid Password. Password protected document.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 441
+              message:
+                type: string
+                example: Invalid Password. Password protected document.
+    NotEnoughCredits:
+      description: Not enough credits.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 402
+              message:
+                type: string
+                example: Not enough credits.
+  schemas:
+    url:
+      type: string
+      format: uri
+      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
+    name:
+      type: string
+      description: File name for generated output.
+    timeout:
+      type: number
+      description: Timeout for output links in seconds
+      readOnly: true
+    inline:
+      default: false
+      type: boolean
+      description: Set to true to return results inside the response. Otherwise, the endpoint will return a URL to the output file generated.
+    type:
+      type: string
+      enum:
+      - AustralianPostCode
+      - Aztec
+      - Codabar
+      - CodablockF
+      - Code128
+      - Code16K
+      - Code39
+      - Code39Extended
+      - Code39Mod43
+      - Code39Mod43Extended
+      - Code93
+      - DataMatrix
+      - DPMDataMatrix
+      - EAN13
+      - EAN2
+      - EAN5
+      - EAN8
+      - GS1DataBarExpanded
+      - GS1DataBarExpandedStacked
+      - GS1DataBarLimited
+      - GS1DataBarOmnidirectional
+      - GS1DataBarStacked
+      - GTIN12
+      - GTIN13
+      - GTIN14
+      - GTIN8
+      - IntelligentMail
+      - Interleaved2of5
+      - ITF14
+      - MaxiCode
+      - MICR
+      - MicroPDF
+      - MSI
+      - PatchCode
+      - PDF417
+      - Pharmacode
+      - PostNet
+      - PZN
+      - QRCode
+      - RoyalMail
+      - RoyalMailKIX
+      - Trioptic
+      - UPCA
+      - UPCE
+      - UPU
+      default: QRCode
+      description: 'Set the barcode type to be used. See available barcode types in the [Supported Barcode Types](/api-reference/barcode/overview#supported-barcode-types) '
+    async:
+      type: boolean
+      default: false
+      description: Set `async` to `true` for long processes to run in the background, API will then return a `jobId` which you can use with the [Background Job Check endpoint](/api-reference/job-check). Also see [Webhooks & Callbacks](/api-reference/webhooks)
+    httppassword:
+      type: string
+      description: HTTP auth password if required to access source URL.
+    file:
+      type: string
+      format: path to a local file
+      description: The path to the local file to be uploaded.
+      readOnly: true
+    profiles:
+      type: string
+      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
+    pages0:
+      type: string
+      description: 'Page indices/ranges (0-based). Items are comma-separated. Each item is one of: N (e.g., 0), N-M (e.g., 3-7), N- (open-ended, e.g., 10-), or !N (reverse index; !0 is last page, !1 is second-to-last). Whitespace is allowed. If not specified, the default configuration processes all pages.'
+      pattern: ^\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*(?:,\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*)*$
+      example: 0,2,5-10, !0, !5-!2
+    httpusername:
+      type: string
+      description: HTTP auth user name if required to access source URL.
+    expiration:
+      type: number
+      default: 60
+      description: Sets the expiration time for the output link, in minutes. After this period, generated output file(s) are automatically deleted from [PDF.co Temporary Files Storage](/api-reference/file-upload/overview). The maximum allowed duration depends on your subscription plan. For permanent storage of input files (e.g., reusable images, PDF templates, documents), use `PDF.co Built‑In Files Storage`.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+x-original-swagger-version: '2.0'
