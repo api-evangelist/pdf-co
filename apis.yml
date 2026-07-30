@@ -1,165 +1,138 @@
 aid: pdf-co
 url: https://raw.githubusercontent.com/api-evangelist/pdf-co/refs/heads/main/apis.yml
 apis:
-  - aid: pdf-co:pdf-co-extraction-api
-    name: PDF.co Extraction API
-    tags:
-      - AI
-      - Document Parsing
-      - Invoice Parsing
-      - OCR
-      - Extraction
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-      - url: json-schema/pdf-co-document-parser-schema.json
-        type: JSONSchema
-    description: >-
-      AI-powered data extraction from PDF, scanned, and image-based documents. Includes the AI Invoice Parser
-      (zero-template invoice/receipt parsing), Document Parser (template-driven extraction with reusable templates by
-      ID), Document Classifier, and PDF attachment extraction. Async and sync modes; webhook callbacks; supports URL,
-      base64, or uploaded-file inputs.
-  - aid: pdf-co:pdf-co-conversion-api
-    name: PDF.co Conversion API
-    tags:
-      - Conversion
-      - PDF
-      - Excel
-      - CSV
-      - JSON
-      - HTML
-      - Images
-      - OCR
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-    description: >-
-      Bidirectional document conversion: PDF to CSV, JSON, JSON-AI, text, XML, XLS, XLSX, HTML, JPG, PNG, TIFF, WebP;
-      PDF from HTML, URL, DOC/DOCX, CSV/XLS/XLSX, images, and email (.msg, .eml); plus Excel-to-anything conversion.
-      Layout-preserving table extraction and AI-driven JSON output supported.
-  - aid: pdf-co:pdf-co-editing-api
-    name: PDF.co Editing API
-    tags:
-      - Editing
-      - PDF
-      - Forms
-      - Text
-      - Images
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-    description: >-
-      Programmatic PDF editing: add text/images/forms/links, replace text, replace text with images, delete text, delete
-      or rotate pages, AI auto-rotate, search-and-replace, and form filling. Accepts coordinate-based annotations and
-      supports template-driven PDF generation via HTML templates.
-  - aid: pdf-co:pdf-co-merging-splitting-api
-    name: PDF.co Merging and Splitting API
-    tags:
-      - Merging
-      - Splitting
-      - PDF
-      - Document Assembly
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-    description: >-
-      Merge multiple PDFs (and DOC, XLS, image inputs via /merge2) into a single document, or split PDFs by page ranges,
-      indexes, or text-pattern search. Useful for document assembly, statement bursting, and invoice pipelines.
-  - aid: pdf-co:pdf-co-find-search-api
-    name: PDF.co Find and Search API
-    tags:
-      - Search
-      - PDF
-      - OCR
-      - Text
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-    description: >-
-      Locate text in PDFs and return coordinates (`/pdf/find`), AI-powered table location (`/pdf/find/table`), and make
-      scanned PDFs text-searchable via OCR (`/pdf/makesearchable`) or remove text layers to produce image-only PDFs
-      (`/pdf/makeunsearchable`).
-  - aid: pdf-co:pdf-co-forms-api
-    name: PDF.co Forms API
-    tags:
-      - Forms
-      - PDF
-      - AcroForm
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-    description: >-
-      Retrieve fillable form field details (`/pdf/info/fields`) for AcroForm and XFA PDFs. Pair with the Editing API's
-      `/pdf/edit/add` endpoint to fill forms programmatically.
-  - aid: pdf-co:pdf-co-pages-api
-    name: PDF.co Pages API
-    tags:
-      - Pages
-      - PDF
-      - Rotation
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-    description: >-
-      Delete pages by range, rotate pages by degrees, or use AI auto-rotation to detect and fix page orientation in
-      scanned documents.
-  - aid: pdf-co:pdf-co-barcodes-api
-    name: PDF.co Barcodes API
-    tags:
-      - Barcodes
-      - QR Code
-      - Recognition
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-    description: >-
-      Generate high-quality barcode images (QR, Code128, DataMatrix, PDF417, EAN, UPC, and others) or read barcodes from
-      PDF and image inputs by URL.
-  - aid: pdf-co:pdf-co-document-file-system-api
-    name: PDF.co Document, File, and System API
-    tags:
-      - Files
-      - Compression
-      - Optimization
-      - Email
-      - Templates
-      - Jobs
-      - Account
-    humanURL: https://docs.pdf.co/api-reference
-    properties:
-      - url: https://docs.pdf.co/api-reference
-        type: Documentation
-      - url: openapi/pdf-co-openapi.yml
-        type: OpenAPI
-    description: >-
-      File operations and platform primitives: upload (form, base64, by URL, presigned URL), download, delete, MD5 hash;
-      PDF compress (v2) and optimize; PDF info reader; email decode/send/extract-attachments; HTML template storage;
-      document classifier; and the `/job/check` endpoint for polling async operations. Also exposes
-      `/account/credit/balance` for credit reporting.
+- aid: pdf-co:pdf-co-barcodes-api
+  name: PDF.co Barcodes API
+  description: The Barcodes API from PDF.co — 2 operation(s) for barcodes.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - Barcodes
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-barcodes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-document-file-system-api
+  name: PDF.co Document, File & System API
+  description: >-
+    The Document, File & System API from PDF.co — 17 operation(s) for document, file & system.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - Document, File & System
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-document-file-system-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-editing-api
+  name: PDF.co Editing API
+  description: The Editing API from PDF.co — 4 operation(s) for editing.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - Editing
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-editing-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-excel-conversion-api
+  name: PDF.co Excel Conversion API
+  description: The Excel Conversion API from PDF.co — 6 operation(s) for excel conversion.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - Excel Conversion
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-excel-conversion-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-extraction-api
+  name: PDF.co Extraction API
+  description: The Extraction API from PDF.co — 5 operation(s) for extraction.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - Extraction
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-extraction-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-find-search-api
+  name: PDF.co Find & Search API
+  description: The Find & Search API from PDF.co — 4 operation(s) for find & search.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - Find & Search
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-find-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-forms-api
+  name: PDF.co Forms API
+  description: The Forms API from PDF.co — 1 operation(s) for forms.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-forms-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-pages-api
+  name: PDF.co Pages API
+  description: The Pages API from PDF.co — 3 operation(s) for pages.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-pages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-pdf-conversion-api
+  name: PDF.co PDF Conversion API
+  description: The PDF Conversion API from PDF.co — 21 operation(s) for pdf conversion.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - PDF Conversion
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-pdf-conversion-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
+- aid: pdf-co:pdf-co-pdf-merging-splitting-api
+  name: PDF.co PDF Merging & Splitting API
+  description: >-
+    The PDF Merging & Splitting API from PDF.co — 4 operation(s) for pdf merging & splitting.
+  humanURL: https://docs.pdf.co/api-reference
+  tags:
+  - PDF Merging & Splitting
+  properties:
+  - type: OpenAPI
+    url: openapi/pdf-co-pdf-merging-splitting-api-openapi.yml
+  - type: Documentation
+    url: https://docs.pdf.co/api-reference
+  - type: JSONSchema
+    url: json-schema/pdf-co-document-parser-schema.json
 name: PDF.co
 tags:
   - PDF
@@ -173,9 +146,24 @@ tags:
   - Barcodes
   - E-Signature
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pdf-co.png
 access: 3rd-Party
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/pdfco/overview
   - type: AgenticAccess
     url: agentic-access/pdf-co-agentic-access.yml
   - type: TrustCenter
