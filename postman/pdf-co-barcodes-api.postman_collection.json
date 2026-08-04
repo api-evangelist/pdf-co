@@ -1,0 +1,2632 @@
+{
+  "info": {
+    "_postman_id": "f16922c3-26ae-44e5-9041-8bf41b52ddb8",
+    "name": "PDF.co Barcodes API",
+    "description": "PDF.co Web API \u2014 programmatic PDF and document automation: AI invoice parsing, document parsing, PDF conversion (to/from PDF, Excel, CSV, JSON, XML, HTML, images), OCR, merging, splitting, compression, barcodes, e-signature workflows, and more. Authenticated via the x-api-key header.\n\nContact Support:\n Name: PDF.co Support\n Email: support@pdf.co",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:33:33.000Z",
+    "updatedAt": "2026-07-28T02:33:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f16922c3-26ae-44e5-9041-8bf41b52ddb8"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "barcode",
+          "item": [
+            {
+              "name": "generate",
+              "item": [
+                {
+                  "name": "Barcodes Generator",
+                  "id": "cccb532e-829a-4f67-9bb9-9fa21bc12335",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/barcode/generate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "barcode",
+                        "generate"
+                      ]
+                    },
+                    "description": "Generate high quality barcode images. Supports QR Code, Datamatrix, Code 39, Code 128, PDF417 and many other barcode types."
+                  },
+                  "response": [
+                    {
+                      "id": "29bfd3e6-db92-4f32-8d9f-f94e3c5885b7",
+                      "name": "Success.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"jobId\": \"<string>\",\n  \"credits\": \"<integer>\",\n  \"remainingCredits\": \"<integer>\",\n  \"duration\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-29bfd3e6-db92-4f32-8d9f-f94e3c5885b7"
+                    },
+                    {
+                      "id": "478238ed-f209-41db-9ffa-357d0a2ea417",
+                      "name": "Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-478238ed-f209-41db-9ffa-357d0a2ea417"
+                    },
+                    {
+                      "id": "1e63ab3f-fdab-4177-841f-35d047160df5",
+                      "name": "Unauthorized. Authentication is required and has failed or has not yet been provided.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-1e63ab3f-fdab-4177-841f-35d047160df5"
+                    },
+                    {
+                      "id": "5d740787-ee87-481c-ad20-080ae310e4bb",
+                      "name": "Not enough credits.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Payment Required",
+                      "code": 402,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-5d740787-ee87-481c-ad20-080ae310e4bb"
+                    },
+                    {
+                      "id": "12acda32-affe-47e3-80bd-faed64288ef3",
+                      "name": "Access forbidden for input URL.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-12acda32-affe-47e3-80bd-faed64288ef3"
+                    },
+                    {
+                      "id": "caa3dfac-a646-42e6-93f2-4f9edc13a7b0",
+                      "name": "The requested resource could not be found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-caa3dfac-a646-42e6-93f2-4f9edc13a7b0"
+                    },
+                    {
+                      "id": "17d198cc-f6e1-40c9-8359-323d61e8c3b8",
+                      "name": "The server timed out waiting for the request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Request Timeout",
+                      "code": 408,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-17d198cc-f6e1-40c9-8359-323d61e8c3b8"
+                    },
+                    {
+                      "id": "de965909-d7fd-4dad-b2c1-cbc11b2eab34",
+                      "name": "Too many requests in a given time period.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-de965909-d7fd-4dad-b2c1-cbc11b2eab34"
+                    },
+                    {
+                      "id": "25216e80-c7f5-4f4f-bd8d-c91e5e2306fe",
+                      "name": "Invalid Password. Password protected document.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-25216e80-c7f5-4f4f-bd8d-c91e5e2306fe"
+                    },
+                    {
+                      "id": "034f174b-c0ef-495c-9873-dd9909c17383",
+                      "name": "Input document is damaged or of incorrect type.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-034f174b-c0ef-495c-9873-dd9909c17383"
+                    },
+                    {
+                      "id": "282f857b-829d-44d3-bc36-d042375a71f7",
+                      "name": "Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-282f857b-829d-44d3-bc36-d042375a71f7"
+                    },
+                    {
+                      "id": "7a80cdda-3639-46d6-b4cc-685ae208cfa0",
+                      "name": "Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "No Response",
+                      "code": 444,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-7a80cdda-3639-46d6-b4cc-685ae208cfa0"
+                    },
+                    {
+                      "id": "99df97a5-b16a-40cd-a5d8-74b97eb93639",
+                      "name": "Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-99df97a5-b16a-40cd-a5d8-74b97eb93639"
+                    },
+                    {
+                      "id": "43322f03-8d0c-4181-942e-9cb4b75e275f",
+                      "name": "Some files required for conversion are missing.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-43322f03-8d0c-4181-942e-9cb4b75e275f"
+                    },
+                    {
+                      "id": "b854fc43-3b21-4bf8-b2d4-99de54bc91b0",
+                      "name": "Invalid template.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-b854fc43-3b21-4bf8-b2d4-99de54bc91b0"
+                    },
+                    {
+                      "id": "e9eb9031-4189-4c4a-9f5f-775f62bc4312",
+                      "name": "Invalid URL or HTML. Ensure the provided URL is valid and accessible.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-e9eb9031-4189-4c4a-9f5f-775f62bc4312"
+                    },
+                    {
+                      "id": "7c695fcd-7f2b-4e99-8ff5-c4729285e795",
+                      "name": "Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Retry With",
+                      "code": 449,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-7c695fcd-7f2b-4e99-8ff5-c4729285e795"
+                    },
+                    {
+                      "id": "962b6e13-b55e-4925-8cb7-71bfdfec3832",
+                      "name": "Invalid page range specified.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Blocked by Windows Parental Controls",
+                      "code": 450,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-962b6e13-b55e-4925-8cb7-71bfdfec3832"
+                    },
+                    {
+                      "id": "433e7ac7-e2c7-45de-a292-f8db0ab57af6",
+                      "name": "Invalid URL.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-433e7ac7-e2c7-45de-a292-f8db0ab57af6"
+                    },
+                    {
+                      "id": "7e6614f7-69d1-4369-8c1a-c6bf0c3743ea",
+                      "name": "Invalid parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-7e6614f7-69d1-4369-8c1a-c6bf0c3743ea"
+                    },
+                    {
+                      "id": "44c616a5-6379-4fd3-b450-bdcd6d342f35",
+                      "name": "Something went wrong. Please try again or contact support.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"abcdef123456\",\n  \"type\": \"QRCode\",\n  \"decorationimage\": \"<string>\",\n  \"name\": \"barcode.png\",\n  \"async\": false,\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"inline\": true,\n  \"profiles\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/barcode/generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "barcode",
+                            "generate"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-44c616a5-6379-4fd3-b450-bdcd6d342f35"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:33:34.000Z",
+                  "updatedAt": "2026-07-28T02:33:34.000Z",
+                  "uid": "35240-cccb532e-829a-4f67-9bb9-9fa21bc12335"
+                }
+              ],
+              "id": "3194e002-abc4-4920-a546-9791171bac56",
+              "createdAt": "2026-07-28T02:33:34.000Z",
+              "updatedAt": "2026-07-28T02:33:34.000Z",
+              "uid": "35240-3194e002-abc4-4920-a546-9791171bac56"
+            },
+            {
+              "name": "read",
+              "item": [
+                {
+                  "name": "from",
+                  "item": [
+                    {
+                      "name": "url",
+                      "item": [
+                        {
+                          "name": "Barcodes Reader",
+                          "id": "5ebeee9a-d6ce-42f6-ada6-ef34d73f571f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "barcode",
+                                "read",
+                                "from",
+                                "url"
+                              ]
+                            },
+                            "description": "Read barcodes from images and PDF. Can read all popular barcode types from QR Code and Code 128, EAN to Datamatrix, PDF417, GS1 and many other barcodes."
+                          },
+                          "response": [
+                            {
+                              "id": "31b41b33-30a3-4faf-b9bb-98e779508b15",
+                              "name": "Success.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"jobId\": \"<string>\",\n  \"credits\": \"<integer>\",\n  \"remainingCredits\": \"<integer>\",\n  \"duration\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-31b41b33-30a3-4faf-b9bb-98e779508b15"
+                            },
+                            {
+                              "id": "c5b2a512-58e3-41fa-9173-90750fb88210",
+                              "name": "Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-c5b2a512-58e3-41fa-9173-90750fb88210"
+                            },
+                            {
+                              "id": "42b47e44-163a-4cf2-b077-2be221a373a5",
+                              "name": "Unauthorized. Authentication is required and has failed or has not yet been provided.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-42b47e44-163a-4cf2-b077-2be221a373a5"
+                            },
+                            {
+                              "id": "3df51b77-74ed-46cf-b4f5-e10c9b11e2cc",
+                              "name": "Not enough credits.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Payment Required",
+                              "code": 402,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-3df51b77-74ed-46cf-b4f5-e10c9b11e2cc"
+                            },
+                            {
+                              "id": "ddfeb5f9-475c-42b4-8a85-bf16385b4ab1",
+                              "name": "Access forbidden for input URL.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-ddfeb5f9-475c-42b4-8a85-bf16385b4ab1"
+                            },
+                            {
+                              "id": "e54a6edc-324b-43e9-8ee9-2c93b0805f65",
+                              "name": "The requested resource could not be found.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-e54a6edc-324b-43e9-8ee9-2c93b0805f65"
+                            },
+                            {
+                              "id": "0e48aede-632b-48bd-988b-9a01647cf580",
+                              "name": "The server timed out waiting for the request.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Request Timeout",
+                              "code": 408,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-0e48aede-632b-48bd-988b-9a01647cf580"
+                            },
+                            {
+                              "id": "d53ddfd1-8ee3-40e3-8af0-aed6b3ae1054",
+                              "name": "Too many requests in a given time period.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-d53ddfd1-8ee3-40e3-8af0-aed6b3ae1054"
+                            },
+                            {
+                              "id": "c1fbaf69-1ce5-4a68-8bb8-984ca1753528",
+                              "name": "Invalid Password. Password protected document.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-c1fbaf69-1ce5-4a68-8bb8-984ca1753528"
+                            },
+                            {
+                              "id": "00629a21-ed3e-44d1-ab41-6f27e03d31cb",
+                              "name": "Input document is damaged or of incorrect type.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-00629a21-ed3e-44d1-ab41-6f27e03d31cb"
+                            },
+                            {
+                              "id": "8564cbf7-629c-483a-9f59-91c2ef9c373d",
+                              "name": "Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-8564cbf7-629c-483a-9f59-91c2ef9c373d"
+                            },
+                            {
+                              "id": "159ce148-56fb-4bb8-bb0d-33d53744bf79",
+                              "name": "Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "No Response",
+                              "code": 444,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-159ce148-56fb-4bb8-bb0d-33d53744bf79"
+                            },
+                            {
+                              "id": "da5a89bf-8015-4fe0-90b6-ffd94454926f",
+                              "name": "Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-da5a89bf-8015-4fe0-90b6-ffd94454926f"
+                            },
+                            {
+                              "id": "6f79d2b3-b760-4207-9a8b-01785726662d",
+                              "name": "Some files required for conversion are missing.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-6f79d2b3-b760-4207-9a8b-01785726662d"
+                            },
+                            {
+                              "id": "eb717adb-7281-4bae-b4bf-8c0e30469653",
+                              "name": "Invalid template.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-eb717adb-7281-4bae-b4bf-8c0e30469653"
+                            },
+                            {
+                              "id": "74c859f5-9532-4488-96e1-d9fed26c5784",
+                              "name": "Invalid URL or HTML. Ensure the provided URL is valid and accessible.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-74c859f5-9532-4488-96e1-d9fed26c5784"
+                            },
+                            {
+                              "id": "831cd441-c1c0-433b-84b8-df4743030a04",
+                              "name": "Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Retry With",
+                              "code": 449,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-831cd441-c1c0-433b-84b8-df4743030a04"
+                            },
+                            {
+                              "id": "ae603666-a61e-4af6-a19f-59600ed6f24e",
+                              "name": "Invalid page range specified.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Blocked by Windows Parental Controls",
+                              "code": 450,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-ae603666-a61e-4af6-a19f-59600ed6f24e"
+                            },
+                            {
+                              "id": "d5ff0b74-cf13-4b9c-a304-3a624bbf62b2",
+                              "name": "Invalid URL.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-d5ff0b74-cf13-4b9c-a304-3a624bbf62b2"
+                            },
+                            {
+                              "id": "41e2c6e2-bab4-4ec7-8a48-027b034c3c01",
+                              "name": "Invalid parameters.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-41e2c6e2-bab4-4ec7-8a48-027b034c3c01"
+                            },
+                            {
+                              "id": "422aaf7d-975e-4f6d-9353-926d170f0be0",
+                              "name": "Something went wrong. Please try again or contact support.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-to-html/sample.pdf\",\n  \"types\": \"Checkbox,UnderlinedField\",\n  \"pages\": \"\\r\u2005\u2003 !83 -\\f\u2002\u2028 \u2000!5\u180e\ufeff,\u205f\u205f\u3000\u3000\u2003\\n\u2029791\u202f\u202f\u2029\u2002\u2003\u2003\u00a0\",\n  \"async\": false,\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/barcode/read/from/url",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "barcode",
+                                    "read",
+                                    "from",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:33:34.000Z",
+                              "updatedAt": "2026-07-28T02:33:34.000Z",
+                              "uid": "35240-422aaf7d-975e-4f6d-9353-926d170f0be0"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:33:34.000Z",
+                          "updatedAt": "2026-07-28T02:33:34.000Z",
+                          "uid": "35240-5ebeee9a-d6ce-42f6-ada6-ef34d73f571f"
+                        }
+                      ],
+                      "id": "718515f1-47ed-4225-bd4b-f0acaa75f3d4",
+                      "createdAt": "2026-07-28T02:33:34.000Z",
+                      "updatedAt": "2026-07-28T02:33:34.000Z",
+                      "uid": "35240-718515f1-47ed-4225-bd4b-f0acaa75f3d4"
+                    }
+                  ],
+                  "id": "8e23fa9f-9122-427c-9ca4-6289f32b1515",
+                  "createdAt": "2026-07-28T02:33:34.000Z",
+                  "updatedAt": "2026-07-28T02:33:34.000Z",
+                  "uid": "35240-8e23fa9f-9122-427c-9ca4-6289f32b1515"
+                }
+              ],
+              "id": "739b0e26-bda0-4463-83ac-e5f0e0283568",
+              "createdAt": "2026-07-28T02:33:34.000Z",
+              "updatedAt": "2026-07-28T02:33:34.000Z",
+              "uid": "35240-739b0e26-bda0-4463-83ac-e5f0e0283568"
+            }
+          ],
+          "id": "6e4832a0-438c-445b-9edd-a358c67f4181",
+          "createdAt": "2026-07-28T02:33:34.000Z",
+          "updatedAt": "2026-07-28T02:33:34.000Z",
+          "uid": "35240-6e4832a0-438c-445b-9edd-a358c67f4181"
+        }
+      ],
+      "id": "4f69f691-5ecc-431d-bd16-300e4d29e3e7",
+      "createdAt": "2026-07-28T02:33:34.000Z",
+      "updatedAt": "2026-07-28T02:33:34.000Z",
+      "uid": "35240-4f69f691-5ecc-431d-bd16-300e4d29e3e7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pdf.co"
+    }
+  ]
+}

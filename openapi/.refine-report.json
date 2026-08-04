@@ -1,0 +1,32 @@
+{
+  "provider": "pdf-co",
+  "sources": [
+    "pdf-co-barcodes-api-openapi.yml",
+    "pdf-co-document-file-system-api-openapi.yml",
+    "pdf-co-editing-api-openapi.yml",
+    "pdf-co-excel-conversion-api-openapi.yml",
+    "pdf-co-extraction-api-openapi.yml",
+    "pdf-co-find-search-api-openapi.yml",
+    "pdf-co-forms-api-openapi.yml",
+    "pdf-co-pages-api-openapi.yml",
+    "pdf-co-pdf-conversion-api-openapi.yml",
+    "pdf-co-pdf-merging-splitting-api-openapi.yml"
+  ],
+  "outputs": [
+    "pdf-co-barcodes-api-openapi.yml",
+    "pdf-co-document-file-system-api-openapi.yml",
+    "pdf-co-editing-api-openapi.yml",
+    "pdf-co-excel-conversion-api-openapi.yml",
+    "pdf-co-extraction-api-openapi.yml",
+    "pdf-co-find-search-api-openapi.yml",
+    "pdf-co-forms-api-openapi.yml",
+    "pdf-co-pages-api-openapi.yml",
+    "pdf-co-pdf-conversion-api-openapi.yml",
+    "pdf-co-pdf-merging-splitting-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

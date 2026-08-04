@@ -1,0 +1,1345 @@
+{
+  "info": {
+    "_postman_id": "5c1edebd-2914-4a93-a7b4-47eb01017942",
+    "name": "PDF.co Barcodes Forms API",
+    "description": "PDF.co Web API \u2014 programmatic PDF and document automation: AI invoice parsing, document parsing, PDF conversion (to/from PDF, Excel, CSV, JSON, XML, HTML, images), OCR, merging, splitting, compression, barcodes, e-signature workflows, and more. Authenticated via the x-api-key header.\n\nContact Support:\n Name: PDF.co Support\n Email: support@pdf.co",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:34:33.000Z",
+    "updatedAt": "2026-07-28T02:34:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5c1edebd-2914-4a93-a7b4-47eb01017942"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "pdf",
+          "item": [
+            {
+              "name": "info",
+              "item": [
+                {
+                  "name": "fields",
+                  "item": [
+                    {
+                      "name": "PDF Forms Info Reader",
+                      "id": "7bd2b89f-9875-4437-8220-df5f610c562e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "pdf",
+                            "info",
+                            "fields"
+                          ]
+                        },
+                        "description": "Get information about fillable form fields inside a PDF file."
+                      },
+                      "response": [
+                        {
+                          "id": "1f0c3701-9a8c-4b0a-98be-595bccd2020e",
+                          "name": "Success.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"jobId\": \"<string>\",\n  \"credits\": \"<integer>\",\n  \"remainingCredits\": \"<integer>\",\n  \"duration\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-1f0c3701-9a8c-4b0a-98be-595bccd2020e"
+                        },
+                        {
+                          "id": "b01c4259-3376-464d-b87b-a090808b7691",
+                          "name": "Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-b01c4259-3376-464d-b87b-a090808b7691"
+                        },
+                        {
+                          "id": "b4a33c3a-5fbd-4158-90f2-19f9d4f43124",
+                          "name": "Unauthorized. Authentication is required and has failed or has not yet been provided.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-b4a33c3a-5fbd-4158-90f2-19f9d4f43124"
+                        },
+                        {
+                          "id": "35d36cd6-c2d7-4942-850c-8ef64ba7aa1e",
+                          "name": "Not enough credits.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Payment Required",
+                          "code": 402,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-35d36cd6-c2d7-4942-850c-8ef64ba7aa1e"
+                        },
+                        {
+                          "id": "4139e552-bce1-43f9-9c2e-361c243e8428",
+                          "name": "Access forbidden for input URL.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-4139e552-bce1-43f9-9c2e-361c243e8428"
+                        },
+                        {
+                          "id": "3f17cfe0-a73d-4260-8389-f1c3beed20da",
+                          "name": "The requested resource could not be found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-3f17cfe0-a73d-4260-8389-f1c3beed20da"
+                        },
+                        {
+                          "id": "418a7fdb-13af-486c-8995-7df024454b04",
+                          "name": "The server timed out waiting for the request.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Request Timeout",
+                          "code": 408,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-418a7fdb-13af-486c-8995-7df024454b04"
+                        },
+                        {
+                          "id": "9bdd97e4-4a1b-4848-bad1-493160899886",
+                          "name": "Too many requests in a given time period.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-9bdd97e4-4a1b-4848-bad1-493160899886"
+                        },
+                        {
+                          "id": "7c73119f-1a2f-4458-9905-e06404ee9d64",
+                          "name": "Invalid Password. Password protected document.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-7c73119f-1a2f-4458-9905-e06404ee9d64"
+                        },
+                        {
+                          "id": "eea8c379-2745-4791-aaeb-d996de6071a8",
+                          "name": "Input document is damaged or of incorrect type.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-eea8c379-2745-4791-aaeb-d996de6071a8"
+                        },
+                        {
+                          "id": "0c4ac807-de80-4c82-8ab5-e3a618acfaa9",
+                          "name": "Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-0c4ac807-de80-4c82-8ab5-e3a618acfaa9"
+                        },
+                        {
+                          "id": "a387cc97-2a61-45cd-9f68-d3656c1397b0",
+                          "name": "Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "No Response",
+                          "code": 444,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-a387cc97-2a61-45cd-9f68-d3656c1397b0"
+                        },
+                        {
+                          "id": "86c99c6d-1165-4b85-8c28-fa91338d94aa",
+                          "name": "Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-86c99c6d-1165-4b85-8c28-fa91338d94aa"
+                        },
+                        {
+                          "id": "d4551991-1fa1-484b-a391-ea4c02d2ca8c",
+                          "name": "Some files required for conversion are missing.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-d4551991-1fa1-484b-a391-ea4c02d2ca8c"
+                        },
+                        {
+                          "id": "403e5698-f26a-4a8d-a558-b68040a10891",
+                          "name": "Invalid template.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-403e5698-f26a-4a8d-a558-b68040a10891"
+                        },
+                        {
+                          "id": "8b4efa73-3284-431a-990e-d4adfc4854ab",
+                          "name": "Invalid URL or HTML. Ensure the provided URL is valid and accessible.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-8b4efa73-3284-431a-990e-d4adfc4854ab"
+                        },
+                        {
+                          "id": "bd7ead69-bfda-4c61-bd57-ecfbaacd9183",
+                          "name": "Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Retry With",
+                          "code": 449,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-bd7ead69-bfda-4c61-bd57-ecfbaacd9183"
+                        },
+                        {
+                          "id": "30b6e44d-cd79-41e5-bad8-1700100ddc26",
+                          "name": "Invalid page range specified.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Blocked by Windows Parental Controls",
+                          "code": 450,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-30b6e44d-cd79-41e5-bad8-1700100ddc26"
+                        },
+                        {
+                          "id": "ffea9531-a1b8-4201-a45f-c70e81f37cd8",
+                          "name": "Invalid URL.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-ffea9531-a1b8-4201-a45f-c70e81f37cd8"
+                        },
+                        {
+                          "id": "28401143-3eef-407e-aa22-2f2e671bd515",
+                          "name": "Invalid parameters.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-28401143-3eef-407e-aa22-2f2e671bd515"
+                        },
+                        {
+                          "id": "48748c11-18b6-4972-83d7-4d57e090214b",
+                          "name": "Something went wrong. Please try again or contact support.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-form/f1040.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pdf/info/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pdf",
+                                "info",
+                                "fields"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<boolean>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:34:34.000Z",
+                          "updatedAt": "2026-07-28T02:34:34.000Z",
+                          "uid": "35240-48748c11-18b6-4972-83d7-4d57e090214b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:34:34.000Z",
+                      "updatedAt": "2026-07-28T02:34:34.000Z",
+                      "uid": "35240-7bd2b89f-9875-4437-8220-df5f610c562e"
+                    }
+                  ],
+                  "id": "eb61745e-60c5-493f-ab64-892112a98146",
+                  "createdAt": "2026-07-28T02:34:34.000Z",
+                  "updatedAt": "2026-07-28T02:34:34.000Z",
+                  "uid": "35240-eb61745e-60c5-493f-ab64-892112a98146"
+                }
+              ],
+              "id": "e24ade50-197e-42c8-b9fc-11d4ff808584",
+              "createdAt": "2026-07-28T02:34:34.000Z",
+              "updatedAt": "2026-07-28T02:34:34.000Z",
+              "uid": "35240-e24ade50-197e-42c8-b9fc-11d4ff808584"
+            }
+          ],
+          "id": "0b5e3743-578f-4ad6-8f1e-4172c948db88",
+          "createdAt": "2026-07-28T02:34:34.000Z",
+          "updatedAt": "2026-07-28T02:34:34.000Z",
+          "uid": "35240-0b5e3743-578f-4ad6-8f1e-4172c948db88"
+        }
+      ],
+      "id": "733c7dac-a122-4dad-a0b8-0211ff35390c",
+      "createdAt": "2026-07-28T02:34:34.000Z",
+      "updatedAt": "2026-07-28T02:34:34.000Z",
+      "uid": "35240-733c7dac-a122-4dad-a0b8-0211ff35390c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pdf.co"
+    }
+  ]
+}
