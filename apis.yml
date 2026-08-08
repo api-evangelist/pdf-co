@@ -207,7 +207,7 @@ common:
     type: SourceCode
   - url: https://github.com/pdfdotco/pdfco-mcp
     name: PDF.co MCP Server
-    type: MCP
+    type: Documentation
   - url: https://github.com/pdfdotco/n8n-nodes-pdfco
     name: PDF.co n8n Node
     type: Plugin
