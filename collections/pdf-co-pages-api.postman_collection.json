@@ -1,0 +1,3599 @@
+{
+  "item": [
+    {
+      "id": "52276291-5c26-4c9d-8264-eb39616f7bba",
+      "name": "Pages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d20e86d5-070a-4925-891a-4a4a0785380c",
+          "name": "PDF Delete Pages",
+          "request": {
+            "name": "PDF Delete Pages",
+            "description": {
+              "content": "Deletes selected pages inside a PDF file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pdf",
+                "edit",
+                "delete-pages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"<string>\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2a1cc31-9acc-4738-86d7-710bbb7cd6d9",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Success\",\n  \"url\": \"https://pdf-temp-files.s3.us-west-2.amazonaws.com/output.pdf\",\n  \"jobId\": \"6YSZD3U872ZYYFEDMQCQSGEEO8YSF5WA\",\n  \"credits\": 2,\n  \"remainingCredits\": 1480582,\n  \"duration\": 33\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea07ab8d-ccb2-4766-b942-7c35afc15b7a",
+              "name": "Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 400,\n  \"message\": \"Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e205b35b-46d0-4bb0-825f-560cb2d0c564",
+              "name": "Unauthorized. Authentication is required and has failed or has not yet been provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 401,\n  \"message\": \"Unauthorized. Authentication is required and has failed or has not yet been provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e6e4c15-a18d-4bd9-83d9-ee018ad4c2e8",
+              "name": "Not enough credits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 402,\n  \"message\": \"Not enough credits.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50ffecb8-50c3-4765-b7a3-86b7920e7214",
+              "name": "Access forbidden for input URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 403,\n  \"message\": \"Access forbidden for input URL.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19986be7-7046-43fa-b63f-195951da4f7f",
+              "name": "The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 404,\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e3d567f-4991-4e06-a631-83e97868e885",
+              "name": "The server timed out waiting for the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 408,\n  \"message\": \"The server timed out waiting for the request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5626f31-0bec-420e-9334-bcf8087679b6",
+              "name": "Too many requests in a given time period.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 429,\n  \"message\": \"Too many requests in a given time period.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c92a8d1-ab85-4a9b-b655-32e8248f74ae",
+              "name": "Invalid Password. Password protected document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 441,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 441,\n  \"message\": \"Invalid Password. Password protected document.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90a5836f-5ab0-4d64-be93-c05171aae045",
+              "name": "Input document is damaged or of incorrect type.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 442,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 442,\n  \"message\": \"Input document is damaged or of incorrect type.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38592c02-f94b-47d4-b34e-79f52d97ba26",
+              "name": "Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 443,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 443,\n  \"message\": \"Permissions. The operation is prohibited by document security settings.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c39f4b3d-6f1a-4100-8b9f-fe407e12e763",
+              "name": "Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Response",
+              "code": 444,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 444,\n  \"message\": \"Profiles parsing error. Please ensure that the configuration is supported.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89964f09-11c2-4993-b021-5774274cb5af",
+              "name": "Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 445,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 445,\n  \"message\": \"Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bddf5838-e6a4-4112-a288-e5c5cf6b4eca",
+              "name": "Some files required for conversion are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 446,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 446,\n  \"message\": \"Some files required for conversion are missing.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e449b39-657d-4198-a168-f2d5cbd9bcc6",
+              "name": "Invalid template.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 447,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 447,\n  \"message\": \"Invalid template.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "311ce3c4-2965-4091-9267-3304106c686b",
+              "name": "Invalid URL or HTML. Ensure the provided URL is valid and accessible.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 448,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 448,\n  \"message\": \"Invalid URL or HTML. Ensure the provided URL is valid and accessible.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3ceadfd-d414-43a8-90da-cb7a38de9b38",
+              "name": "Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Retry With",
+              "code": 449,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 449,\n  \"message\": \"Invalid index range. Page index is out of range.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a1ccbc4-5b1f-45dd-b0f3-0ecc1842e18f",
+              "name": "Invalid page range specified.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Blocked by Windows Parental Controls",
+              "code": 450,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 450,\n  \"message\": \"Invalid page range specified.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a324c50-00de-41d3-826e-eec1c0f0a7f1",
+              "name": "Invalid URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 452,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 452,\n  \"message\": \"Invalid URL.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d99f95fc-1596-4005-998a-1d70428b002f",
+              "name": "Invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 454,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 454,\n  \"message\": \"Invalid parameters.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8126bea1-c03b-4731-8175-d8dca1882c63",
+              "name": "Something went wrong. Please try again or contact support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "delete-pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"pdfco-test-files.s3.us-west-2.amazonaws.compdf-split/sample.pdf\",\n  \"pages\": \"1,2,3-7, !1, !6-!2\",\n  \"name\": \"result.pdf\",\n  \"file\": \"<path to a local file>\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 500,\n  \"message\": \"Something went wrong. Please try again or contact support.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf5843b5-7428-4f9d-b1ed-42178f345c9c",
+          "name": "Rotate Selected Pages",
+          "request": {
+            "name": "Rotate Selected Pages",
+            "description": {
+              "content": "Rotates selected pages inside a PDF file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pdf",
+                "edit",
+                "rotate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"<string>\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a896471-4b90-42d0-aad0-de5cf40e48d4",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Success\",\n  \"url\": \"https://pdf-temp-files.s3.us-west-2.amazonaws.com/output.pdf\",\n  \"jobId\": \"6YSZD3U872ZYYFEDMQCQSGEEO8YSF5WA\",\n  \"credits\": 2,\n  \"remainingCredits\": 1480582,\n  \"duration\": 33\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9c11a2f-173b-4e36-b72b-83e8d9327912",
+              "name": "Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 400,\n  \"message\": \"Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fc255cd-daa3-4b7d-9f65-db74362f08b1",
+              "name": "Unauthorized. Authentication is required and has failed or has not yet been provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 401,\n  \"message\": \"Unauthorized. Authentication is required and has failed or has not yet been provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80f148c0-df63-42ca-ae70-a32dd0f95f31",
+              "name": "Not enough credits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 402,\n  \"message\": \"Not enough credits.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76c7156d-8f8b-448f-8771-742c4cfa0b39",
+              "name": "Access forbidden for input URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 403,\n  \"message\": \"Access forbidden for input URL.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87b991ea-2b22-41f6-b0a0-3e282d30b2c0",
+              "name": "The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 404,\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9466ede-7b26-4308-affd-b23b2a194bd3",
+              "name": "The server timed out waiting for the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 408,\n  \"message\": \"The server timed out waiting for the request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6199f27b-40b9-412a-b45f-5be9f0405e1e",
+              "name": "Too many requests in a given time period.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 429,\n  \"message\": \"Too many requests in a given time period.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b9f10bf-2c41-4c92-95d3-b6fc9dac7f1c",
+              "name": "Invalid Password. Password protected document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 441,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 441,\n  \"message\": \"Invalid Password. Password protected document.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "319f152b-855c-4bcb-b5f3-eaa80213cb67",
+              "name": "Input document is damaged or of incorrect type.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 442,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 442,\n  \"message\": \"Input document is damaged or of incorrect type.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c20ed41c-493e-420f-a221-7235c9847764",
+              "name": "Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 443,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 443,\n  \"message\": \"Permissions. The operation is prohibited by document security settings.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a19d3d9e-0562-4033-a147-0edb795d6ea9",
+              "name": "Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Response",
+              "code": 444,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 444,\n  \"message\": \"Profiles parsing error. Please ensure that the configuration is supported.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3314f2bb-b6b4-4fdb-a6c9-bc14ea8881bb",
+              "name": "Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 445,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 445,\n  \"message\": \"Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff27f8d0-6fcd-4bd4-ad59-fe20cf3b5b5f",
+              "name": "Some files required for conversion are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 446,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 446,\n  \"message\": \"Some files required for conversion are missing.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "997c6dd3-0233-406a-9929-214e78e33323",
+              "name": "Invalid template.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 447,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 447,\n  \"message\": \"Invalid template.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8c39b46-6c5d-41a5-9aef-25b766e2df1e",
+              "name": "Invalid URL or HTML. Ensure the provided URL is valid and accessible.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 448,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 448,\n  \"message\": \"Invalid URL or HTML. Ensure the provided URL is valid and accessible.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d595a233-c107-4447-addf-3ea3a30c0fc9",
+              "name": "Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Retry With",
+              "code": 449,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 449,\n  \"message\": \"Invalid index range. Page index is out of range.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c3bbfb8-a763-4222-8827-5a279fab7812",
+              "name": "Invalid page range specified.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Blocked by Windows Parental Controls",
+              "code": 450,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 450,\n  \"message\": \"Invalid page range specified.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99d5a042-14c8-4866-922d-0f0c03a592a7",
+              "name": "Invalid URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 452,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 452,\n  \"message\": \"Invalid URL.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9099b07-2608-4a10-a7c5-bd12ec8da129",
+              "name": "Invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 454,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 454,\n  \"message\": \"Invalid parameters.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa349a44-ce93-487f-8ee0-72ceee65172a",
+              "name": "Something went wrong. Please try again or contact support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-optimize/sample.pdf\",\n  \"pages\": \"0,2,5-10, !0, !5-!2\",\n  \"angle\": 90,\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 500,\n  \"message\": \"Something went wrong. Please try again or contact support.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e00b7bb-4771-4248-a605-979baba9c3d0",
+          "name": "Auto-rotate Pages with AI",
+          "request": {
+            "name": "Auto-rotate Pages with AI",
+            "description": {
+              "content": "Uses AI to automatically fix the rotation of pages inside scanned PDF based on text analysis. To change text language change the lang parameter (eng by default).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pdf",
+                "edit",
+                "rotate",
+                "auto"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "616c0940-ac45-44a6-94cb-ede39eef4b7e",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Success\",\n  \"url\": \"https://pdf-temp-files.s3.us-west-2.amazonaws.com/output.pdf\",\n  \"jobId\": \"6YSZD3U872ZYYFEDMQCQSGEEO8YSF5WA\",\n  \"credits\": 2,\n  \"remainingCredits\": 1480582,\n  \"duration\": 33\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c92aa50-3a29-4f18-9a7d-2fd445631439",
+              "name": "Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 400,\n  \"message\": \"Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ee69e1d-6803-4a66-9494-94ace5e91857",
+              "name": "Unauthorized. Authentication is required and has failed or has not yet been provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 401,\n  \"message\": \"Unauthorized. Authentication is required and has failed or has not yet been provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89d114fb-eaa1-43c1-bf3c-a66254b205d3",
+              "name": "Not enough credits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 402,\n  \"message\": \"Not enough credits.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08517246-1b87-44e8-9a2f-2fa7c6f2f0af",
+              "name": "Access forbidden for input URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 403,\n  \"message\": \"Access forbidden for input URL.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cabd605b-49ae-4703-988a-52581f24057a",
+              "name": "The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 404,\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec700e6f-14ed-4c50-b7b4-24d3a9a5f633",
+              "name": "The server timed out waiting for the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 408,\n  \"message\": \"The server timed out waiting for the request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64a02ad4-ece0-4e2f-9bb4-0a3ff272072a",
+              "name": "Too many requests in a given time period.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 429,\n  \"message\": \"Too many requests in a given time period.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f6969be-728b-4cd8-9409-ed3d935a8e63",
+              "name": "Invalid Password. Password protected document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 441,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 441,\n  \"message\": \"Invalid Password. Password protected document.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee172f11-998e-4039-9f6a-30afd0c7bb92",
+              "name": "Input document is damaged or of incorrect type.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 442,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 442,\n  \"message\": \"Input document is damaged or of incorrect type.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "015dfbe0-746c-40a7-b3a4-5b4e21143ee3",
+              "name": "Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 443,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 443,\n  \"message\": \"Permissions. The operation is prohibited by document security settings.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9421cfc-b997-4c3d-89a0-6fa4a2d2305b",
+              "name": "Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Response",
+              "code": 444,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 444,\n  \"message\": \"Profiles parsing error. Please ensure that the configuration is supported.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b1d323f-2f7d-4b77-ad6f-e00be105bf58",
+              "name": "Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 445,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 445,\n  \"message\": \"Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0642a692-afe9-4c96-8da4-fdc7f2942223",
+              "name": "Some files required for conversion are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 446,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 446,\n  \"message\": \"Some files required for conversion are missing.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f7c94a1-05ee-4997-9417-034200682d5e",
+              "name": "Invalid template.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 447,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 447,\n  \"message\": \"Invalid template.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5da8271-781e-4327-9c43-f4334631d270",
+              "name": "Invalid URL or HTML. Ensure the provided URL is valid and accessible.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 448,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 448,\n  \"message\": \"Invalid URL or HTML. Ensure the provided URL is valid and accessible.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1729eeeb-becb-4215-8132-3a9084dd9ab9",
+              "name": "Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Retry With",
+              "code": 449,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 449,\n  \"message\": \"Invalid index range. Page index is out of range.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2191661-8a16-42ee-9f63-87e0c7c12ef1",
+              "name": "Invalid page range specified.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Blocked by Windows Parental Controls",
+              "code": 450,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 450,\n  \"message\": \"Invalid page range specified.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c34c2a91-0023-4e86-a4bb-2ae37f773525",
+              "name": "Invalid URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 452,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 452,\n  \"message\": \"Invalid URL.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c93f479-e942-43fa-867d-c7091703cf7e",
+              "name": "Invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 454,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 454,\n  \"message\": \"Invalid parameters.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd017cd6-9786-4d09-a898-0e4f4302fcca",
+              "name": "Something went wrong. Please try again or contact support.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pdf",
+                    "edit",
+                    "rotate",
+                    "auto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://pdfco-test-files.s3.us-west-2.amazonaws.com/pdf-fix-rotation/rotated_pages.pdf\",\n  \"lang\": \"eng+deu\",\n  \"name\": \"result.pdf\",\n  \"async\": false,\n  \"password\": \"<string>\",\n  \"file\": \"<path to a local file>\",\n  \"timeout\": \"<number>\",\n  \"expiration\": 60,\n  \"profiles\": \"<string>\",\n  \"httpusername\": \"<string>\",\n  \"httppassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": 500,\n  \"message\": \"Something went wrong. Please try again or contact support.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pdf.co",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d4be2500-188e-41b4-b1ba-f59d9fc148b0",
+    "name": "PDF.co Barcodes Pages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PDF.co Web API — programmatic PDF and document automation: AI invoice parsing, document parsing, PDF conversion (to/from PDF, Excel, CSV, JSON, XML, HTML, images), OCR, merging, splitting, compression, barcodes, e-signature workflows, and more. Authenticated via the x-api-key header.\n\nContact Support:\n Name: PDF.co Support\n Email: support@pdf.co",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PDF.co Barcodes Editing API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Editing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PDF Add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/edit/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add text, images, forms, other PDFs, fill forms, links to external sites and external PDF files. You can update or modify PDF and scanned PDF files."
+        },
+        {
+          "info": {
+            "name": "Search and Replace with Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/edit/replace-text",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces text in a PDF file with a new text."
+        },
+        {
+          "info": {
+            "name": "Search and Replace with Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/edit/replace-text-with-image",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify a PDF file by searching for specific text and replacing it with an image."
+        },
+        {
+          "info": {
+            "name": "PDF Search and Delete Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/edit/delete-text",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete text from the PDF document with search strings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

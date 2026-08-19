@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PDF.co Barcodes Find & Search API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Find & Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PDF Find Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/find",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find text in PDF and get coordinates. Supports regular expressions."
+        },
+        {
+          "info": {
+            "name": "Find Text in Table with AI",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/find/table",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "AI powered document analysis can scan your document for tables and return the array of tables on pages with coordinates and information about columns detected in these tables."
+        },
+        {
+          "info": {
+            "name": "Make Text Searchable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/makesearchable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This method converts scanned PDF documents (where pages are fully or partially made from scanned images) or image files into a text-searchable PDF. It runs OCR and adds an invisible text layer on top of your document that can be used for text search, text indexing, etc."
+        },
+        {
+          "info": {
+            "name": "Make Text Unsearchable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/makeunsearchable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This method converts PDF files into a \"text unsearchable\" version by converting your PDF into a \"scanned\" PDF file which is effectively a flat image."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

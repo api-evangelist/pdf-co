@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PDF.co Barcodes PDF Merging & Splitting API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PDF Merging & Splitting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Merge PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/merge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merge multiple PDF files into a single PDF document."
+        },
+        {
+          "info": {
+            "name": "Merge Various Document Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/merge2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merge PDF from two or more PDF, DOC, XLS, images, even ZIP with documents and images into a new PDF. This Merge 2 endpoint is similar to [Merge PDF](/api-reference/merge/pdf) but it also supports `zip`, `doc`, `docx`, `xls`, `xlsx`, `rtf`, `txt`, `png`, `jpg` files as source. This Merge2 endpoint also consumes more credits than [Merge PDF](/api-reference/merge/pdf) because of the internal conversions."
+        },
+        {
+          "info": {
+            "name": "Split PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/split",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Split a PDF into multiple PDF files using page indexes or page ranges."
+        },
+        {
+          "info": {
+            "name": "Split PDF by Text Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/split2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Split a PDF into multiple PDF files using page indexes or page ranges."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PDF.co Barcodes Extraction API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Extraction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI Invoice Parser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/ai-invoice-parser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Process invoices faster than ever by extracting data and structuring it automatically with our advanced AI. Get quick and accurate data from any invoice, no matter the layout."
+        },
+        {
+          "info": {
+            "name": "Parse Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/documentparser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API method extracts data from documents based on a document parser extraction template. With this API method, you can extract data from custom areas by searching form fields, tables, multiple pages, and more."
+        },
+        {
+          "info": {
+            "name": "List All Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pdf.co/v1/pdf/documentparser/templates"
+          },
+          "docs": "Returns all **Document Parser** data extraction templates available to the current user."
+        },
+        {
+          "info": {
+            "name": "Retrieve Template by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pdf.co/v1/pdf/documentparser/templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Document parser template id"
+              }
+            ]
+          },
+          "docs": "Returns detailed information for document parser template by template’s id."
+        },
+        {
+          "info": {
+            "name": "Extract Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/attachments/extract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Extracts attachments from a PDF file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

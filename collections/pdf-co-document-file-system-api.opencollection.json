@@ -1,0 +1,328 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PDF.co Barcodes Document, File & System API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Document, File & System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PDF Compress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v2/pdf/compress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Compress PDF files to reduce their size."
+        },
+        {
+          "info": {
+            "name": "PDF Optimize",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/optimize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Optimize a PDF file to reduce its size."
+        },
+        {
+          "info": {
+            "name": "PDF Info Reader",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get detailed information about a PDF document, it’s properties and security permissions."
+        },
+        {
+          "info": {
+            "name": "Background & Job Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/job/check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Checks the [status](/api-reference/job-check/available-status-values) of a background job that was previously created with PDF.co API. Use this API to check the status of your asynchronous API calls."
+        },
+        {
+          "info": {
+            "name": "Get Account Balance Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pdf.co/v1/account/credit/balance"
+          },
+          "docs": "Get Account Balance Info"
+        },
+        {
+          "info": {
+            "name": "Document Classifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/classifier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Automatically find class of input PDF, JPG, PNG document by analyzing its content using the built-in AI or custom defined classification rules."
+        },
+        {
+          "info": {
+            "name": "Send Email with File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/email/send",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an email. An email can be with or without attachment."
+        },
+        {
+          "info": {
+            "name": "Extract Data from Email File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/email/decode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decode an email message to extract its components."
+        },
+        {
+          "info": {
+            "name": "Extract Email Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/email/extract-attachments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Extract attachments from an email"
+        },
+        {
+          "info": {
+            "name": "Upload Small File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/file/upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads a small (up to 100KB) local file as a temporary file in PDF.co storage. Note: temporary files are automatically permanently removed after 1 hour."
+        },
+        {
+          "info": {
+            "name": "Delete Temporary File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/file/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes temporary file (that was uploaded by you or generated by API)."
+        },
+        {
+          "info": {
+            "name": "Get MD5 Hash of File by URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/file/hash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Calculate and return MD5 hash of file by url. Commonly used to control if the source document has been changed or not because every little change will cause hash string to differ as well."
+        },
+        {
+          "info": {
+            "name": "Upload File from URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pdf.co/v1/file/upload/url",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "URL of the file to upload."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name the file will be stored with."
+              },
+              {
+                "name": "httpusername",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "httppassword",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Downloads file from a source url and uploads it as a temporary file. Temporary files are automatically permanently removed after 1 hour."
+        },
+        {
+          "info": {
+            "name": "Upload File from URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/file/upload/url",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Downloads file from a source url and uploads it as a temporary file. Temporary files are automatically permanently removed after 1 hour."
+        },
+        {
+          "info": {
+            "name": "Upload File Using Base64",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/file/upload/base64",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a temporary file using base64 source data. You may use this temporary file URL with other API methods. Temporary files are automatically permanently removed after 1 hour."
+        },
+        {
+          "info": {
+            "name": "Generate Pre-signed URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pdf.co/v1/file/upload/get-presigned-url",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "File name for the generated output, the input must be in string format."
+              },
+              {
+                "name": "contenttype",
+                "value": "",
+                "type": "query",
+                "description": "The content type of the uploaded file"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Timeout for output links in seconds."
+              }
+            ]
+          },
+          "docs": "This method generates links to upload your local file to. Use this presignedUrl from the response to upload your file. Once you upload your file to this presignedUrl using PUT, you can use the url link to access the uploaded file."
+        },
+        {
+          "info": {
+            "name": "Add Password to PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/security/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add password and security limitations to PDF"
+        },
+        {
+          "info": {
+            "name": "Remove Password from PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/security/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove existing limits and password from PDF file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

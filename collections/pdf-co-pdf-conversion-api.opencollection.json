@@ -1,0 +1,341 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PDF.co Barcodes PDF Conversion API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PDF Conversion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PDF to CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/csv",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF and scanned images into CSV representation with layout, columns, rows, and tables."
+        },
+        {
+          "info": {
+            "name": "PDF to JSON",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/json2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF and scanned images into JSON representation with text, fonts, images, vectors, and formatting preserved."
+        },
+        {
+          "info": {
+            "name": "PDF to JSON with AI",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/json-meta",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF and scanned images into JSON using AI."
+        },
+        {
+          "info": {
+            "name": "PDF to Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/text",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF and scanned images to text with layout preserved. This method uses OCR and reporoduces layout."
+        },
+        {
+          "info": {
+            "name": "PDF to Text (Simple)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/text-simple",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint works faster and requires fewer credits as it is not using AI-powered layout analysis, OCR support, and also has no support for profiles for fine-tuning. For advanced conversion with layout analysis, OCR (for scanned pages), PDF repair, and other features please use the [PDF to Text](/api-reference/pdf-to-text) endpoint instead."
+        },
+        {
+          "info": {
+            "name": "PDF to XLS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/xls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF to Excel(.xls) with layout and fonts preserved."
+        },
+        {
+          "info": {
+            "name": "PDF to XLSX",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/xlsx",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF to Excel(.xlsx) with layout and fonts preserved."
+        },
+        {
+          "info": {
+            "name": "PDF to XML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/xml",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF to XML with information about text value, tables, fonts, images, objects positions."
+        },
+        {
+          "info": {
+            "name": "PDF to HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/html",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF and scanned images into HTML representation with text, fonts, images, vectors, formatting preserved."
+        },
+        {
+          "info": {
+            "name": "PDF to JPG",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/jpg",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF to JPEG image with high quality rendering."
+        },
+        {
+          "info": {
+            "name": "PDF to PNG",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/png",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF to PNG image with high quality rendering."
+        },
+        {
+          "info": {
+            "name": "PDF to WEBP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/webp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF to WebP image with high quality rendering."
+        },
+        {
+          "info": {
+            "name": "PDF to TIFF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/to/tiff",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert PDF to TIFF image with high quality rendering."
+        },
+        {
+          "info": {
+            "name": "PDF from DOC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/from/doc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert DOC, DOCX, RTF, TXT, XPS files into PDF."
+        },
+        {
+          "info": {
+            "name": "PDF from CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/from/csv",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert CSV, XLS, XLSX files into PDF."
+        },
+        {
+          "info": {
+            "name": "PDF from Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/from/image",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert JPG, PNG, TIFF image formats into PDF."
+        },
+        {
+          "info": {
+            "name": "PDF from URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/from/url",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert URL into PDF. This method will process any JavaScript which the webpage triggers when it loads. For example if the the webpage triggers a JavaScript popup window then that will be included in the conversion process. There is no option to disable JavaScript on the supplied HTML page."
+        },
+        {
+          "info": {
+            "name": "PDF from HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/from/html",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert HTML into PDF. This method will process any JavaScript which the webpage triggers when it loads. For example if the the webpage triggers a JavaScript popup window then that will be included in the conversion process. There is no option to disable JavaScript on the supplied HTML page."
+        },
+        {
+          "info": {
+            "name": "Return All Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pdf.co/v1/templates/html"
+          },
+          "docs": "Return all HTML templates for the current user."
+        },
+        {
+          "info": {
+            "name": "Return HTML Template by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pdf.co/v1/templates/html/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "HTML template id"
+              }
+            ]
+          },
+          "docs": "Returns HTML template by template’s id."
+        },
+        {
+          "info": {
+            "name": "PDF from Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pdf.co/v1/pdf/convert/from/email",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert email files (.msg or .eml) code into PDF. Extract attachments (if any) from input email and embeds into PDF as PDF attachments."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
