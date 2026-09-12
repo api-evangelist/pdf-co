@@ -186,6 +186,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pdf-co.png
 access: 3rd-Party
 common:
+  - type: Website
+    url: https://www.pdf.co/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/pdfco/overview
   - type: AgenticAccess
