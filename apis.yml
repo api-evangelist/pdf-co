@@ -16,8 +16,7 @@ apis:
     url: json-schema/pdf-co-document-parser-schema.json
 - aid: pdf-co:pdf-co-document-file-system-api
   name: PDF.co Document, File & System API
-  description: >-
-    The Document, File & System API from PDF.co — 17 operation(s) for document, file & system.
+  description: The Document, File & System API from PDF.co — 17 operation(s) for document, file & system.
   humanURL: https://docs.pdf.co/api-reference
   tags:
   - Document, File & System
@@ -121,8 +120,7 @@ apis:
     url: json-schema/pdf-co-document-parser-schema.json
 - aid: pdf-co:pdf-co-pdf-merging-splitting-api
   name: PDF.co PDF Merging & Splitting API
-  description: >-
-    The PDF Merging & Splitting API from PDF.co — 4 operation(s) for pdf merging & splitting.
+  description: The PDF Merging & Splitting API from PDF.co — 4 operation(s) for pdf merging & splitting.
   humanURL: https://docs.pdf.co/api-reference
   tags:
   - PDF Merging & Splitting
@@ -135,27 +133,27 @@ apis:
     url: json-schema/pdf-co-document-parser-schema.json
 name: PDF.co
 tags:
-  - PDF
-  - Document Automation
-  - Artificial Intelligence
-  - OCR
-  - Invoice Parsing
-  - Document Parsing
-  - Conversion
-  - Forms
-  - Barcodes
-  - E-Signature
+- PDF
+- Document Automation
+- Artificial Intelligence
+- OCR
+- Invoice Parsing
+- Document Parsing
+- Conversion
+- Forms
+- Barcodes
+- E-Signature
 tags_raw:
-  - PDF
-  - Document Automation
-  - AI
-  - OCR
-  - Invoice Parsing
-  - Document Parsing
-  - Conversion
-  - Forms
-  - Barcodes
-  - E-Signature
+- PDF
+- Document Automation
+- AI
+- OCR
+- Invoice Parsing
+- Document Parsing
+- Conversion
+- Forms
+- Barcodes
+- E-Signature
 kind: contract
 deliveryModel:
   model: saas
@@ -186,87 +184,90 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pdf-co.png
 access: 3rd-Party
 common:
-  - type: Website
-    url: https://www.pdf.co/
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/pdfco/overview
-  - type: AgenticAccess
-    url: agentic-access/pdf-co-agentic-access.yml
-  - type: TrustCenter
-    url: security/pdf-co-trust-center.yml
-  - type: DomainSecurity
-    url: security/pdf-co-domain-security.yml
-  - type: Authentication
-    url: authentication/pdf-co-authentication.yml
-  - url: https://pdf.co
-    name: PDF.co Home
-    type: Portal
-  - url: https://docs.pdf.co
-    name: PDF.co Docs
-    type: Documentation
-  - url: https://docs.pdf.co/api-reference
-    name: PDF.co API Reference
-    type: Documentation
-  - url: https://docs.pdf.co/openapi.json
-    name: PDF.co OpenAPI Spec
-    type: OpenAPI
-  - url: https://app.pdf.co/signup
-    name: Sign Up
-    type: Signup
-  - url: https://app.pdf.co/account/dashboard
-    name: PDF.co Dashboard
-    type: Login
-  - url: https://pdf.co/pricing
-    name: Pricing
-    type: Pricing
-  - url: https://support.pdf.co/en
-    name: Support
-    type: Support
-  - url: https://pdf.co/integrations
-    name: Integrations
-    type: Documentation
-  - url: https://github.com/pdfdotco
-    name: PDF.co GitHub
-    type: GitHub
-  - url: https://github.com/pdfdotco/pdf-co-api-samples
-    name: API Code Samples
-    type: SourceCode
-  - url: https://github.com/pdfdotco/pdfco-mcp
-    name: PDF.co MCP Server
-    type: Documentation
-  - url: https://github.com/pdfdotco/n8n-nodes-pdfco
-    name: PDF.co n8n Node
-    type: Plugin
-  - url: https://pdf.co/resources/blog
-    name: Blog
-    type: Blog
-  - url: https://pdf.co/tutorials
-    name: Tutorials
-    type: Documentation
-  - url: https://docs.pdf.co/knowledgebase/security
-    name: Security
-    type: Security
-  - url: https://pdf.co/terms
-    name: Terms
-    type: TermsOfService
-  - url: https://pdf.co/privacy
-    name: Privacy
-    type: Privacy
-  - url: https://docs.pdf.co/api-reference/authentication
-    name: Authentication
-    type: Authentication
-  - url: https://docs.pdf.co/glossary/webhook-and-callbacks
-    name: Webhooks and Callbacks
-    type: Webhooks
-  - url: https://pdf.co/about
-    name: About PDF.co
-    type: About
-  - url: plans/pdf-co-plans-pricing.yml
-    type: Plans
-  - url: rate-limits/pdf-co-rate-limits.yml
-    type: RateLimits
-  - url: finops/pdf-co-finops.yml
-    type: FinOps
+- type: Website
+  url: https://www.pdf.co/
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/pdfco/overview
+- type: AgenticAccess
+  url: agentic-access/pdf-co-agentic-access.yml
+- type: TrustCenter
+  url: security/pdf-co-trust-center.yml
+- type: DomainSecurity
+  url: security/pdf-co-domain-security.yml
+- type: Authentication
+  url: authentication/pdf-co-authentication.yml
+- url: https://pdf.co
+  name: PDF.co Home
+  type: Portal
+- url: https://docs.pdf.co
+  name: PDF.co Docs
+  type: Documentation
+- url: https://docs.pdf.co/api-reference
+  name: PDF.co API Reference
+  type: Documentation
+- url: https://docs.pdf.co/openapi.json
+  name: PDF.co OpenAPI Spec
+  type: OpenAPI
+- url: https://app.pdf.co/signup
+  name: Sign Up
+  type: Signup
+- url: https://app.pdf.co/account/dashboard
+  name: PDF.co Dashboard
+  type: Login
+- url: https://pdf.co/pricing
+  name: Pricing
+  type: Pricing
+- url: https://support.pdf.co/en
+  name: Support
+  type: Support
+- url: https://pdf.co/integrations
+  name: Integrations
+  type: Documentation
+- url: https://github.com/pdfdotco
+  name: PDF.co GitHub
+  type: GitHub
+- url: https://github.com/pdfdotco/pdf-co-api-samples
+  name: API Code Samples
+  type: SourceCode
+- url: https://github.com/pdfdotco/pdfco-mcp
+  name: PDF.co MCP Server
+  type: Documentation
+- url: https://github.com/pdfdotco/n8n-nodes-pdfco
+  name: PDF.co n8n Node
+  type: Plugin
+- url: https://pdf.co/resources/blog
+  name: Blog
+  type: Blog
+- url: https://pdf.co/tutorials
+  name: Tutorials
+  type: Documentation
+- url: https://docs.pdf.co/knowledgebase/security
+  name: Security
+  type: Security
+- url: https://pdf.co/terms
+  name: Terms
+  type: TermsOfService
+- url: https://pdf.co/privacy
+  name: Privacy
+  type: Privacy
+- url: https://docs.pdf.co/api-reference/authentication
+  name: Authentication
+  type: Authentication
+- url: https://docs.pdf.co/glossary/webhook-and-callbacks
+  name: Webhooks and Callbacks
+  type: Webhooks
+- url: https://pdf.co/about
+  name: About PDF.co
+  type: About
+- url: plans/pdf-co-plans-pricing.yml
+  type: Plans
+- url: rate-limits/pdf-co-rate-limits.yml
+  type: RateLimits
+- url: finops/pdf-co-finops.yml
+  type: FinOps
 created: '2026-05-25'
-modified: '2026-05-25'
+modified: '2026-09-15'
 specificationVersion: '0.23'
+description: PDF.co is a document-automation API for PDFs. It covers conversion to and from PDF, extraction
+  and parsing of text, tables, invoices and forms, OCR, barcodes, editing, merging and splitting, searching
+  and file management.
