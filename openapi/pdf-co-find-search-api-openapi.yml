@@ -412,8 +412,8 @@ paths:
       description: This method converts PDF files into a "text unsearchable" version by converting your PDF into a "scanned" PDF file which is effectively a flat image.
 components:
   responses:
-    InvalidPassword:
-      description: Invalid Password. Password protected document.
+    Unauthorized:
+      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
       content:
         application/json:
           schema:
@@ -424,90 +424,10 @@ components:
                 example: true
               status:
                 type: integer
-                example: 441
+                example: 401
               message:
                 type: string
-                example: Invalid Password. Password protected document.
-    InvalidParameters:
-      description: Invalid parameters.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 454
-              message:
-                type: string
-                example: Invalid parameters.
-    InvalidTemplate:
-      description: Invalid template.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 447
-              message:
-                type: string
-                example: Invalid template.
-    InvalidPageRange:
-      description: Invalid page range specified.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 450
-              message:
-                type: string
-                example: Invalid page range specified.
-    Forbidden:
-      description: Access forbidden for input URL.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 403
-              message:
-                type: string
-                example: Access forbidden for input URL.
-    DamagedDocument:
-      description: Input document is damaged or of incorrect type.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 442
-              message:
-                type: string
-                example: Input document is damaged or of incorrect type.
+                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
     TooManyRequests:
       description: Too many requests in a given time period.
       content:
@@ -524,6 +444,134 @@ components:
               message:
                 type: string
                 example: Too many requests in a given time period.
+    InvalidTemplate:
+      description: Invalid template.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 447
+              message:
+                type: string
+                example: Invalid template.
+    InvalidParameters:
+      description: Invalid parameters.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 454
+              message:
+                type: string
+                example: Invalid parameters.
+    Timeout:
+      description: The server timed out waiting for the request.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 408
+              message:
+                type: string
+                example: The server timed out waiting for the request.
+    TimeoutError:
+      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 445
+              message:
+                type: string
+                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
+    InvalidUrlOrHtml:
+      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 448
+              message:
+                type: string
+                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+    ProfilesParsingError:
+      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 444
+              message:
+                type: string
+                example: Profiles parsing error. Please ensure that the configuration is supported.
+    PermissionsError:
+      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 443
+              message:
+                type: string
+                example: Permissions. The operation is prohibited by document security settings.
+    DamagedDocument:
+      description: Input document is damaged or of incorrect type.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 442
+              message:
+                type: string
+                example: Input document is damaged or of incorrect type.
     InvalidIndexRange:
       description: Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.
       content:
@@ -540,6 +588,38 @@ components:
               message:
                 type: string
                 example: Invalid index range. Page index is out of range.
+    InvalidUrl:
+      description: Invalid URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 452
+              message:
+                type: string
+                example: Invalid URL.
+    NotFound:
+      description: The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 404
+              message:
+                type: string
+                example: The requested resource could not be found.
     Success:
       description: Success.
       content:
@@ -576,8 +656,8 @@ components:
                 type: integer
                 example: 33
                 description: Time taken to complete the request, in milliseconds.
-    TimeoutError:
-      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+    Forbidden:
+      description: Access forbidden for input URL.
       content:
         application/json:
           schema:
@@ -588,138 +668,10 @@ components:
                 example: true
               status:
                 type: integer
-                example: 445
+                example: 403
               message:
                 type: string
-                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
-    InvalidUrl:
-      description: Invalid URL.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 452
-              message:
-                type: string
-                example: Invalid URL.
-    Timeout:
-      description: The server timed out waiting for the request.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 408
-              message:
-                type: string
-                example: The server timed out waiting for the request.
-    NotEnoughCredits:
-      description: Not enough credits.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 402
-              message:
-                type: string
-                example: Not enough credits.
-    ProfilesParsingError:
-      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 444
-              message:
-                type: string
-                example: Profiles parsing error. Please ensure that the configuration is supported.
-    Unauthorized:
-      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 401
-              message:
-                type: string
-                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
-    InvalidUrlOrHtml:
-      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 448
-              message:
-                type: string
-                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
-    NotFound:
-      description: The requested resource could not be found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 404
-              message:
-                type: string
-                example: The requested resource could not be found.
-    PermissionsError:
-      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 443
-              message:
-                type: string
-                example: Permissions. The operation is prohibited by document security settings.
+                example: Access forbidden for input URL.
     InternalServerError:
       description: Something went wrong. Please try again or contact support.
       content:
@@ -736,6 +688,22 @@ components:
               message:
                 type: string
                 example: Something went wrong. Please try again or contact support.
+    InvalidPassword:
+      description: Invalid Password. Password protected document.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 441
+              message:
+                type: string
+                example: Invalid Password. Password protected document.
     BadRequest:
       description: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
       content:
@@ -752,6 +720,22 @@ components:
               message:
                 type: string
                 example: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+    InvalidPageRange:
+      description: Invalid page range specified.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 450
+              message:
+                type: string
+                example: Invalid page range specified.
     MissingFiles:
       description: Some files required for conversion are missing.
       content:
@@ -768,74 +752,90 @@ components:
               message:
                 type: string
                 example: Some files required for conversion are missing.
+    NotEnoughCredits:
+      description: Not enough credits.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 402
+              message:
+                type: string
+                example: Not enough credits.
   schemas:
-    url:
+    searchstring:
       type: string
-      format: uri
-      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
+      description: The string to search.
+    httpusername:
+      type: string
+      description: HTTP auth user name if required to access source URL.
+    name:
+      type: string
+      description: File name for generated output.
     file:
       type: string
       format: path to a local file
       description: The path to the local file to be uploaded.
       readOnly: true
-    password:
-      type: string
-      description: Password for the PDF file.
-    async:
-      type: boolean
-      default: false
-      description: Set `async` to `true` for long processes to run in the background, API will then return a `jobId` which you can use with the [Background Job Check endpoint](/api-reference/job-check). Also see [Webhooks & Callbacks](/api-reference/webhooks)
     inline:
       default: false
       type: boolean
       description: Set to true to return results inside the response. Otherwise, the endpoint will return a URL to the output file generated.
-    timeout:
-      type: number
-      description: Timeout for output links in seconds
-      readOnly: true
-    pages0:
-      type: string
-      description: 'Page indices/ranges (0-based). Items are comma-separated. Each item is one of: N (e.g., 0), N-M (e.g., 3-7), N- (open-ended, e.g., 10-), or !N (reverse index; !0 is last page, !1 is second-to-last). Whitespace is allowed. If not specified, the default configuration processes all pages.'
-      pattern: ^\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*(?:,\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*)*$
-      example: 0,2,5-10, !0, !5-!2
-    httppassword:
-      type: string
-      description: HTTP auth password if required to access source URL.
     casesensitive:
       type: boolean
       default: true
       description: Set to `false` to don't use case-sensitive search.
-    httpusername:
-      type: string
-      description: HTTP auth user name if required to access source URL.
-    searchstring:
-      type: string
-      description: The string to search.
+    timeout:
+      type: number
+      description: Timeout for output links in seconds
+      readOnly: true
     lang:
       type: string
       description: 'Set the language for OCR (text from image) to use for scanned PDF, PNG, and JPG documents input when extracting text. see [Language Support](/api-reference/language-support). You can also use 2 languages simultaneously like this: `eng+deu` (any combination).'
       pattern: ^[a-z]{3}(\+[a-z]{3})*$
       default: eng
       example: eng+deu
+    expiration:
+      type: number
+      default: 60
+      description: Sets the expiration time for the output link, in minutes. After this period, generated output file(s) are automatically deleted from [PDF.co Temporary Files Storage](/api-reference/file-upload/overview). The maximum allowed duration depends on your subscription plan. For permanent storage of input files (e.g., reusable images, PDF templates, documents), use `PDF.co Built‑In Files Storage`.
+    profiles:
+      type: string
+      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
+    regexsearch:
+      type: boolean
+      default: false
+      description: Set to true to enable regular expression search for the `searchString(s)` parameter.
+    password:
+      type: string
+      description: Password for the PDF file.
     rect:
       type: string
       format: '{x} {y} {width} {height}'
       description: Defines coordinates for extraction. Use[PDF Edit Add Helper](https://app.pdf.co/pdf-edit-add-helper) to get or measure PDF coordinates. The format is `{x} {y} {width} {height}`.
       example: 10 20 300 400
-    expiration:
-      type: number
-      default: 60
-      description: Sets the expiration time for the output link, in minutes. After this period, generated output file(s) are automatically deleted from [PDF.co Temporary Files Storage](/api-reference/file-upload/overview). The maximum allowed duration depends on your subscription plan. For permanent storage of input files (e.g., reusable images, PDF templates, documents), use `PDF.co Built‑In Files Storage`.
-    regexsearch:
+    url:
+      type: string
+      format: uri
+      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
+    async:
       type: boolean
       default: false
-      description: Set to true to enable regular expression search for the `searchString(s)` parameter.
-    profiles:
+      description: Set `async` to `true` for long processes to run in the background, API will then return a `jobId` which you can use with the [Background Job Check endpoint](/api-reference/job-check). Also see [Webhooks & Callbacks](/api-reference/webhooks)
+    httppassword:
       type: string
-      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
-    name:
+      description: HTTP auth password if required to access source URL.
+    pages0:
       type: string
-      description: File name for generated output.
+      description: 'Page indices/ranges (0-based). Items are comma-separated. Each item is one of: N (e.g., 0), N-M (e.g., 3-7), N- (open-ended, e.g., 10-), or !N (reverse index; !0 is last page, !1 is second-to-last). Whitespace is allowed. If not specified, the default configuration processes all pages.'
+      pattern: ^\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*(?:,\s*(?:!?\d+\s*-\s*!?\d+|!?\d+\s*-\s*|!?\d+)\s*)*$
+      example: 0,2,5-10, !0, !5-!2
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
