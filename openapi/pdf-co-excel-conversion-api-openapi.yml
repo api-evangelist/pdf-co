@@ -548,8 +548,8 @@ paths:
       description: Converts a xls/xlsx/csv file to pdf.
 components:
   responses:
-    InvalidUrlOrHtml:
-      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+    InvalidPassword:
+      description: Invalid Password. Password protected document.
       content:
         application/json:
           schema:
@@ -560,12 +560,12 @@ components:
                 example: true
               status:
                 type: integer
-                example: 448
+                example: 441
               message:
                 type: string
-                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
-    InvalidTemplate:
-      description: Invalid template.
+                example: Invalid Password. Password protected document.
+    Unauthorized:
+      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
       content:
         application/json:
           schema:
@@ -576,12 +576,12 @@ components:
                 example: true
               status:
                 type: integer
-                example: 447
+                example: 401
               message:
                 type: string
-                example: Invalid template.
-    ProfilesParsingError:
-      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
+                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
+    MissingFiles:
+      description: Some files required for conversion are missing.
       content:
         application/json:
           schema:
@@ -592,10 +592,26 @@ components:
                 example: true
               status:
                 type: integer
-                example: 444
+                example: 446
               message:
                 type: string
-                example: Profiles parsing error. Please ensure that the configuration is supported.
+                example: Some files required for conversion are missing.
+    InvalidParameters:
+      description: Invalid parameters.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 454
+              message:
+                type: string
+                example: Invalid parameters.
     Success:
       description: Success.
       content:
@@ -632,8 +648,8 @@ components:
                 type: integer
                 example: 33
                 description: Time taken to complete the request, in milliseconds.
-    InvalidPageRange:
-      description: Invalid page range specified.
+    DamagedDocument:
+      description: Input document is damaged or of incorrect type.
       content:
         application/json:
           schema:
@@ -644,10 +660,26 @@ components:
                 example: true
               status:
                 type: integer
-                example: 450
+                example: 442
               message:
                 type: string
-                example: Invalid page range specified.
+                example: Input document is damaged or of incorrect type.
+    InvalidIndexRange:
+      description: Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 449
+              message:
+                type: string
+                example: Invalid index range. Page index is out of range.
     Forbidden:
       description: Access forbidden for input URL.
       content:
@@ -664,8 +696,8 @@ components:
               message:
                 type: string
                 example: Access forbidden for input URL.
-    TimeoutError:
-      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+    NotEnoughCredits:
+      description: Not enough credits.
       content:
         application/json:
           schema:
@@ -676,74 +708,10 @@ components:
                 example: true
               status:
                 type: integer
-                example: 445
+                example: 402
               message:
                 type: string
-                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
-    Unauthorized:
-      description: Unauthorized. Authentication is required and has failed or has not yet been provided.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 401
-              message:
-                type: string
-                example: Unauthorized. Authentication is required and has failed or has not yet been provided.
-    BadRequest:
-      description: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 400
-              message:
-                type: string
-                example: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
-    InvalidUrl:
-      description: Invalid URL.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 452
-              message:
-                type: string
-                example: Invalid URL.
-    MissingFiles:
-      description: Some files required for conversion are missing.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 446
-              message:
-                type: string
-                example: Some files required for conversion are missing.
+                example: Not enough credits.
     Timeout:
       description: The server timed out waiting for the request.
       content:
@@ -776,8 +744,8 @@ components:
               message:
                 type: string
                 example: The requested resource could not be found.
-    InternalServerError:
-      description: Something went wrong. Please try again or contact support.
+    ProfilesParsingError:
+      description: Profiles parsing error. Please ensure that the configuration is supported. See `/profiles` samples.
       content:
         application/json:
           schema:
@@ -788,12 +756,12 @@ components:
                 example: true
               status:
                 type: integer
-                example: 500
+                example: 444
               message:
                 type: string
-                example: Something went wrong. Please try again or contact support.
-    PermissionsError:
-      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
+                example: Profiles parsing error. Please ensure that the configuration is supported.
+    InvalidUrlOrHtml:
+      description: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
       content:
         application/json:
           schema:
@@ -804,12 +772,12 @@ components:
                 example: true
               status:
                 type: integer
-                example: 443
+                example: 448
               message:
                 type: string
-                example: Permissions. The operation is prohibited by document security settings.
-    NotEnoughCredits:
-      description: Not enough credits.
+                example: Invalid URL or HTML. Ensure the provided URL is valid and accessible.
+    InvalidTemplate:
+      description: Invalid template.
       content:
         application/json:
           schema:
@@ -820,42 +788,10 @@ components:
                 example: true
               status:
                 type: integer
-                example: 402
+                example: 447
               message:
                 type: string
-                example: Not enough credits.
-    InvalidIndexRange:
-      description: Invalid index range. Page index is out of range. Use `/pdf/info` to get page count. First page is `0`.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 449
-              message:
-                type: string
-                example: Invalid index range. Page index is out of range.
-    DamagedDocument:
-      description: Input document is damaged or of incorrect type.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: boolean
-                example: true
-              status:
-                type: integer
-                example: 442
-              message:
-                type: string
-                example: Input document is damaged or of incorrect type.
+                example: Invalid template.
     TooManyRequests:
       description: Too many requests in a given time period.
       content:
@@ -872,8 +808,8 @@ components:
               message:
                 type: string
                 example: Too many requests in a given time period.
-    InvalidParameters:
-      description: Invalid parameters.
+    InvalidPageRange:
+      description: Invalid page range specified.
       content:
         application/json:
           schema:
@@ -884,12 +820,12 @@ components:
                 example: true
               status:
                 type: integer
-                example: 454
+                example: 450
               message:
                 type: string
-                example: Invalid parameters.
-    InvalidPassword:
-      description: Invalid Password. Password protected document.
+                example: Invalid page range specified.
+    InternalServerError:
+      description: Something went wrong. Please try again or contact support.
       content:
         application/json:
           schema:
@@ -900,22 +836,108 @@ components:
                 example: true
               status:
                 type: integer
-                example: 441
+                example: 500
               message:
                 type: string
-                example: Invalid Password. Password protected document.
+                example: Something went wrong. Please try again or contact support.
+    BadRequest:
+      description: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 400
+              message:
+                type: string
+                example: Bad request. Typically due to bad input parameters or unreachable input URLs (e.g., access restrictions like login or password).
+    TimeoutError:
+      description: Timeout error. For large documents, use asynchronous mode (`async=true`) and check status via `/job/check`. For many-page files, use the `pages` parameter.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 445
+              message:
+                type: string
+                example: Timeout error. For large documents, use asynchronous mode (async=true) and check status via /job/check.
+    PermissionsError:
+      description: 'Permissions. The operation is prohibited by document security settings. You can turn off this check by setting the `profiles` param to `{CheckPermissions: false}`. Important: only use this if you are the owner or have legal permission.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 443
+              message:
+                type: string
+                example: Permissions. The operation is prohibited by document security settings.
+    InvalidUrl:
+      description: Invalid URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: boolean
+                example: true
+              status:
+                type: integer
+                example: 452
+              message:
+                type: string
+                example: Invalid URL.
   schemas:
-    httppassword:
-      type: string
-      description: HTTP auth password if required to access source URL.
-    url:
-      type: string
-      format: uri
-      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
     timeout:
       type: number
       description: Timeout for output links in seconds
       readOnly: true
+    worksheetindex:
+      type: string
+      format: number
+      pattern: ^\d+$
+      description: Set the index of the worksheet to be used. The first worksheet has index 1.
+    httppassword:
+      type: string
+      description: HTTP auth password if required to access source URL.
+    autosize:
+      type: boolean
+      description: Set to `true` to page dimensions adjust to content with automatic page sizing. If false, uses worksheet's page setup.
+    url:
+      type: string
+      format: uri
+      description: URL to the source file [`url` attribute](/api-reference/url-input-and-request-limits).
+    profiles:
+      type: string
+      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
+    httpusername:
+      type: string
+      description: HTTP auth user name if required to access source URL.
+    file:
+      type: string
+      format: path to a local file
+      description: The path to the local file to be uploaded.
+      readOnly: true
+    name:
+      type: string
+      description: File name for generated output.
     async:
       type: boolean
       default: false
@@ -924,28 +946,6 @@ components:
       type: number
       default: 60
       description: Sets the expiration time for the output link, in minutes. After this period, generated output file(s) are automatically deleted from [PDF.co Temporary Files Storage](/api-reference/file-upload/overview). The maximum allowed duration depends on your subscription plan. For permanent storage of input files (e.g., reusable images, PDF templates, documents), use `PDF.co Built‑In Files Storage`.
-    name:
-      type: string
-      description: File name for generated output.
-    worksheetindex:
-      type: string
-      format: number
-      pattern: ^\d+$
-      description: Set the index of the worksheet to be used. The first worksheet has index 1.
-    file:
-      type: string
-      format: path to a local file
-      description: The path to the local file to be uploaded.
-      readOnly: true
-    httpusername:
-      type: string
-      description: HTTP auth user name if required to access source URL.
-    profiles:
-      type: string
-      description: Profiles are used configure extra options for specific API endpoints and may be unique to an API. For more information, see [Profiles](/api-reference/profiles) and the documentation of each endpoint for profiles specific to it.
-    autosize:
-      type: boolean
-      description: Set to `true` to page dimensions adjust to content with automatic page sizing. If false, uses worksheet's page setup.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
