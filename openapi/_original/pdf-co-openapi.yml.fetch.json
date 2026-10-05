@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.pdf.co/openapi.json",
+ "requested_url": "https://docs.pdf.co/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 553400,
+ "sha256": "776295fe5a72267c98a4a17d171aeb7520c0597e611428edabb87633496d6eaf",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
