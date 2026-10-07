@@ -188,6 +188,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pdf-co.png
 access: 3rd-Party
 common:
+- type: Pricing
+  url: https://www.pdf.co/pricing
 - type: Website
   url: https://www.pdf.co/
 - type: PostmanWorkspace
