@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-25 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-05-25'
 specification: FinOps Framework
 specificationVersion: '1.0'
 schema: https://www.finops.org/framework/
@@ -90,16 +95,12 @@ discountModels:
 unitEconomics:
   - name: Cost per credit (Business 1)
     metric: monthly_price / included_credits
-    target: ~$0.00056/credit
   - name: Cost per credit (Business 3)
     metric: monthly_price / included_credits
-    target: ~$0.00056/credit
   - name: Cost per parsed invoice
     metric: ai_invoice_parser_credits / 1 invoice * cost_per_credit
-    target: track per-document unit cost
   - name: Async ratio
     metric: jobs_async / api_calls
-    target: '>0.5 for heavy OCR/AI workflows'
 principles:
   - name: Visibility
     description: Pull /v1/account/credit/balance into dashboards; tag requests by application/tenant for
