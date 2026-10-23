@@ -1117,3 +1117,9 @@ components:
       in: header
       name: x-api-key
 x-original-swagger-version: '2.0'
+x-provenance:
+  method: harvested
+  publisher: PDF.co
+  source: https://developer.pdf.co/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
