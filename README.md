@@ -1,4 +1,4 @@
-# PDF.co (pdf-co)
+# PDF.co
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,242 +64,179 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/pdf-co/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/pdf-co/refs/heads/main/apis.yml)
+PDF.co is a document-automation API for PDFs. It covers conversion to and from PDF, extraction and parsing of text, tables, invoices and forms, OCR, barcodes, editing, merging and splitting, searching and file management.
 
-## Scope
+**Areas:** PDF · Document Automation · Artificial Intelligence · OCR · Invoice Parsing · Document Parsing · Conversion · Forms · Barcodes · E-Signature
 
-- **Access:** 3rd-Party
+## PDF.co on APIs.io
 
-## Tags
+Everything profiled for PDF.co is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/pdf-co/](https://apis.io/providers/pdf-co/)** — or go straight to one of the APIs or properties below.
 
-- PDF
-- Document Automation
-- AI
-- OCR
-- Invoice Parsing
-- Document Parsing
-- Conversion
-- Forms
-- Barcodes
-- E-Signature
+### APIs (10)
 
-## Timestamps
+- [PDF.co Barcodes API](https://apis.io/apis/pdf-co/pdf-co-barcodes-api/) — The Barcodes API from PDF.co — 2 operation(s) for barcodes.
+- [PDF.co Document, File & System API](https://apis.io/apis/pdf-co/pdf-co-document-file-system-api/) — The Document, File & System API from PDF.co — 17 operation(s) for document, file & system.
+- [PDF.co Editing API](https://apis.io/apis/pdf-co/pdf-co-editing-api/) — The Editing API from PDF.co — 4 operation(s) for editing.
+- [PDF.co Excel Conversion API](https://apis.io/apis/pdf-co/pdf-co-excel-conversion-api/) — The Excel Conversion API from PDF.co — 6 operation(s) for excel conversion.
+- [PDF.co Extraction API](https://apis.io/apis/pdf-co/pdf-co-extraction-api/) — The Extraction API from PDF.co — 5 operation(s) for extraction.
+- [PDF.co Find & Search API](https://apis.io/apis/pdf-co/pdf-co-find-search-api/) — The Find & Search API from PDF.co — 4 operation(s) for find & search.
+- [PDF.co Forms API](https://apis.io/apis/pdf-co/pdf-co-forms-api/) — The Forms API from PDF.co — 1 operation(s) for forms.
+- [PDF.co Pages API](https://apis.io/apis/pdf-co/pdf-co-pages-api/) — The Pages API from PDF.co — 3 operation(s) for pages.
+- [PDF.co PDF Conversion API](https://apis.io/apis/pdf-co/pdf-co-pdf-conversion-api/) — The PDF Conversion API from PDF.co — 21 operation(s) for pdf conversion.
+- [PDF.co PDF Merging & Splitting API](https://apis.io/apis/pdf-co/pdf-co-pdf-merging-splitting-api/) — The PDF Merging & Splitting API from PDF.co — 4 operation(s) for pdf merging & splitting.
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### PDF.co Extraction API
+#### Agentic access (1)
 
-AI-powered data extraction from PDF, scanned, and image-based documents. Includes the AI Invoice Parser (zero-template invoice/receipt parsing), Document Parser (template-driven extraction with reusable templates by ID), Document Classifier, and PDF attachment extraction. Async and sync modes; webhook callbacks; supports URL, base64, or uploaded-file inputs.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+- [Pdf Co Agentic Access](https://apis.io/agentic-access/pdf-co/pdf-co-agentic-access/)
 
-#### Tags
+#### JSON Schema (3)
 
-- AI
-- Document Parsing
-- Invoice Parsing
-- OCR
-- Extraction
+The data models the API reads and writes.
 
-#### Properties
+- [PDF.co AI Invoice Parser Request](https://apis.io/schemas/pdf-co/pdf-co-ai-invoice-parser/)
+- [PDF.co Document Parser Request](https://apis.io/schemas/pdf-co/pdf-co-document-parser/)
+- [PDF.co Job Status](https://apis.io/schemas/pdf-co/pdf-co-job-status/)
 
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/pdf-co-document-parser-schema.json) — [JSON Schema](https://json-schema.org/specification)
+#### JSON-LD (1)
 
-### PDF.co Conversion API
+Linked-data contexts for the provider's vocabulary.
 
-Bidirectional document conversion: PDF to CSV, JSON, JSON-AI, text, XML, XLS, XLSX, HTML, JPG, PNG, TIFF, WebP; PDF from HTML, URL, DOC/DOCX, CSV/XLS/XLSX, images, and email (.msg, .eml); plus Excel-to-anything conversion. Layout-preserving table extraction and AI-driven JSON output supported.
+- [Pdf Co Context](https://apis.io/jsonld/pdf-co/pdf-co-context/)
 
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+#### Examples (2)
 
-#### Tags
+Example requests and responses.
 
-- Conversion
-- PDF
-- Excel
-- CSV
-- JSON
-- HTML
-- Images
-- OCR
+- [Pdf Co Ai Invoice Parser Example](https://apis.io/examples/pdf-co/pdf-co-ai-invoice-parser-example/)
+- [Pdf Co Pdf To Json Example](https://apis.io/examples/pdf-co/pdf-co-pdf-to-json-example/)
 
-#### Properties
+#### Collections (21)
 
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### PDF.co Editing API
+- [PDF.co API](https://apis.io/collections/pdf-co/open-pdf-co/)
+- [PDF.co Barcodes API](https://apis.io/collections/pdf-co/open-pdf-co-barcodes-api/)
+- [PDF.co Barcodes Document, File & System API](https://apis.io/collections/pdf-co/open-pdf-co-document-file-system-api/)
+- [PDF.co Barcodes Editing API](https://apis.io/collections/pdf-co/open-pdf-co-editing-api/)
+- [PDF.co Barcodes Excel Conversion API](https://apis.io/collections/pdf-co/open-pdf-co-excel-conversion-api/)
+- [PDF.co Barcodes Extraction API](https://apis.io/collections/pdf-co/open-pdf-co-extraction-api/)
+- [PDF.co Barcodes Find & Search API](https://apis.io/collections/pdf-co/open-pdf-co-find-search-api/)
+- [PDF.co Barcodes Forms API](https://apis.io/collections/pdf-co/open-pdf-co-forms-api/)
+- [PDF.co Barcodes Pages API](https://apis.io/collections/pdf-co/open-pdf-co-pages-api/)
+- [PDF.co Barcodes PDF Conversion API](https://apis.io/collections/pdf-co/open-pdf-co-pdf-conversion-api/)
+- [PDF.co Barcodes PDF Merging & Splitting API](https://apis.io/collections/pdf-co/open-pdf-co-pdf-merging-splitting-api/)
+- [PDF.co Barcodes API](https://apis.io/collections/pdf-co/postman-pdf-co-barcodes-api/)
+- [PDF.co Barcodes Document, File & System API](https://apis.io/collections/pdf-co/postman-pdf-co-document-file-system-api/)
+- [PDF.co Barcodes Editing API](https://apis.io/collections/pdf-co/postman-pdf-co-editing-api/)
+- [PDF.co Barcodes Excel Conversion API](https://apis.io/collections/pdf-co/postman-pdf-co-excel-conversion-api/)
+- [PDF.co Barcodes Extraction API](https://apis.io/collections/pdf-co/postman-pdf-co-extraction-api/)
+- [PDF.co Barcodes Find & Search API](https://apis.io/collections/pdf-co/postman-pdf-co-find-search-api/)
+- [PDF.co Barcodes Forms API](https://apis.io/collections/pdf-co/postman-pdf-co-forms-api/)
+- [PDF.co Barcodes Pages API](https://apis.io/collections/pdf-co/postman-pdf-co-pages-api/)
+- [PDF.co Barcodes PDF Conversion API](https://apis.io/collections/pdf-co/postman-pdf-co-pdf-conversion-api/)
+- [PDF.co Barcodes PDF Merging & Splitting API](https://apis.io/collections/pdf-co/postman-pdf-co-pdf-merging-splitting-api/)
 
-Programmatic PDF editing: add text/images/forms/links, replace text, replace text with images, delete text, delete or rotate pages, AI auto-rotate, search-and-replace, and form filling. Accepts coordinate-based annotations and supports template-driven PDF generation via HTML templates.
+#### Governance rules (1)
 
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [PDF.co — jsonschema rules](https://apis.io/rules/pdf-co/pdf-co-jsonschema-spectral-rules/)
 
-- Editing
-- PDF
-- Forms
-- Text
-- Images
+#### Security (3)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Pdf Co Authentication](https://apis.io/security/pdf-co/pdf-co-authentication/)
+- [Pdf Co Domain Security](https://apis.io/security/pdf-co/pdf-co-domain-security/)
+- [Pdf Co Trust Center](https://apis.io/security/pdf-co/pdf-co-trust-center/)
 
-### PDF.co Merging and Splitting API
+#### Plans and pricing (1)
 
-Merge multiple PDFs (and DOC, XLS, image inputs via /merge2) into a single document, or split PDFs by page ranges, indexes, or text-pattern search. Useful for document assembly, statement bursting, and invoice pipelines.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+- [Pdf Co Plans Pricing](https://apis.io/plans/pdf-co/pdf-co-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- Merging
-- Splitting
-- PDF
-- Document Assembly
+Published request limits.
 
-#### Properties
+- [Pdf Co Rate Limits](https://apis.io/rate-limits/pdf-co/pdf-co-rate-limits/)
 
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### FinOps (1)
 
-### PDF.co Find and Search API
+What the API costs to run, by operation.
 
-Locate text in PDFs and return coordinates (`/pdf/find`), AI-powered table location (`/pdf/find/table`), and make scanned PDFs text-searchable via OCR (`/pdf/makesearchable`) or remove text layers to produce image-only PDFs (`/pdf/makeunsearchable`).
+- [Pdf Co Finops](https://apis.io/finops/pdf-co/pdf-co-finops/)
 
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- Search
-- PDF
-- OCR
-- Text
-
-#### Properties
-
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### PDF.co Forms API
-
-Retrieve fillable form field details (`/pdf/info/fields`) for AcroForm and XFA PDFs. Pair with the Editing API's `/pdf/edit/add` endpoint to fill forms programmatically.
-
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
-
-#### Tags
-
-- Forms
-- PDF
-- AcroForm
-
-#### Properties
-
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### PDF.co Pages API
-
-Delete pages by range, rotate pages by degrees, or use AI auto-rotation to detect and fix page orientation in scanned documents.
-
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
-
-#### Tags
-
-- Pages
-- PDF
-- Rotation
-
-#### Properties
-
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### PDF.co Barcodes API
-
-Generate high-quality barcode images (QR, Code128, DataMatrix, PDF417, EAN, UPC, and others) or read barcodes from PDF and image inputs by URL.
-
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
-
-#### Tags
-
-- Barcodes
-- QR Code
-- Recognition
-
-#### Properties
-
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### PDF.co Document, File, and System API
-
-File operations and platform primitives: upload (form, base64, by URL, presigned URL), download, delete, MD5 hash; PDF compress (v2) and optimize; PDF info reader; email decode/send/extract-attachments; HTML template storage; document classifier; and the `/job/check` endpoint for polling async operations. Also exposes `/account/credit/balance` for credit reporting.
-
-- **Human URL:** [https://docs.pdf.co/api-reference](https://docs.pdf.co/api-reference)
-
-#### Tags
-
-- Files
-- Compression
-- Optimization
-- Email
-- Templates
-- Jobs
-- Account
-
-#### Properties
-
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](openapi/pdf-co-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pdf-co.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pdf-co.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://pdf.co)
+- [Website](https://www.pdf.co/)
 - [Documentation](https://docs.pdf.co)
-- [Documentation](https://docs.pdf.co/api-reference)
-- [OpenAPI](https://docs.pdf.co/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Sign Up](https://app.pdf.co/signup)
-- [Login](https://app.pdf.co/account/dashboard)
-- [Pricing](https://pdf.co/pricing)
+- [Pricing](https://www.pdf.co/pricing)
 - [Support](https://support.pdf.co/en)
-- [Documentation](https://pdf.co/integrations)
-- [Git Hub](https://github.com/pdfdotco)
-- [Source Code](https://github.com/pdfdotco/pdf-co-api-samples)
-- [M C P](https://github.com/pdfdotco/pdfco-mcp)
-- [Plugin](https://github.com/pdfdotco/n8n-nodes-pdfco)
 - [Blog](https://pdf.co/resources/blog)
-- [Documentation](https://pdf.co/tutorials)
 - [Security](https://docs.pdf.co/knowledgebase/security)
-- [Terms of Service](https://pdf.co/terms)
-- [Privacy](https://pdf.co/privacy)
-- [Authentication](https://docs.pdf.co/api-reference/authentication)
-- [Webhooks](https://docs.pdf.co/glossary/webhook-and-callbacks)
-- [About](https://pdf.co/about)
-- [Plans](plans/pdf-co-plans-pricing.yml)
-- [Rate Limits](rate-limits/pdf-co-rate-limits.yml)
-- [Fin Ops](finops/pdf-co-finops.yml)
+- [Terms of service](https://pdf.co/terms)
+
+## API Evangelist rating
+
+**Kin Score 51.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 51.8 |
+| Contract quality | 58.5 |
+| Contract governance | 9.8 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 39.3 |
+| Access clarity | 92.1 |
+
+**Agent readiness 24.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 27.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/pdf-co/](https://apis.io/providers/pdf-co/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for PDF.co: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/pdf-co/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
